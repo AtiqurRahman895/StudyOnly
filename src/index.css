@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    h1, h2, h3, h4, h5, h6{
+        @apply font-bold;
+    }
+
+  h1 {
+    @apply text-[clamp(1.75rem,1.1578947368421053rem+2.9605263157894735vw,4rem)] ;
+  }
+  h2 {
+    @apply text-[clamp(1.7rem,1.3285714285714285rem+1.8571428571428572vw,3rem)] ;
+  }
+
+  h3 {
+    @apply text-[clamp(1.6rem,1.342857142857143rem+1.2857142857142856vw,2.5rem)] ;
+  }
+  
+  h4 {
+    @apply text-[1.4rem] ;
+  }
+  h5 {
+    @apply text-[1.25rem];
+  }
+  h6 {
+    @apply text-[1rem];
+  }
+  * {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply text-black-font bg-black overflow-x-hidden font-manrope font-medium;
+  }
+  p,
+  span,
+  li,
+  a,b {
+    @apply text-[14px] leading-loose;
+  }
+  a{
+    @apply hover:scale-105 duration-500
+  }
+  header a{
+    @apply hover:text-inherit duration-500
+  }
+  footer a{
+    @apply hover:text-custom-primary hover:font-bold 
+  }
+  .ql-toolbar.ql-snow {
+    background-color: white !important;
+  }
+
+  ul,ol{
+    @apply space-y-1 mb-1.5 ml-8
+  }
+
+  ul{
+    list-style: outside;
+    /* margin-left: 2rem; */
+  }
+  ol{
+    list-style: decimal;
+    /* margin-left: 1rem; */
+  }
+
+
+
+
+  /* li{
+    font-size: 14px;
+  } */
+
+  /* input,
+  textarea {
+    @apply ;
+  } */
+  /* input,textarea {
+    @apply focus:invalid:border focus:invalid:border-rose-300 focus:valid:border focus:valid:border-custom-primary;
+  } */
+
+}
+@layer utilities {
+  .headerSectionAnimation {
+    background-color: rgba(75, 75, 75, .35);
+    color: white;
+    backdrop-filter: blur(20px);
+  }
+
+  .sectionHeaderWidth{
+    @apply w-[90%] sm:w-[70%] mx-auto
+  }
+  .sectionHeaderSubtextWidth{
+    @apply text-[16px] xs:text-lg md:text-xl
+  }
+
+  .primaryButton{
+    @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-white bg-custom-primary border border-custom-primary hover:shadow-sm 
+  }
+  .activePrimaryButton{
+    @apply hover:bg-custom-half-primary hover:text-custom-primary
+  }
+
+  .primaryButton2{
+    @apply cursor-pointer text-center text-sm text-nowrap font-bold rounded-md duration-500 text-custom-primary bg-transparent border border-custom-primary hover:shadow-sm 
+  }
+  .activePrimaryButton2{
+    @apply hover:bg-custom-primary hover:text-white
+  }
+
+  .joinedFilterButton{
+    @apply bg-white duration-500 hover:bg-custom-primary btn join-item border border-gray-300 hover:border-gray-300 text-inherit
+  }
+  .formSubmitBtn{
+    @apply btn bg-custom-primary hover:bg-white text-white hover:text-black btn-block
+  }
+
+  .fromWrapper{
+    @apply card w-full shrink-0 bg-black text-white shadow-xl p-4 md:p-8 my-20 space-y-4
+  }
+
+  .MyReviewTable thead tr, .MyReviewTable tfoot tr, .MyReviewTable th{
+    @apply bg-custom-primary text-white
+  }
+
+  .aboutImages img{
+    @apply relative duration-500 w-[70%] bg-white grayscale hover:grayscale-0 rounded-md border-black
+  }
+  /* .aboutImages:hover .aboutImage1{
+    @apply !float-end
+  }
+  .aboutImages:hover .aboutImage1{
+    @apply !float-start
+  } */
+
+
+  .footerCopyRights a {
+    /* animation-name: glowMyPortfolioLink;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode:both; */
+    /* animation-timing-function: cubic-bezier(0.28, -0.08, 0.61, 1.04); */
+    animation: glowMyPortfolioLink 5s linear infinite;
+  }
+  
+  @keyframes glowMyPortfolioLink {
+    
+    0% {
+      color: #e8092e;
+    }
+  
+    10% {
+      color:  #bb2a42;
+    }
+    50% {
+      color:  #d74c63;
+    }
+    90% {
+      color:  #fa4563;
+    }
+    100% {
+      color: #e8092e
+    }
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-custom-gradient {
+    background: linear-gradient(109deg, rgba(199,101,165,1) 0%, rgba(241,71,73,1) 40%, rgba(251,202,87,1) 100%);
+  }
+
+
+  ul > :not([hidden]) ~ :not([hidden]), ol > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+  .menu li > *:not(ul,.themeController, .menu-title, details, .btn):active, .menu li > *:not(ul,.themeController, .menu-title, details, .btn).active, .menu li > details > summary:active {
+    --tw-bg-opacity: 1;
+    background-color: inherit;
+    color: inherit;
+    border-radius: 0px;
+    border-bottom: 2px solid;
+}
+
+.menu li > .themeController:active ,.themeController:focus, .menu li > .themeController.active {
+  border: none !important;
+}
+
+.themeController:hover, .themeController:focus{
+  color:inherit !important;
+  background-color: transparent !important;
+}
+
+.menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  @apply pl-0 lg:pl-4 ml-4 lg:ml-0 
+
+}
+.drawer-side .menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)), .drawer-side .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  margin-inline: 0px;
+  padding-inline: 0px !important;
+  padding-right: 1rem !important;
+}
+
+@media (min-width: 1024px) {
+  .menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+    margin-inline: 0px;
+    padding-inline: 1rem;
+  }
+}
+
+.menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+    margin-inline: 0px;
+    padding-inline: 1rem;
+}
+
+.input:focus, .input:focus-within,
+.textarea:focus, .textarea:focus-within,
+.select:focus, .select:focus-within{
+  @apply border-white
+
+}
+.input:focus, .input:focus-within,
+.textarea:focus, .textarea:focus-within,
+.select:focus, .select:focus-within{
+  color: inherit;
+  background-color: transparent !important;
+
+}
+.input:disabled ,
+.textarea:disabled {
+  color: #7272729b;
+  border-color: #7272729b !important;
+  background-color: #6868682b !important;
+
+}
+.invalid{
+  @apply border focus:border-rose-300
+}
+
+/* ADD BLOG  */
+
+.input-box:has(.input-field:focus-within) .input-label{
+  display: none;
+}
+.itsLongDispriction{
+  line-height: 1.6rem !important;
+}
+.itsLongDispriction p{
+  margin-bottom: 8px !important;
+}
+
+.itsLongDispriction h4,
+.itsLongDispriction h5,
+.itsLongDispriction h6{
+  line-height: 2rem !important;
+}
+.itsLongDispriction h4{
+  margin-block: 20px !important;
+}
+.itsLongDispriction h5{
+  margin-block: 12px !important;
+}
+.itsLongDispriction h6{
+  margin-block: 8px !important;
+}
+
+
+}
