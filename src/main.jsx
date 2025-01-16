@@ -16,6 +16,10 @@ import ChangePassword from "./components/AuthenticationComponent/ChangePassword"
 import ForgotPassword from "./components/AuthenticationComponent/ForgotPassword";
 import Home from './components/HomeComponent/Home';
 import Payment from './components/PaymentComponent/Payment';
+import DashboardBase from './components/BaseComponent/DashboardBase';
+import Dashboard from './components/DashboardComponent/Dashboard';
+import CreatSession from './components/CreatSessionComponent/CreatSession';
+import TutorRoute from './components/AuthenticationComponent/tutorRoute';
 
 
 
@@ -67,6 +71,30 @@ const router = createBrowserRouter([
       {
         path: "/forgot-password",
         element: <ForgotPassword />,
+      },
+    ]
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardBase/>,
+    errorElement: <ErrorPage/>,
+
+    children:[
+      {
+        path: "/dashboard",
+        element:  (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/creat_session",
+        element: (
+          <TutorRoute>
+            <CreatSession />
+          </TutorRoute>
+        ),
       },
     ]
   },

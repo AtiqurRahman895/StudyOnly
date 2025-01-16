@@ -5,7 +5,6 @@ import Loading from "./Loading";
 
 const PrivateRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext)
-
     if(loading){
         return <Loading/>
     }

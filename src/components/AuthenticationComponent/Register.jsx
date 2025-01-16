@@ -185,7 +185,7 @@ const Register = () => {
                             <select defaultValue={''} name="role" id="role" className="select select-ghost select-bordered" required>
                                 <option value={''} disabled hidden>Pick role</option>
                                 <option value={'student'}>Student</option>
-                                <option value={'teacher'}>Teacher</option>
+                                <option value={'tutor'}>Tutor</option>
 
                             </select>
                         </div>

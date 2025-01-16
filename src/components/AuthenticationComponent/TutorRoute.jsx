@@ -4,7 +4,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
 
-const AdminRoute = ({children}) => {
+
+const TutorRoute = ({children}) => {
     const navigate = useNavigate();
     const {user,loading,logoutUser}=useContext(AuthContext)
     const role=localStorage.getItem("role")
@@ -12,7 +13,7 @@ const AdminRoute = ({children}) => {
         return <Loading/>
     }
     if(user&&role){
-        if(role==="admin"){
+        if(role==="tutor"||role==="admin"){
             return children
         }else{
             logoutUser();
@@ -23,4 +24,4 @@ const AdminRoute = ({children}) => {
     return <Navigate to={"/login"}></Navigate>
 };
 
-export default AdminRoute;
+export default TutorRoute;

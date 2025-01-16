@@ -194,8 +194,8 @@
     --tw-bg-opacity: 1;
     background-color: inherit;
     color: inherit;
-    border-radius: 0px;
-    border-bottom: 2px solid;
+    /* border-radius: 0px;
+    border-bottom: 2px solid; */
 }
 
 .menu li > .themeController:active ,.themeController:focus, .menu li > .themeController.active {

@@ -5,59 +5,27 @@ import NavMenus from "./NavMenus";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import AdminNavMenus from "./AdminNavMenus";
 // import { GoUnverified } from "react-icons/go";
 
-const AdminHeader = () => {
+const DashboardHeader = () => {
   const location = useLocation();
-  const path = location.pathname;
   useEffect(() => {
-    const path = location.pathname;
-    // if(path == "/"){
-    //   headerRef.current?.classList.remove(`sticky`);
-    //   headerRef.current?.classList.add(`fixed text-white`);
-    // }
-    // else{
-    //   headerRef.current?.classList.remove(`fixed text-white`);
-    //   headerRef.current?.classList.add(`sticky`);
-    // }
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, [location.pathname]); // Trigger when the route changes
 
-  const [scrollY, setScrollY] = useState(0);
-  const headerRef = useRef(null);
   const { user, logoutUser, verifyAccount } = useContext(AuthContext);
 
-  useEffect(() => {
-    const changeHeaderColor = () => {
-      setScrollY(window.scrollY);
-      if (window.scrollY >= 16) {
-        document;
-        headerRef.current?.classList.add(`headerSectionAnimation`);
-      } else {
-        document;
-        headerRef.current?.classList.remove(`headerSectionAnimation`);
-      }
-    };
-
-    window.addEventListener(`scroll`, changeHeaderColor);
-  }, []);
 
   // console.log(location.pathname)
 
   return (
     <header
-      ref={headerRef}
-      className={`${
-        path === "admin/add_blog" || path.includes("/blog")
-          ? "sticky"
-          : "fixed text-white"
-      }  text-white top-0 z-50 w-full py-2`}
+      className={`text-white top-0 z-50 w-full py-2`}
     >
       <div className={`navbar container`}>
         <div className="navbar-start">
           <label
-            htmlFor="navSideBar"
+            htmlFor="DashboardNavSideBar"
             aria-label="open sidebar"
             className="p-1.5 border border-custom-half-primary rounded-md lg:hidden"
           >
@@ -84,11 +52,11 @@ const AdminHeader = () => {
             Study Only
           </Link>
         </div>
-        <div className="navbar-center hidden lg:inline-block">
-          <ul className="menu menu-horizontal px-1 grid lg:flex items-center justify-items-center">
-            <AdminNavMenus />
+        {/* <div className="navbar-center hidden lg:inline-block">
+          <ul className="menu menu-horizontal px-1 grid lg:flex items-center justify-items-center !list-none !space-y-0 !m-0">
+            <NavMenus />
           </ul>
-        </div>
+        </div> */}
         <div className="navbar-end">
           {user ? (
             <div className="flex items-center gap-2">
@@ -96,11 +64,12 @@ const AdminHeader = () => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="indicator rounded-full hover:shadow-xl mx-4 avatar"
+                  className="indicator hover:shadow-xl sm:mx-4"
                 >
-                  <div className="w-10 rounded-full">
+                  <div className="w-10 aspect-square rounded-full overflow-hidden bg-white">
                     <img
                       alt="User Photo"
+                      // className="place-self-start"
                       src={
                         user.photoURL
                           ? `${user.photoURL}`
@@ -128,7 +97,7 @@ const AdminHeader = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm space-y-2 text-black-font"
+                    className="menu menu-sm text-black-font !list-none !space-y-1 !m-0"
                   >
                     {user.emailVerified || (
                       <li className="hover:scale-105 duration-200">
@@ -192,4 +161,4 @@ const AdminHeader = () => {
 
 // };
 
-export default AdminHeader;
+export default DashboardHeader;

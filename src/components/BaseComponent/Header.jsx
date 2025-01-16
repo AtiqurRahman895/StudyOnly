@@ -49,7 +49,7 @@ const Header = () => {
       ref={headerRef}
       className={`${
         path === "/"
-          ? "fixed text-white"
+          ? "fixed"
           : "sticky"
       } text-white top-0 z-50 w-full py-2`}
     >
