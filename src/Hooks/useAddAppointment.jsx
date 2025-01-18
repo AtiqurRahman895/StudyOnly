@@ -7,7 +7,7 @@ import useSecureAxios from "./useSecureAxios";
 
 const useAddAppointment = () => {
     const navigate = useNavigate();
-    const { secureAxios } = useSecureAxios();
+    const secureAxios = useSecureAxios();
     const {logoutUser } = useContext(AuthContext);
     const {appointmentCredentials,setAppointmentCredentials}=useContext(TransferLists)
 

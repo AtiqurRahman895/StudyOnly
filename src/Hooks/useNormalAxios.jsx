@@ -6,7 +6,7 @@ export const normalAxios = axios.create({
 
 
 const useNormalAxios = () => {
-    return {normalAxios}
+    return normalAxios
 };
 
 export default useNormalAxios;

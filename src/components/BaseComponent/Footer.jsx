@@ -63,8 +63,8 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 // Footer.propTypes = {
 

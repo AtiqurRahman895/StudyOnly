@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MdRateReview } from "react-icons/md";
 import useGetTodayTomorrowNextweek from "../../Hooks/useGetTodayTomorrowNextweek";
 
-const RegistrationStartDateSection = ({registration_start_date, setRegistration_start_date}) => {
+const RegistrationStartDateSection = ({registration_start_date, setRegistration_start_date, minDate=""}) => {
     const {today}=useGetTodayTomorrowNextweek()
 
     return (
@@ -14,7 +14,7 @@ const RegistrationStartDateSection = ({registration_start_date, setRegistration_
                     type="date"
                     onChange={(e)=>setRegistration_start_date(e.target.value)} 
                     value={registration_start_date} 
-                    min={today}
+                    min={minDate||today}
                     placeholder='Session Description' 
                     name="registration_start_date" 
                     id="registration_start_date" 

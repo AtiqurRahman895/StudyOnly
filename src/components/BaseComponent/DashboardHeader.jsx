@@ -15,13 +15,10 @@ const DashboardHeader = () => {
 
   const { user, logoutUser, verifyAccount } = useContext(AuthContext);
 
-
   // console.log(location.pathname)
 
   return (
-    <header
-      className={`text-white top-0 z-50 w-full py-2`}
-    >
+    <header className={`text-white top-0 z-50 w-full py-2`}>
       <div className={`navbar container`}>
         <div className="navbar-start">
           <label

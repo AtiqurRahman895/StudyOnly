@@ -11,7 +11,7 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const {amount,appointmentCredentials,setAppointmentCredentials}=useContext(TransferLists)
-    const { secureAxios } = useSecureAxios();
+    const secureAxios = useSecureAxios();
     const{user,logoutUser}=useContext(AuthContext)
     const navigate = useNavigate();
     const addAppointment=useAddAppointment()

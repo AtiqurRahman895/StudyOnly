@@ -8,7 +8,6 @@ const ErrorPage = () => {
 
   return (
     <>
-
       <TitleSection title={`${statusText || "Error"}`} />
 
       <div className="h-lvh place-items-center grid gap-3 content-center bg-white">

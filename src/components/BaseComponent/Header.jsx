@@ -48,9 +48,7 @@ const Header = () => {
     <header
       ref={headerRef}
       className={`${
-        path === "/"
-          ? "fixed"
-          : "sticky"
+        path === "/" ? "fixed" : "sticky"
       } text-white top-0 z-50 w-full py-2`}
     >
       <div className={`navbar container`}>
@@ -185,8 +183,8 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
 // Footer.propTypes = {
 

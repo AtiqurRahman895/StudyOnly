@@ -10,30 +10,30 @@ import NavSideBar from "./NavSideBar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
 
 const Base = () => {
+  const [appointmentCredentials, setAppointmentCredentials] = useState();
+  const [amount, setAmount] = useState(40);
+  const { role } = useGetUserRole();
+  const [searchQuery, setSearchQuery] = useState("All");
 
-  const [appointmentCredentials, setAppointmentCredentials]=useState()
-  const [amount,setAmount]=useState(40)
-  const {role}=useGetUserRole()
-
-  const value={
-    appointmentCredentials, setAppointmentCredentials,
-    amount,setAmount,
+  const value = {
+    appointmentCredentials,
+    setAppointmentCredentials,
+    amount,
+    setAmount,
     role,
-
-  }
+    searchQuery,
+    setSearchQuery,
+  };
 
   return (
     <>
       <TransferLists.Provider value={value}>
-          <NavSideBar>
-
-            <Header />
-            <Outlet />
-            <Footer />
-            
-          </NavSideBar>
+        <NavSideBar>
+          <Header />
+          <Outlet />
+          <Footer />
+        </NavSideBar>
       </TransferLists.Provider>
-
     </>
   );
 };

@@ -2,7 +2,7 @@ import TitleSection from "../CommonComponent/TitleSection";
 import useGetUserRole from "../../Hooks/useGetUserRole";
 
 const Home = () => {
-  const {role}=useGetUserRole()
+  const { role } = useGetUserRole();
   return (
     <main className="">
       <TitleSection title={"Home"} />

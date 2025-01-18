@@ -41,7 +41,7 @@ const useSecureAxios = () => {
             return Promise.reject(error);
       });
 
-    return {secureAxios}
+    return secureAxios
 
 };
 

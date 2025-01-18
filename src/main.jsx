@@ -20,6 +20,9 @@ import DashboardBase from './components/BaseComponent/DashboardBase';
 import Dashboard from './components/DashboardComponent/Dashboard';
 import CreatSession from './components/CreatSessionComponent/CreatSession';
 import TutorRoute from './components/AuthenticationComponent/tutorRoute';
+import AllSessions from './components/AllSessionsComponent/Allsessions';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// import Session from './components/SessionComponent/Session';
 
 
 
@@ -42,6 +45,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/all_sessions",
+        element: <AllSessions />
+      },
+      // {
+      //   path: "/session/:_id/:tutor_email",
+      //   element: <Session />
+      // },
 
       // Authentication
       {
@@ -100,14 +111,18 @@ const router = createBrowserRouter([
   },
 
 ]);
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HelmetProvider>
-      <AuthProvider>
-        <ToastContainer position="top-center" />
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </HelmetProvider>
-  </StrictMode>,
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <AuthProvider>
+          <ToastContainer position="top-center" />
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </HelmetProvider>
+    </QueryClientProvider>
+
+  </StrictMode>
 )
