@@ -22,7 +22,7 @@ import CreatSession from './components/CreatSessionComponent/CreatSession';
 import TutorRoute from './components/AuthenticationComponent/tutorRoute';
 import AllSessions from './components/AllSessionsComponent/Allsessions';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import Session from './components/SessionComponent/Session';
+import Session from './components/SessionComponent/Session';
 
 
 
@@ -49,10 +49,10 @@ const router = createBrowserRouter([
         path: "/all_sessions",
         element: <AllSessions />
       },
-      // {
-      //   path: "/session/:_id/:tutor_email",
-      //   element: <Session />
-      // },
+      {
+        path: "/session/:_id/:tutor_email",
+        element: <Session />
+      },
 
       // Authentication
       {
