@@ -10,16 +10,10 @@ import NavSideBar from "./NavSideBar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
 
 const Base = () => {
-  const [appointmentCredentials, setAppointmentCredentials] = useState();
-  const [amount, setAmount] = useState(40);
   const { role } = useGetUserRole();
   const [searchQuery, setSearchQuery] = useState("All");
 
   const value = {
-    appointmentCredentials,
-    setAppointmentCredentials,
-    amount,
-    setAmount,
     role,
     searchQuery,
     setSearchQuery,

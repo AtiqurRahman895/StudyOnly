@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { secureNormalAxios } from "./useSecureNormalAxios";
-import { isError, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const useGetSession = (_id,tutor_email) => {
     const {user}=useContext(AuthContext)

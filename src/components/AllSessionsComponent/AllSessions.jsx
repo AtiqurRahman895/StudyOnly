@@ -44,7 +44,7 @@ const AllSessions = () => {
                 loading ? <Loading/> :
                 <>
                     {
-                    sessions?.length <= 0? 
+                    sessions?.length === 0? 
                     <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
                     :
                     <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">

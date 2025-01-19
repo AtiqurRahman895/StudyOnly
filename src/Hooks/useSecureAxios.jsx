@@ -9,7 +9,7 @@ export const secureAxios = axios.create({
     baseURL: 'http://localhost:8080',
 });
 
-const useSecureAxios = () => {
+const useSecureAxios = (safeEmail="") => {
     const navigate = useNavigate();
     const {logoutUser,user } = useContext(AuthContext);
     const {role}=useContext(TransferLists)
@@ -19,11 +19,13 @@ const useSecureAxios = () => {
         const email=user?.email
         if(token&&email&&role){
             config.headers={
+                safeEmail,
                 token:`Bearer ${token}`,
                 email,
                 role,
             }
         }
+        // console.log(config.headers)
         return config;
       }, function (error) {
         return Promise.reject(error);
