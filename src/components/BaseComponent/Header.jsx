@@ -11,7 +11,6 @@ const Header = () => {
   const location = useLocation();
   const path = location.pathname;
   useEffect(() => {
-    const path = location.pathname;
     // if(path == "/"){
     //   headerRef.current?.classList.remove(`sticky`);
     //   headerRef.current?.classList.add(`fixed text-white`);
@@ -21,7 +20,7 @@ const Header = () => {
     //   headerRef.current?.classList.add(`sticky`);
     // }
     window.scrollTo(0, 0); // Scroll to the top of the page
-  }, [location.pathname]); // Trigger when the route changes
+  }, [path]); // Trigger when the route changes
 
   const [scrollY, setScrollY] = useState(0);
   const headerRef = useRef(null);

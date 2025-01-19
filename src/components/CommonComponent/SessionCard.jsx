@@ -11,8 +11,8 @@ const SessionCard = ({session}) => {
   const {refetch}=UseGetAllSession()
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
-  const handleTimeOut=(status)=>{
-      normalAxios.put('/ongingOrcloseSession',{_id,status})
+  const handleTimeOut=(statusToChange)=>{
+      normalAxios.put('/ongingORcloseSession',{_id,status:statusToChange})
       .then(()=>{
         refetch()
       })
@@ -66,9 +66,9 @@ const SessionCard = ({session}) => {
           <>
           {
             status == "Onging"?
-            <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={"Closed"} text={"Registration ends in"}/>
+            <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
             :
-            <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={"Onging"} text={"egistration starts in"}/>
+            <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"egistration starts in"}/>
           }
           </>
         }

@@ -4,11 +4,13 @@ import Loading from "../AuthenticationComponent/Loading";
 import TitleSection from "../CommonComponent/TitleSection";
 import SessionDetailsSection from "./SessionDetailsSection";
 import SessionAdminButtonsSection from "./SessionAdminButtonsSection";
+import { useContext } from "react";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const Session = () => {
   const { _id, tutor_email } = useParams();
   const { session, loading, refetch,isError,error } = useGetSession(_id, tutor_email);
-
+  const {role}=useContext(TransferLists)
 
   if (loading) {
     return <Loading />;
@@ -24,7 +26,11 @@ const Session = () => {
     <main className="space-y-8">
       <TitleSection title={`Session: ${_id}`}/>
       <SessionDetailsSection session={session} refetch={refetch}/>
-      <SessionAdminButtonsSection session={session} refetch={refetch}/>
+      {/* { */}
+        {/* role==="admin" && */}
+        <SessionAdminButtonsSection session={session} refetch={refetch}/>
+      {/* } */}
+      
     </main>
   )
 }

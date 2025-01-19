@@ -42,12 +42,13 @@ const CreatSession = () => {
   }, [calculateDuration, duration, class_start_time, class_end_time]);
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const session_description_word_count = session_description
       .replace(/<[^>]*>/g, " ")
       .trim()
       .split(/\s+/).length;
 
-    e.preventDefault();
 
     if (session_description_word_count < 10) {
       toast.warning(

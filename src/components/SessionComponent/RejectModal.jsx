@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { secureAxios } from "../../Hooks/useSecureAxios";
+import { useNavigate } from "react-router-dom";
+import useGetTodayTomorrowNextWeek from "../../Hooks/useGetTodayTomorrowNextweek";
 
-const RejectModal = ({refetch}) => {
+const RejectModal = ({_id,status,refetch}) => {
+    //   const navigate = useNavigate();
       const [reason,setReason]=useState("")
       const [feedback,setFeedback]=useState("")
-    
+      const [openModal,setOpenModal]=useState(false)
+      const {today}=useGetTodayTomorrowNextWeek()
+
       const rejectionReasonList=[
         `Misalignment with Curriculum`,
         `External Restrictions`,
@@ -17,15 +24,45 @@ const RejectModal = ({refetch}) => {
         `Incomplete or Incorrect Information`,
         `Somthing Else`,
       ]
+
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        const feedback_word_count = feedback
+        .replace(/<[^>]*>/g, " ")
+        .trim()
+        .split(/\s+/).length;
+  
+  
+      if (feedback_word_count < 5) {
+        toast.warning(
+          `Please lenghten feedback to 5 or more word! (Currently has ${feedback_word_count} words)`
+        )
+        return;
+      }
+
+        try {
+            await secureAxios.post("/RejectSession",{_id,status,reason,feedback,rejection_date:today})
+            toast.success("Successfully rejected this session!")
+            setOpenModal(false)
+            e.target.reset();
+            refetch()
+            // navigate(0)
+
+        } catch (error) {
+            console.error("Failed to Approve this session!", error);
+            toast.error(
+              "Failed to Approve this session!"
+            );
+        }
+    }
+
     return (
         <>
-            <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>document.getElementById('reject_modal').showModal()}>Reject</button>
-            <dialog id="reject_modal" className="modal">
+            <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>setOpenModal(true)}>Reject</button>
+            <dialog id="reject_modal" className="modal" open={openModal}>
                 <div className="modal-box bg-black">
-                    <form method="dialog" className="">
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <form className="space-y-3">
+                    <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <form onSubmit={handleSubmit} className="space-y-3">
                         <div className="form-control flex-1">
                             <label htmlFor="reason" className="label w-fit text-white">
                                 <span className="">Why are you rejecting this session</span>
@@ -60,9 +97,9 @@ const RejectModal = ({refetch}) => {
 
                     </form>
                 </div>
-                <form method="dialog" className="modal-backdrop">
+                {/* <form method="dialog" className="modal-backdrop">
                     <button>close</button>
-                </form>
+                </form> */}
             </dialog>
         </>
     );

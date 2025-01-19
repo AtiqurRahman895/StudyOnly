@@ -7,7 +7,7 @@ import TopScrollBar from "../CommonComponent/TopScrollBar";
 import { TransferLists } from "../../Contexts/TransferLists";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
-import SessionCard from "../CommonComponent/SessionCard"
+import SessionCard from "../CommonComponent/sessionCard";
 
 const AllSessions = () => {
     const {loading,sessions,isError,error}=UseGetAllSession()

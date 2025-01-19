@@ -13,7 +13,6 @@ const useSecureAxios = () => {
     const navigate = useNavigate();
     const {logoutUser,user } = useContext(AuthContext);
     const {role}=useContext(TransferLists)
-    
 
     secureAxios.interceptors.request.use(function (config) {
         const token=localStorage.getItem("token")

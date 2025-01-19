@@ -9,7 +9,6 @@ const UseGetAllSession = () => {
     const { searchQuery } = useContext(TransferLists);
     const role=localStorage.getItem("role")
     const {user}=useContext(AuthContext)
-
     const fetchSessions= async() => {
         let headers={role}
         const email=user.email
@@ -22,7 +21,7 @@ const UseGetAllSession = () => {
         const params = {
           query:searchQuery == "All"? {}: { $text: { $search: searchQuery } }, sort:{_id:-1}
         };
-        
+
         const res=await secureNormalAxios.get("/sessions", {params,headers})
         return res.data
     };

@@ -2,7 +2,7 @@ import Countdown from "react-countdown";
 import { RxLapTimer } from "react-icons/rx";
 import { Tooltip } from "react-tooltip";
 
-const Timer = ({ date, handleTimeOut,status,text="" }) => {
+const Timer = ({ date, handleTimeOut, status, statusToChange, text="" }) => {
   //   const convertToISO = (dateString) => {
   //     const date = new Date(dateString);
   //     return date.toISOString().split('T')[0];
@@ -28,7 +28,9 @@ const Timer = ({ date, handleTimeOut,status,text="" }) => {
   );
 
   const handleComplete = () => {
-    handleTimeOut(status);
+    if(status!=="Pending"){
+      handleTimeOut(statusToChange);
+    }
   };
 
   return (
