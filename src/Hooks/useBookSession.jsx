@@ -10,7 +10,7 @@ const useBookSession = () => {
   const { logoutUser } = useContext(AuthContext);
 
   const bookSession = (bookingCredentials) => {
-    console.log(bookingCredentials)
+    // console.log(bookingCredentials)
     secureAxios.post("/bookSession", bookingCredentials)
       .then(() => {
         toast.success(`You have successfully booked an session!`);

@@ -1,6 +1,12 @@
 import { MdRateReview } from "react-icons/md";
 
-const TitleInputSection = ({ title, setTitle }) => {
+const TitleInputSection = ({ title, setTitle, forModal=false }) => {
+  let titleText
+  if(forModal){
+    titleText="Title?"
+  }else{
+    titleText="Session Title?"
+  }
   return (
     <div className="sectionHeaderWidth text-center input-box flex justify-center relative">
       <div className="input-field form-control min-w-[250px] absolute focus-within:static scale-0 focus-within:scale-100">
@@ -20,8 +26,8 @@ const TitleInputSection = ({ title, setTitle }) => {
         htmlFor="title"
         className="input-label label py-0 gap-2 items-center [&_svg]:hover:animate-none [&_svg]:animate-pulse"
       >
-        <h3 className="text-white font-Cinze">
-          {title ? title : "Session Title?"}
+        <h3 className={`text-white font-Cinze ${forModal&&"text-2xl"}`}>
+          {title ? title : titleText}
           <MdRateReview className="text-custom-primary text-xl ![animation-duration:1.5s] inline ml-2" />
         </h3>
       </label>

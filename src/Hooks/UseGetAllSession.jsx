@@ -2,10 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { TransferLists } from '../Contexts/TransferLists';
 import { AuthContext } from '../Provider/AuthProvider';
-import { secureNormalAxios } from './useSecureNormalAxios';
+import useSecureNormalAxios from './useSecureNormalAxios';
 
 const UseGetAllSession = () => {
     const { searchQuery } = useContext(TransferLists);
+    const secureNormalAxios= useSecureNormalAxios()
+
     const role=localStorage.getItem("role")
     const {user}=useContext(AuthContext)
     const fetchSessions= async() => {

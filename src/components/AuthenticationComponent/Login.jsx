@@ -12,7 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setemail] = useState();
   const [emailValid, setEmailValid] = useState(false);
-  const { loginWithGoogle, loginUser, logoutUser } = useContext(AuthContext);
+  const { loginWithGoogle, loginUser, logoutUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleEmailInputChanges = (e) => {
@@ -23,6 +23,7 @@ const Login = () => {
   const handleGoogleLoginBtn = async () => {
     try {
       let result = await loginWithGoogle();
+      setUser(result.user)
       const res = await normalAxios.post("/addUser", {
         email: result.user.email,
         role: "student",

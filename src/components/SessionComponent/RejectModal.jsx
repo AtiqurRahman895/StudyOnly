@@ -41,11 +41,11 @@ const RejectModal = ({_id,status,refetch}) => {
       }
 
         try {
-            await secureAxios.post("/RejectSession",{_id,status,reason,feedback,rejection_date:today})
+            await secureAxios.put(`/RejectSession/${_id}`,{status,reason,feedback,rejection_date:today})
             toast.success("Successfully rejected this session!")
+            refetch()
             setOpenModal(false)
             e.target.reset();
-            refetch()
             // navigate(0)
 
         } catch (error) {

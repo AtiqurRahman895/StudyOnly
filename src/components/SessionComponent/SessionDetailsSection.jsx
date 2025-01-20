@@ -38,11 +38,11 @@ const SessionDetailsSection = ({ session, refetch }) => {
 
   return (
     <section className="space-y-4">
-      <div className={`xs:container mx-auto relative aspect-auto`}>
+      <div className={`xs:container mx-auto relative aspect-auto rounded-md`}>
         <img
           src={image}
           alt=""
-          className="bg-custom-primary max-w-full m-auto"
+          className="bg-custom-primary max-w-full m-auto rounded-md"
         />
       </div>
 
@@ -117,7 +117,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
             </div>
 
             <div className="w-fit">
-              {status == "Closed" || status == "Rejected" ? (
+              {(status == "Closed" || status == "Rejected") ? (
                 ""
               ) : (
                 <>

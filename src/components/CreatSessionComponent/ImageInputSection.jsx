@@ -1,7 +1,7 @@
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import useHostImage from "../../Hooks/useHostImage";
 
-const ImageInputSection = ({ image, setImage }) => {
+const ImageInputSection = ({ image, setImage, defaultValue="" }) => {
   const hostImage = useHostImage();
 
   const handleImageChange = (e) => {
@@ -20,7 +20,7 @@ const ImageInputSection = ({ image, setImage }) => {
         }`}
       >
         <img
-          src={image ? image : ""}
+          src={image ? image : defaultValue}
           alt=""
           className="bg-custom-primary max-w-full m-auto"
         />

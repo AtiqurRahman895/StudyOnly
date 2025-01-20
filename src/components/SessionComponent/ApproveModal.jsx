@@ -19,7 +19,7 @@ const ApproveModal = ({_id,registration_fee,status,refetch}) => {
         e.preventDefault();
         const finalFee=customRound(Number(session_fee))
         try {
-            await secureAxios.put("/approveOrChangeFee",{_id,status,registration_fee:finalFee})
+            await secureAxios.put(`/approveOrChangeFee/${_id}`,{status,registration_fee:finalFee})
             toast.success(status==="Pending"?"Successfully approved this session!":"Registration fee changed!")
             setOpenModal(false)
             e.target.reset();

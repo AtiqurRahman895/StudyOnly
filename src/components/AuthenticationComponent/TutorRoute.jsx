@@ -13,7 +13,7 @@ const TutorRoute = ({children}) => {
         return <Loading/>
     }
     if(user&&role){
-        if(role==="tutor"||role==="admin"){
+        if(role==="tutor"){
             return children
         }else{
             logoutUser();

@@ -1,36 +1,65 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
-import ImageInputSection from "./ImageInputSection";
-import TitleInputSection from "./TitleInputSection";
-import StatusInputSection from "./StatusInputSection";
+import ImageInputSection from "../CreatSessionComponent/ImageInputSection";
+import TitleInputSection from "../CreatSessionComponent/TitleInputSection";
+// import StatusInputSection from "../CreatSessionComponent/StatusInputSection";
 import useSecureAxios from "../../Hooks/useSecureAxios";
-import RegistrationStartDateSection from "./RegistrationStartDateSection";
-import RegistrationEndDateSection from "./RegistrationEndDateSection";
-import SessionDescriptionSection from "./SessionDescriptionSection";
-import ClassStartTimeSection from "./ClassStartTimeSection";
-import ClassEndTimeSection from "./ClassEndTimeSection";
+import RegistrationStartDateSection from "../CreatSessionComponent/RegistrationStartDateSection";
+import RegistrationEndDateSection from "../CreatSessionComponent/RegistrationEndDateSection";
+import SessionDescriptionSection from "../CreatSessionComponent/SessionDescriptionSection";
+import ClassStartTimeSection from "../CreatSessionComponent/ClassStartTimeSection";
+import ClassEndTimeSection from "../CreatSessionComponent/ClassEndTimeSection";
 import useClassDuration from "../../Hooks/useClassDuration";
+import useGetSession from "../../Hooks/useGetSession";
+import Loading from "../AuthenticationComponent/Loading";
 
-const CreatSession = () => {
+const ResubmitSession = () => {
+  const { _id } = useParams();
+  const { session, loading, refetch, isError, error } = useGetSession(_id);
   const navigate = useNavigate();
   const { user, logoutUser } = useContext(AuthContext);
   const secureAxios = useSecureAxios();
   const { duration, calculateDuration } = useClassDuration();
-
-  const [image, setImage] = useState();
-  const tutor = user?.displayName;
-  const tutor_email = user?.email;
-  const [title, setTitle] = useState("");
-  const [session_description, setSession_description] = useState("");
-  const [registration_start_date, setRegistration_start_date] = useState("");
-  const [registration_end_date, setRegistration_end_date] = useState("");
-  const [class_start_time, setClass_start_time] = useState("");
-  const [class_end_time, setClass_end_time] = useState("");
+  const [image, setImage] = useState(session?.image);
+  const tutor = session.tutor;
+  const tutor_email = session.tutor_email;
+  const [title, setTitle] = useState();
+  const [session_description, setSession_description] = useState();
+  const [registration_start_date, setRegistration_start_date] = useState();
+  const [registration_end_date, setRegistration_end_date] = useState();
+  const [class_start_time, setClass_start_time] = useState();
+  const [class_end_time, setClass_end_time] = useState();
   const [classDuration, setClassDuration] = useState();
-  const registration_fee = 0;
+  const registration_fee = session.registration_fee;
   const status = "Pending";
+
+  useEffect(() => {
+    const {
+      image,
+      title,
+      session_description,
+      registration_start_date,
+      registration_end_date,
+      class_start_time,
+      class_end_time,
+      classDuration,
+      status,
+    } = session;
+    if (status && status !== "Rejected") {
+      logoutUser();
+      toast.warning("Can't modify Approved session!");
+    }
+    setImage(image);
+    setTitle(title);
+    setSession_description(session_description);
+    setRegistration_start_date(registration_start_date);
+    setRegistration_end_date(registration_end_date);
+    setClass_start_time(class_start_time);
+    setClass_end_time(class_end_time);
+    setClassDuration(classDuration);
+  }, [session]);
 
   useEffect(() => {
     if ((class_start_time, class_end_time)) {
@@ -41,6 +70,15 @@ const CreatSession = () => {
     }
   }, [calculateDuration, duration, class_start_time, class_end_time]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (isError) {
+    console.error(error);
+    throw error;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -48,7 +86,6 @@ const CreatSession = () => {
       .replace(/<[^>]*>/g, " ")
       .trim()
       .split(/\s+/).length;
-
 
     if (session_description_word_count < 10) {
       toast.warning(
@@ -64,7 +101,7 @@ const CreatSession = () => {
 
     // console.log(image,status,title,tutor,tutor_email,published,session_description,long_discription,word_count)
 
-    const sessionCredentials = {
+    const resubmitCredentials = {
       image,
       tutor,
       tutor_email,
@@ -79,34 +116,35 @@ const CreatSession = () => {
       registration_fee,
     };
 
-    console.log(sessionCredentials);
+    // console.log(resubmitCredentials);
 
     secureAxios
-      .post("/creatSession", sessionCredentials)
+      .put(`/resubmitSession/${_id}`, resubmitCredentials)
       .then(() => {
-        e.target.reset();
-        toast.success("You have successfully created a Session!");
-        // return secureAxios.put(
-        //   "/UpdateSessionRating",
-        //   { _id }
-        // );
+        navigate(`/session/${_id}`);
+        toast.success("You have successfully resubmitted this Session!");
       })
       .catch((error) => {
-        console.error("Error creating Session:", error);
-        toast.error(error.response?.data?.message || `Failed to creat Session`);
+        console.error("Error resubmiting Session:", error);
+        toast.error(
+          error.response?.data?.message || `Failed to resubmit this Session!`
+        );
       });
   };
   return (
     <section className="">
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <ImageInputSection image={image} setImage={setImage} />
+        <ImageInputSection
+          image={image}
+          setImage={setImage}
+          defaultValue={session?.image}
+        />
         <TitleInputSection title={title} setTitle={setTitle} />
 
         <SessionDescriptionSection
           session_description={session_description}
           setSession_description={setSession_description}
-          
         />
 
         {/* tutor and Date */}
@@ -126,13 +164,11 @@ const CreatSession = () => {
             <RegistrationStartDateSection
               registration_start_date={registration_start_date}
               setRegistration_start_date={setRegistration_start_date}
-              
             />
             <RegistrationEndDateSection
               registration_start_date={registration_start_date}
               registration_end_date={registration_end_date}
               setRegistration_end_date={setRegistration_end_date}
-              
             />
           </div>
 
@@ -140,24 +176,21 @@ const CreatSession = () => {
             <ClassStartTimeSection
               class_start_time={class_start_time}
               setClass_start_time={setClass_start_time}
-              
             />
             <ClassEndTimeSection
               class_start_time={class_start_time}
               class_end_time={class_end_time}
               setClass_end_time={setClass_end_time}
-              
             />
           </div>
 
           <div className="grid justify-end gap-y-4">
-            {
-              classDuration&&
+            {classDuration && (
               <div className="flex gap-2">
-                  <b className="text-custom-primary">Class Duration:</b>
-                  <p className="">{classDuration}</p>
+                <b className="text-custom-primary">Class Duration:</b>
+                <p className="">{classDuration}</p>
               </div>
-            }
+            )}
 
             <div className="flex gap-2">
               <b className="text-custom-primary">Registration fee:</b>
@@ -180,7 +213,7 @@ const CreatSession = () => {
 
         <div className="container text-center">
           <button type="submit" className="primaryButton activePrimaryButton">
-            Creat
+            Resubmit
           </button>
         </div>
       </form>
@@ -188,4 +221,4 @@ const CreatSession = () => {
   );
 };
 
-export default CreatSession;
+export default ResubmitSession;

@@ -1,4 +1,3 @@
-import { TbCoinFilled } from "react-icons/tb";
 import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import { normalAxios } from "../../Hooks/useNormalAxios";
 import Timer from "./Timer";
@@ -12,7 +11,7 @@ const SessionCard = ({session}) => {
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
   const handleTimeOut=(statusToChange)=>{
-      normalAxios.put('/ongingORcloseSession',{_id,status:statusToChange})
+      normalAxios.put(`/ongingORcloseSession/${_id}`,{status:statusToChange})
       .then(()=>{
         refetch()
       })
@@ -65,16 +64,18 @@ const SessionCard = ({session}) => {
         {status == "Closed" || status == "Rejected"?"":
           <>
           {
-            status == "Onging"?
-            <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
-            :
-            <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"egistration starts in"}/>
+            (status == "Onging")?(
+              <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
+            )
+            :(
+              <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"Registration starts in"}/>
+            )
           }
           </>
         }
       </div>
 
-      <Link to={`/session/${_id}/${tutor_email}`} className="primaryButton activePrimaryButton block">View Details</Link>
+      <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block">View Details</Link>
     </div>
   </div>
 );

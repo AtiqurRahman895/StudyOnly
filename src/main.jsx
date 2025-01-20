@@ -1,12 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from 'react-toastify';
-import { HelmetProvider } from 'react-helmet-async';
-import Base from './components/BaseComponent/Base'
-import ErrorPage from './components/ErrorPageComponent/ErrorPage'
+import { ToastContainer } from "react-toastify";
+import { HelmetProvider } from "react-helmet-async";
+import Base from "./components/BaseComponent/Base";
+import ErrorPage from "./components/ErrorPageComponent/ErrorPage";
 import Login from "./components/AuthenticationComponent/Login";
 import Register from "./components/AuthenticationComponent/Register";
 import AuthProvider from "./Provider/AuthProvider";
@@ -14,25 +14,24 @@ import PrivateRoute from "./components/AuthenticationComponent/PrivateRoute";
 import UpdateProfile from "./components/AuthenticationComponent/UpdateProfile";
 import ChangePassword from "./components/AuthenticationComponent/ChangePassword";
 import ForgotPassword from "./components/AuthenticationComponent/ForgotPassword";
-import Home from './components/HomeComponent/Home';
-import Payment from './components/PaymentComponent/Payment';
-import DashboardBase from './components/BaseComponent/DashboardBase';
-import Dashboard from './components/DashboardComponent/Dashboard';
-import CreatSession from './components/CreatSessionComponent/CreatSession';
-import TutorRoute from './components/AuthenticationComponent/tutorRoute';
-import AllSessions from './components/AllSessionsComponent/Allsessions';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Session from './components/SessionComponent/Session';
-
-
+import Home from "./components/HomeComponent/Home";
+import Payment from "./components/PaymentComponent/Payment";
+import DashboardBase from "./components/BaseComponent/DashboardBase";
+import Dashboard from "./components/DashboardComponent/Dashboard";
+import CreatSession from "./components/CreatSessionComponent/CreatSession";
+import TutorRoute from "./components/AuthenticationComponent/tutorRoute";
+import AllSessions from "./components/AllSessionsComponent/Allsessions";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Session from "./components/SessionComponent/Session";
+import ResubmitSession from "./components/ModifySessionComponent/ResubmitSession";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Base/>,
-    errorElement: <ErrorPage/>,
+    element: <Base />,
+    errorElement: <ErrorPage />,
 
-    children:[
+    children: [
       {
         path: "/",
         element: <Home />,
@@ -47,11 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/all_sessions",
-        element: <AllSessions />
+        element: <AllSessions />,
       },
       {
-        path: "/session/:_id/:tutor_email",
-        element: <Session />
+        path: "/session/:_id",
+        element: <Session />,
       },
 
       // Authentication
@@ -83,17 +82,17 @@ const router = createBrowserRouter([
         path: "/forgot-password",
         element: <ForgotPassword />,
       },
-    ]
+    ],
   },
   {
     path: "/dashboard",
-    element: <DashboardBase/>,
-    errorElement: <ErrorPage/>,
+    element: <DashboardBase />,
+    errorElement: <ErrorPage />,
 
-    children:[
+    children: [
       {
         path: "/dashboard",
-        element:  (
+        element: (
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
@@ -107,13 +106,20 @@ const router = createBrowserRouter([
           </TutorRoute>
         ),
       },
-    ]
+      {
+        path: "/dashboard/modify_session/:_id",
+        element: (
+          <TutorRoute>
+            <ResubmitSession />
+          </TutorRoute>
+        ),
+      },
+    ],
   },
-
 ]);
 const queryClient = new QueryClient();
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
@@ -123,6 +129,5 @@ createRoot(document.getElementById('root')).render(
         </AuthProvider>
       </HelmetProvider>
     </QueryClientProvider>
-
   </StrictMode>
-)
+);

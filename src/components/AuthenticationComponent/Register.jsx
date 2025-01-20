@@ -11,7 +11,7 @@ import { normalAxios } from "../../Hooks/useNormalAxios";
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { loginWithGoogle, logoutUser, creatUser, updateUserProfile } =
+  const { loginWithGoogle, logoutUser, creatUser, updateUserProfile, setUser } =
     useContext(AuthContext);
   const [password, setPassword] = useState();
   const [passwordError, setPasswordError] = useState(false);
@@ -51,6 +51,8 @@ const Register = () => {
   const handleGoogleLoginBtn = async () => {
     try {
       let result = await loginWithGoogle();
+      setUser(result.user)
+
       const res = await normalAxios.post("/addUser", {
         email: result.user.email,
         role: "student",

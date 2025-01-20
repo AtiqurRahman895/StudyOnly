@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { MdRateReview } from "react-icons/md";
 import useGetTodayTomorrowNextweek from "../../Hooks/useGetTodayTomorrowNextweek";
 

@@ -1,9 +1,6 @@
 import { MdRateReview } from "react-icons/md";
 
-const SessionDescriptionSection = ({
-  session_description,
-  setSession_description,
-}) => {
+const SessionDescriptionSection = ({ session_description, setSession_description}) => {
   const temporary_session_description =
     "This section is dedicated to crafting a concise and engaging summary of your session. Use at least 10 words to capture the essence of your session's message. A well-written short description will spark curiosity and encourage readers to explore further.";
 

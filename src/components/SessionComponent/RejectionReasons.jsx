@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import Masonry from "react-responsive-masonry";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 
-const RejectionReasons = ({tutor_email,_id}) => {
-    const secureAxios=useSecureAxios(tutor_email)
+const RejectionReasons = ({_id}) => {
+    const secureAxios=useSecureAxios()
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 
@@ -49,15 +49,30 @@ const RejectionReasons = ({tutor_email,_id}) => {
                 <h4 className="text-custom-primary sectionHeaderWidth text-center">
                     Rejection Reasons and Feedbacks
                 </h4>
-                <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
-                    {rejections.map((rejection, index) => (
-                        <div key={index} className="rounded-md p-4 bg-custom-primary text-white w-full">
-                            <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
-                            <p><b className="text-black">Reason:</b> {rejection.reason}</p>
-                            <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
+                {
+                    (rejections.length<3)?(
+                        <div className="flex flex-wrap justify-center !gap-4 md:!gap-6 ">
+                            {rejections.map((rejection, index) => (
+                                <div key={index} className="rounded-md p-4 bg-custom-primary text-white max-w-96 h-fit">
+                                    <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
+                                    <p><b className="text-black">Reason:</b> {rejection.reason}</p>
+                                    <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </Masonry>
+                    )
+                    :(
+                        <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
+                            {rejections.map((rejection, index) => (
+                                <div key={index} className="rounded-md p-4 mb-5 bg-custom-primary text-white w-full">
+                                    <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
+                                    <p><b className="text-black">Reason:</b> {rejection.reason}</p>
+                                    <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
+                                </div>
+                            ))}
+                        </Masonry>
+                    )
+                }
             </div>
         </section>
         );

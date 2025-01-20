@@ -61,9 +61,10 @@ const CheckoutForm = () => {
 
     if (error) {
       console.log("[error]", error);
-    } else {
-      console.log("[PaymentMethod]", paymentMethod);
     }
+    // else {
+    //   console.log("[PaymentMethod]", paymentMethod);
+    // }
 
     // Confirm Card Payment
     setLoading(true);
@@ -80,7 +81,7 @@ const CheckoutForm = () => {
     if (confirmError) {
       console.log(confirmError);
     } else {
-      console.log(paymentIntent);
+      // console.log(paymentIntent);
       if (paymentIntent.status === "succeeded") {
         bookSession({session_id,email,transaction_info:paymentIntent});
       } else toast.error("Payment unsuccessful!");

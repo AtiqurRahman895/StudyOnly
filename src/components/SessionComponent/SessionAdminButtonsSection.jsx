@@ -7,8 +7,9 @@ const SessionAdminButtonsSection = ({ session, refetch }) => {
       return (
         <section className="container flex justify-center gap-x-8">
           {
-            status!=="Onging"&&
-            <RejectModal _id={_id} status={status} refetch={refetch}/>
+            (status!=="Onging")&&(
+              <RejectModal _id={_id} status={status} refetch={refetch}/>
+            )
           }
           <ApproveModal _id={_id} registration_fee={registration_fee} status={status} refetch={refetch} />
           
