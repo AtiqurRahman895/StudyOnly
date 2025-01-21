@@ -28,7 +28,6 @@ const Login = () => {
         email: result.user.email,
         role: "student",
       });
-
       if (res?.data?.insertedId) {
         logoutUser();
         toast.success(

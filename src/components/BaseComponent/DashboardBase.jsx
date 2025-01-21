@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import { TransferLists } from "../../Contexts/TransferLists";
 import DashboardSideBar from "./DashboardSidebar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
+import Loading from "../AuthenticationComponent/Loading";
 const DashboardBase = () => {
-  const { role } = useGetUserRole();
-
+  const { loading,role } = useGetUserRole();
   const value = {
     role,
   };
@@ -13,8 +12,14 @@ const DashboardBase = () => {
   return (
     <>
       <TransferLists.Provider value={value}>
-        <DashboardSideBar />
-        <Footer />
+      {
+        (loading)?(<Loading />):(
+          <>
+            <DashboardSideBar />
+            <Footer />
+          </>
+        )
+      }
       </TransferLists.Provider>
     </>
   );

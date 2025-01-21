@@ -41,21 +41,20 @@ const AllSessions = () => {
                 </div>
 
                 {
-                loading ? <Loading/> :
-                <>
-                    {
-                    sessions?.length === 0? 
-                    <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
+                (loading) ? (<Loading/>):(
+
+                    (sessions?.length === 0)? (
+                        <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
+                    )
                     :
-                    <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
-                        {sessions.map((session, index) => (
-                            // <h1 >{session.title}</h1>
-                            <SessionCard key={index} session={session}/>
-                        ))}
-                    </Masonry>
-                    }
-                </>
-                    
+                    (   <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
+                            {sessions.map((session, index) => (
+                                // <h1 >{session.title}</h1>
+                                <SessionCard key={index} session={session}/>
+                            ))}
+                        </Masonry>
+                    )
+                )  
                 }
             </section>
 

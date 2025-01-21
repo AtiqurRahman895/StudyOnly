@@ -11,6 +11,7 @@ import RejectionReasons from "./RejectionReasons";
 import SessionStudentButtonsSection from "./SessionStudentButtonsSection";
 import useSessionBookedOrNot from "../../Hooks/useSessionBookedOrNot";
 import SessionTutorButtonsSection from "./SessionTutorButtonsSection";
+import MaterialsSection from "./MaterialsSection";
 
 const Session = () => {
   const { _id } = useParams();
@@ -62,12 +63,11 @@ const Session = () => {
       {
         (role==="tutor" && session.tutor_email===user?.email) &&(
           <SessionTutorButtonsSection session={session} refetch={refetch}/>
-        )
-        
+        ) 
       }
       {
         (role==="admin" || session.tutor_email===user?.email || booked) &&(
-          <h1>materials</h1>
+          <MaterialsSection session_id={session._id}/>
         )
       }
       

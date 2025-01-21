@@ -46,11 +46,11 @@ const RejectionReasons = ({_id}) => {
         return (
             <section className="">
                 <div className="container space-y-10">
-                <h4 className="text-custom-primary sectionHeaderWidth text-center">
+                <h3 className="text-custom-primary sectionHeaderWidth text-center">
                     Rejection Reasons and Feedbacks
-                </h4>
+                </h3>
                 {
-                    (rejections.length<3)?(
+                    (rejections.length<=3)?(
                         <div className="flex flex-wrap justify-center !gap-4 md:!gap-6 ">
                             {rejections.map((rejection, index) => (
                                 <div key={index} className="rounded-md p-4 bg-custom-primary text-white max-w-96 h-fit">

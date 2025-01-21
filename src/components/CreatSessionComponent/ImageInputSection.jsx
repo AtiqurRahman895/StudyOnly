@@ -1,7 +1,7 @@
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import useHostImage from "../../Hooks/useHostImage";
 
-const ImageInputSection = ({ image, setImage, defaultValue="" }) => {
+const ImageInputSection = ({ image, setImage, id="image", defaultValue="" }) => {
   const hostImage = useHostImage();
 
   const handleImageChange = (e) => {
@@ -32,7 +32,7 @@ const ImageInputSection = ({ image, setImage, defaultValue="" }) => {
           } input-box absolute grid justify-items-center content-center top-0 bottom-0 right-0 left-0`}
         >
           <label
-            htmlFor="image"
+            htmlFor={id}
             className="input-label relative hover:[&_.absolute]:animate-none [&_.absolute]:animate-ping"
           >
             <MdOutlineAddPhotoAlternate
@@ -41,9 +41,9 @@ const ImageInputSection = ({ image, setImage, defaultValue="" }) => {
             <MdOutlineAddPhotoAlternate className={`text-5xl xs:text-7xl`} />
           </label>
           <div className="input-field label form-control h-fit absolute focus-within:relative scale-0 focus-within:scale-100">
-            {/* <input value={image} placeholder='Add Cover Image' type='text' name="image" className="input input-ghost !text-white bg-transparent focus:!bg-transparent input-bordered !outline-none !border-white rounded-sm" required/> */}
+            {/* <input value={image} placeholder='Add Cover Image' type='text' name={id} className="input input-ghost !text-white bg-transparent focus:!bg-transparent input-bordered !outline-none !border-white rounded-sm" required/> */}
             <input
-              id="image"
+              id={id}
               type="file"
               accept="image/*"
               onChange={handleImageChange}

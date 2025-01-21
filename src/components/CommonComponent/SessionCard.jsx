@@ -31,53 +31,53 @@ const SessionCard = ({session}) => {
   
   return (
     <div className="space-y-5 mb-10">
-    <img
-      src={image}
-      alt={title}
-      className="w-full aspect-[3/2] object-cover object-center rounded-md"
-    />
-    <div className="space-y-2">
+      <img
+        src={image}
+        alt={title}
+        className="w-full aspect-[3/2] object-cover object-center rounded-md"
+      />
+      <div className="space-y-2">
 
-      <h4 className={`${location.pathname==="/"?"text-black":"text-white"} text-center px-4 font-Cinzel font-normal`}>
-        {title}
-      </h4>
-      <p className="mt-2 first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">
-        {session_description}...
-      </p>
+        <h4 className={`${location.pathname==="/"?"text-black":"text-white"} text-center px-4 font-Cinzel font-normal`}>
+          {title}
+        </h4>
+        <p className="mt-2 first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">
+          {session_description}...
+        </p>
 
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2">
-          <FaArrowsSpin className="text-custom-primary"/>
-          <p>{status}</p>
+        <div className="flex justify-between">
+          <div className="flex items-center gap-2">
+            <FaArrowsSpin className="text-custom-primary"/>
+            <p>{status}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <BiSolidBadgeDollar className="text-custom-primary"/>
+            <p>{registration_fee||"Free"}</p>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <BiSolidBadgeDollar className="text-custom-primary"/>
-          <p>{registration_fee||"Free"}</p>
-        </div>
-      </div>
 
-      <div className="flex justify-between">
-        <div className="flex items-center gap-1">
-          <IoMdPerson className="text-custom-primary"/>
-          <p>{tutor}</p>
-        </div>
-        {status == "Closed" || status == "Rejected"?"":
-          <>
-          {
-            (status == "Onging")?(
-              <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
-            )
-            :(
-              <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"Registration starts in"}/>
-            )
+        <div className="flex justify-between">
+          <div className="flex items-center gap-1">
+            <IoMdPerson className="text-custom-primary"/>
+            <p>{tutor}</p>
+          </div>
+          {status == "Closed" || status == "Rejected"?"":
+            <>
+            {
+              (status == "Onging")?(
+                <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
+              )
+              :(
+                <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"Registration starts in"}/>
+              )
+            }
+            </>
           }
-          </>
-        }
-      </div>
+        </div>
 
-      <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block">View Details</Link>
+        <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block">View Details</Link>
+      </div>
     </div>
-  </div>
 );
 };
 

@@ -8,9 +8,10 @@ import { useState } from "react";
 import { TransferLists } from "../../Contexts/TransferLists";
 import NavSideBar from "./NavSideBar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
+import Loading from "../AuthenticationComponent/Loading";
 
 const Base = () => {
-  const { role } = useGetUserRole();
+  const { loading,role } = useGetUserRole();
   const [searchQuery, setSearchQuery] = useState("All");
 
   const value = {
@@ -22,11 +23,16 @@ const Base = () => {
   return (
     <>
       <TransferLists.Provider value={value}>
-        <NavSideBar>
-          <Header />
-          <Outlet />
-          <Footer />
-        </NavSideBar>
+        {
+          (loading)?(<Loading />):(
+            <NavSideBar>
+              <Header />
+              <Outlet />
+              <Footer />
+            </NavSideBar>
+          )
+
+        }
       </TransferLists.Provider>
     </>
   );
