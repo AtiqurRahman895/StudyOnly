@@ -114,6 +114,15 @@ const router = createBrowserRouter([
           </TutorRoute>
         ),
       },
+      // {
+      //   path: "/dashboard",
+      //   element: (
+      //     <PrivateRoute>
+      //       <Dashboard />
+      //     </PrivateRoute>
+      //   ),
+      // },
+      
     ],
   },
 ]);

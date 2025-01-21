@@ -9,7 +9,6 @@ import TitleInputSection from '../CreatSessionComponent/TitleInputSection';
 import MaterialLinkInputSection from '../CreatSessionComponent/MaterialLinkInputSection';
 
 const UpdateMaterialModal = ({material, index, refetch}) => {
-    const navigate = useNavigate();
     const [openModal, setOpenModal] = useState(false);
     const secureAxios = useSecureAxios();
     const [title, setTitle] = useState(material.title);

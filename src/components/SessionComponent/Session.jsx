@@ -12,13 +12,14 @@ import SessionStudentButtonsSection from "./SessionStudentButtonsSection";
 import useSessionBookedOrNot from "../../Hooks/useSessionBookedOrNot";
 import SessionTutorButtonsSection from "./SessionTutorButtonsSection";
 import MaterialsSection from "./MaterialsSection";
+import SessionReviewRatingSection from "./SessionReviewRatingSection";
 
 const Session = () => {
   const { _id } = useParams();
   const { session, loading, refetch,isError,error } = useGetSession(_id);
   const {role}=useContext(TransferLists)
   const {user}=useContext(AuthContext)
-  const {booked}=useSessionBookedOrNot()
+  const {booked}=useSessionBookedOrNot(_id)
   // console.log(session)
 
   if (loading) {
@@ -70,6 +71,7 @@ const Session = () => {
           <MaterialsSection session_id={session._id}/>
         )
       }
+      <SessionReviewRatingSection booked={booked} session_id={session._id} />
       
     </main>
   )

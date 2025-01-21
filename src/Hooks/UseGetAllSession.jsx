@@ -24,7 +24,6 @@ const UseGetAllSession = () => {
           query:searchQuery == "All"? {}: { $text: { $search: searchQuery } }, sort:{_id:-1}
         };
 
-
         const res=await secureNormalAxios.get("/sessions", {params,headers})
         return res.data
     };

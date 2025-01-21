@@ -47,7 +47,7 @@ const ApproveModal = ({_id,registration_fee,status,refetch}) => {
     return (
         <>
             <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>setOpenModal(true)} >{status==="Pending"?"Approve":"Change fee"}</button>
-            <dialog id="approve_modal" className="modal" open={openModal}>
+            <dialog id="approve_modal" className="modal bg-[rgba(0,0,0,.4)]" open={openModal}>
                 <div className="modal-box bg-black">
                     <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmit} className="space-y-3">

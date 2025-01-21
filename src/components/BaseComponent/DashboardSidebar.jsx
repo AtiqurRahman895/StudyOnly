@@ -7,14 +7,13 @@ const DashboardSideBar = () => {
   return (
     <section>
       <DashboardHeader />
-
-      <div className="container drawer lg:drawer-open lg:gap-4">
+      <div className="container drawer lg:drawer-open lg:gap-x-4 lg:max-h-[90svh] lg:hide-scrollbar overflow-y-scroll">
         <input
           id="DashboardNavSideBar"
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content">
+        <div className="drawer-content pb-8">
           <Outlet />
         </div>
         <div className="drawer-side z-50 lg:bg-custom-primary rounded-md lg:py-20">

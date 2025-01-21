@@ -41,9 +41,9 @@ const DashboardMenus = () => {
 
       <li className="w-fit">
         <NavLink
-          to={"/dashboard/all_otes"}
+          to={"/dashboard/all_notes"}
           className={`${
-            path === "/dashboard/all_otes" && ActiveClass
+            path === "/dashboard/all_notes" && ActiveClass
           } ${normalClass}`}
         >
           <IoNewspaper />
@@ -77,7 +77,7 @@ const DashboardMenus = () => {
         </NavLink>
       </li>
 
-      <li className="w-fit">
+      {/* <li className="w-fit">
         <NavLink
           to={"/dashboard/upload_materials"}
           className={`${
@@ -87,7 +87,7 @@ const DashboardMenus = () => {
           <IoNewspaper />
           Upload Materials
         </NavLink>
-      </li>
+      </li> */}
 
       {/* Admin */}
 

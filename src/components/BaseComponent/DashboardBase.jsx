@@ -16,7 +16,7 @@ const DashboardBase = () => {
         (loading)?(<Loading />):(
           <>
             <DashboardSideBar />
-            <Footer />
+            {/* <Footer /> */}
           </>
         )
       }

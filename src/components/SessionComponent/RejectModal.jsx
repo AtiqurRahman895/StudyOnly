@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { secureAxios } from "../../Hooks/useSecureAxios";
-import { useNavigate } from "react-router-dom";
 import useGetTodayTomorrowNextWeek from "../../Hooks/useGetTodayTomorrowNextweek";
 
 const RejectModal = ({_id,status,refetch}) => {
@@ -59,7 +58,7 @@ const RejectModal = ({_id,status,refetch}) => {
     return (
         <>
             <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>setOpenModal(true)}>Reject</button>
-            <dialog id="reject_modal" className="modal" open={openModal}>
+            <dialog id="reject_modal" className="modal bg-[rgba(0,0,0,.4)]" open={openModal}>
                 <div className="modal-box bg-black">
                     <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmit} className="space-y-3">
