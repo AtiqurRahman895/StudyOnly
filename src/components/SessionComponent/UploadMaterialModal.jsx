@@ -23,7 +23,7 @@ const UploadMaterialModal = ({ session_id, tutor_email }) => {
       return;
     }
 
-    const materialCredentials = {
+    const credentials = {
       session_id,
       tutor_email,
       title,
@@ -31,7 +31,7 @@ const UploadMaterialModal = ({ session_id, tutor_email }) => {
       material_link,
     };
     try {
-      await secureAxios.post("/addMaterial", materialCredentials);
+      await secureAxios.post("/addMaterial", credentials);
       toast.success("Successfully added a material!");
       e.target.reset();
       setOpenModal(false);

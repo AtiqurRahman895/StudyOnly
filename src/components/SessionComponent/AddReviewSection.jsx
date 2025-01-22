@@ -26,9 +26,9 @@ const AddReviewSection = ({session_id,refetch,refetch2}) => {
       )
       return;
     }
-    const reviewCredentials={session_id,email:user.email,name:user.displayName,image:user.photoURL,rating,review}
+    const credentials={session_id,email:user.email,name:user.displayName,image:user.photoURL,rating,review}
     try {
-        await secureAxios.post(`/addReview`,reviewCredentials)
+        await secureAxios.post(`/addReview`,credentials)
         toast.success("Successfully added review in this session!")
         refetch()
         refetch2()

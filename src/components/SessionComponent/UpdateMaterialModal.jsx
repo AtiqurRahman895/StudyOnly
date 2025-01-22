@@ -24,7 +24,7 @@ const UpdateMaterialModal = ({material, index, refetch}) => {
         return;
       }
   
-      const updateMaterialCredentials = {
+      const credentials = {
         session_id:material.session_id,
         tutor_email:material.tutor_email,
         title,
@@ -32,7 +32,7 @@ const UpdateMaterialModal = ({material, index, refetch}) => {
         material_link,
       };
       try {
-        await secureAxios.put(`/updateMaterial/${material._id}`, updateMaterialCredentials);
+        await secureAxios.put(`/updateMaterial/${material._id}`, credentials);
         toast.success("Successfully Updated a material!");
         e.target.reset();
         refetch()

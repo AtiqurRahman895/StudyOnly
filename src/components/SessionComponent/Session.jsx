@@ -22,14 +22,22 @@ const Session = () => {
   const {booked}=useSessionBookedOrNot(_id)
   // console.log(session)
 
-  if (loading) {
-    return <Loading />;
 
-  }
   if (isError ) {
     console.error(error);
     throw error;
   }
+  // if (isError) {
+  //   console.error(error);
+  //   if (error.status === 404) {
+  //       navigate("/404", { replace: true });
+  //       return null; 
+  //   }
+  // }
+  if (loading) {
+    return <Loading />;
+  }
+
 
   return (
     <main className="space-y-8">
@@ -44,14 +52,13 @@ const Session = () => {
         (session.status==="Rejected" || session.status==="Pending") &&(
         
           (role ==="tutor" && session.tutor_email===user?.email) &&(
-            <RejectionReasons _id={session._id} />
+            <RejectionReasons session_id={session._id} />
           )
-          
         )
       }
       {
         (role==="admin") &&(
-          <RejectionReasons _id={session._id} />
+          <RejectionReasons session_id={session._id} />
         )
         
       }

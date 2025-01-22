@@ -2,9 +2,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { secureAxios } from "../../Hooks/useSecureAxios";
 import useGetTodayTomorrowNextWeek from "../../Hooks/useGetTodayTomorrowNextweek";
+import { useNavigate } from "react-router-dom";
 
 const RejectModal = ({_id,status,refetch}) => {
-    //   const navigate = useNavigate();
+      const navigate = useNavigate();
       const [reason,setReason]=useState("")
       const [feedback,setFeedback]=useState("")
       const [openModal,setOpenModal]=useState(false)
@@ -45,7 +46,7 @@ const RejectModal = ({_id,status,refetch}) => {
             refetch()
             setOpenModal(false)
             e.target.reset();
-            // navigate(0)
+            navigate(0)
 
         } catch (error) {
             console.error("Failed to Approve this session!", error);

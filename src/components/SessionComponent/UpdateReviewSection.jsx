@@ -28,10 +28,10 @@ const UpdateReviewSection = ({studentReview,refetch}) => {
 
     const {session_id,email,name,image}=studentReview
 
-    const reviewCredentials={session_id,email,name,image,rating,review}
+    const credentials={session_id,email,name,image,rating,review}
 
     try {
-        await secureAxios.put(`/updateReview/${studentReview._id}`,reviewCredentials)
+        await secureAxios.put(`/updateReview/${studentReview._id}`,credentials)
         toast.success("Successfully updated your review in this session!")
         refetch()
         e.target.reset();

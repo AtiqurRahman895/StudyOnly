@@ -6,10 +6,10 @@ import useSecureAxios from "../../Hooks/useSecureAxios";
 const DeleteMaterial = ({_id,refetch}) => {
     const secureAxios=useSecureAxios()
     const handleClick= async()=>{
-        const deleteGame = window.confirm(
+        const deleteMaterial = window.confirm(
             `Are you sure about deleting this material?`
           );
-          if (deleteGame) {
+          if (deleteMaterial) {
             try {
                 await secureAxios.delete(`/deleteMaterial/${_id}`)
                 refetch()

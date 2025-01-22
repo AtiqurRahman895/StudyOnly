@@ -54,9 +54,6 @@
   footer a{
     @apply hover:text-custom-primary hover:font-bold 
   }
-  .ql-toolbar.ql-snow {
-    background-color: white !important;
-  }
 
   ul,ol{
     @apply space-y-1 mb-1.5 ml-8

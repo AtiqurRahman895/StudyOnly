@@ -64,7 +64,7 @@ const CreatSession = () => {
 
     // console.log(image,status,title,tutor,tutor_email,published,session_description,long_discription,word_count)
 
-    const sessionCredentials = {
+    const credentials = {
       image,
       tutor,
       tutor_email,
@@ -79,10 +79,10 @@ const CreatSession = () => {
       registration_fee,
     };
 
-    console.log(sessionCredentials);
+    console.log(credentials);
 
     secureAxios
-      .post("/creatSession", sessionCredentials)
+      .post("/creatSession", credentials)
       .then(() => {
         e.target.reset();
         toast.success("You have successfully created a Session!");

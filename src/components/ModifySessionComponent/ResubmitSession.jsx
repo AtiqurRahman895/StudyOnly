@@ -101,7 +101,7 @@ const ResubmitSession = () => {
 
     // console.log(image,status,title,tutor,tutor_email,published,session_description,long_discription,word_count)
 
-    const resubmitCredentials = {
+    const credentials = {
       image,
       tutor,
       tutor_email,
@@ -116,10 +116,10 @@ const ResubmitSession = () => {
       registration_fee,
     };
 
-    // console.log(resubmitCredentials);
+    // console.log(credentials);
 
     secureAxios
-      .put(`/resubmitSession/${_id}`, resubmitCredentials)
+      .put(`/resubmitSession/${_id}`, credentials)
       .then(() => {
         navigate(`/session/${_id}`);
         toast.success("You have successfully resubmitted this Session!");

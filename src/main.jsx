@@ -24,6 +24,9 @@ import AllSessions from "./components/AllSessionsComponent/Allsessions";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Session from "./components/SessionComponent/Session";
 import ResubmitSession from "./components/ModifySessionComponent/ResubmitSession";
+import AllNotes from "./components/AllNotesComponent/AllNotes";
+import CreatNote from "./components/CreatNoteComponent/CreatNote";
+import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
 
 const router = createBrowserRouter([
   {
@@ -114,14 +117,30 @@ const router = createBrowserRouter([
           </TutorRoute>
         ),
       },
-      // {
-      //   path: "/dashboard",
-      //   element: (
-      //     <PrivateRoute>
-      //       <Dashboard />
-      //     </PrivateRoute>
-      //   ),
-      // },
+      {
+        path: "/dashboard/creat_note",
+        element: (
+          <PrivateRoute>
+            <CreatNote />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all_notes",
+        element: (
+          <PrivateRoute>
+            <AllNotes />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/update_note/:_id",
+        element: (
+          <PrivateRoute>
+            <UpdateNote />
+          </PrivateRoute>
+        ),
+      },
       
     ],
   },

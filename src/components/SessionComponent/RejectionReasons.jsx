@@ -5,16 +5,13 @@ import { useEffect, useState } from "react";
 import Masonry from "react-responsive-masonry";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 
-const RejectionReasons = ({_id}) => {
+const RejectionReasons = ({session_id}) => {
     const secureAxios=useSecureAxios()
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 
     const fetchRejections=async()=>{
-        const params = {
-          query:{_id}, sort:{_id:-1}
-        };
-        const res=await secureAxios.get("/rejections", {params})
+        const res=await secureAxios.get(`/rejections/${session_id}`)
         return res.data
     }
     const {isLoading:loading, data:rejections=[],isError,error}=useQuery(

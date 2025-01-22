@@ -18,12 +18,13 @@ const useGetSession = (_id) => {
             }
         }
         const res=await secureNormalAxios.get(`/session/${_id}`, {headers})
-        if (!res.data || res.data.length === 0) {
+        const data=res.data
+        if (!data) {
             const error = new Error("Session not found");
             error.status = 404;
             throw error;
         }
-        return res.data
+        return data
 
     };
     const { isLoading:loading, data:session={},refetch,isError,error } = useQuery(
