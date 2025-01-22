@@ -62,16 +62,13 @@ const UpdateNote = () => {
     }
     
     return (
-        <section className="mt-16">
+        <section className="">
             <div className="container hero flex items-center justify-center">
                 <div className="fromWrapper !space-y-8 max-w-lg">
                     <h1 className="text-5xl font-bold">Update this note!</h1>
                     <form onSubmit={handleSubmit} className="card-body p-0 space-y-4">
 
                         <div className="form-control">
-                            {/* <label htmlFor="tilte" className="label">
-                                <span className="">Note title</span>
-                            </label> */}
                             <input
                                 onChange={(e)=>setTitle(e.target.value)}
                                 type="text"

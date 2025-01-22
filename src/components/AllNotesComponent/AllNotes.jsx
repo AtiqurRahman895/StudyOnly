@@ -68,9 +68,9 @@ const AllNotes = () => {
                             <div className="container space-y-4">
                                 <h5 className="text-custom-primary">Total: {notes.length}</h5>
 
-                                <Masonry columnsCount={columnsCount} className="!gap-6">
+                                <Masonry columnsCount={columnsCount} gutter="20px">
                                     {notes.map((note, index) => (
-                                        <div key={index} className="mb-6 bg-custom-primary p-4 lg:p-6 space-y-1 rounded-md w-full">
+                                        <div key={index} className="bg-custom-primary p-4 lg:p-6 space-y-1 rounded-md w-full">
                                             <h5 className="text-black">{note.title}</h5>
                                             <div
                                                 className="!whitespace-pre-wrap itsLongDispriction text-white"

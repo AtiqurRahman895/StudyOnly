@@ -8,9 +8,10 @@ import { TransferLists } from "../../Contexts/TransferLists";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
+import UseGetTutorSessions from "../../Hooks/UseGetTutorSessions";
 
-const AllSessions = () => {
-    const {loading,sessions,isError,error}=UseGetAllSession()
+const MySessions = () => {
+    const {loading,sessions,isError,error}=UseGetTutorSessions()
     const { searchQuery } = useContext(TransferLists);
     const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
@@ -18,9 +19,11 @@ const AllSessions = () => {
 
 
     useEffect(() => {
-        if (screenWidth >= 1024) {
-          setColumnsCount(3);
-        } else if (screenWidth >= 640) {
+        if (screenWidth >= 1280) {
+            setColumnsCount(2);
+        }else if (screenWidth >= 1024) {
+          setColumnsCount(1);
+        } else if (screenWidth >= 768) {
           setColumnsCount(2);
         } else {
           setColumnsCount(1);
@@ -38,18 +41,17 @@ const AllSessions = () => {
 
             <section className="container space-y-12">
                 <div className="container space-y-10">
-                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="admin"} />
+                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="tutor"} />
                 </div>
                 {
                 (loading) ? (<Loading/>):(
 
                     (sessions?.length === 0)? (
-                        <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
+                        <NotFound  NotFoundText={searchQuery==="All"?"You have not created any sessions yet!":"No session found!"}/>
                     )
                     :
-                    (   <Masonry columnsCount={columnsCount} gutter="18px">
+                    (   <Masonry columnsCount={columnsCount}gutter="18px">
                             {sessions.map((session, index) => (
-                                // <h1 >{session.title}</h1>
                                 <SessionCard key={index} session={session}/>
                             ))}
                         </Masonry>
@@ -61,6 +63,6 @@ const AllSessions = () => {
         </main>
 
     )
-}
+};
 
-export default AllSessions;
+export default MySessions;

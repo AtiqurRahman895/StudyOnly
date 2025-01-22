@@ -2,31 +2,30 @@ import { useContext, useEffect, useState } from "react";
 import { TbAdjustmentsFilled } from "react-icons/tb";
 import { TransferLists } from "../../Contexts/TransferLists";
 
-const TopScrollBar = ({ sessionCount }) => {
+const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
   const { searchQuery, setSearchQuery } = useContext(TransferLists);
-  const [statusList, setStatusList] = useState([
-    "All",
-    "Onging",
-    "Closed",
-    "Pending",
-    "Rejected",
-  ]);
-  const [status, setStatus] = useState([
-    "All",
-    "Onging",
-    "Closed",
-    "Pending",
-    "Rejected",
-  ]);
+  // allStatus=[ "All", "Onging", "Closed", "Pending", "Rejected"]
+  const [statusList, setStatusList] = useState([]);
+  const [status, setStatus] = useState([]);
+
+  // useEffect(() => {
+  //   setStatusList(allStatus);
+  //   setStatus(allStatus);
+  // }, [allStatus]);
 
   useEffect(() => {
-    const allStatusList = ["All", "Onging", "Closed", "Pending", "Rejected"];
+    let allStatusList
+    if(showAllStatusName){
+      allStatusList=[ "All", "Upcoming", "Onging", "Closed", "Pending", "Rejected"]
+    }else{
+      allStatusList=[ "All", "Upcoming", "Onging", "Closed"]
+    }
 
     const remainingStatus = allStatusList.filter(
-      (categoryName) => categoryName !== searchQuery
+      (statusName) => statusName !== searchQuery
     );
     const selectedStatus = allStatusList.filter(
-      (categoryName) => categoryName == searchQuery
+      (statusName) => statusName == searchQuery
     );
 
     setStatusList(remainingStatus);
@@ -84,13 +83,13 @@ const TopScrollBar = ({ sessionCount }) => {
             Filter: {searchQuery === "All" ? "All" : status}
           </button>
           <div className="flex gap-2">
-            {statusList.map((categoryName, index) => (
+            {statusList.map((statusName, index) => (
               <button
                 key={index}
-                onClick={() => setSearchQuery(categoryName)}
+                onClick={() => setSearchQuery(statusName)}
                 className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
-                {categoryName}
+                {statusName}
               </button>
             ))}
           </div>

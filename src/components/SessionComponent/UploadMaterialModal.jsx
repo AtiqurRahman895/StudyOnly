@@ -61,7 +61,7 @@ const UploadMaterialModal = ({ session_id, tutor_email }) => {
           >
             ✕
           </button>
-          <form onSubmit={handleSubmit} className="space-y-4 pt-6">
+          <form onSubmit={handleSubmit} className="space-y-4 pt-6 overflow-hidden">
             <ImageInputSection image={image} setImage={setImage} />
             <TitleInputSection
               title={title}

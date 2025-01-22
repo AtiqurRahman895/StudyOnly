@@ -27,6 +27,7 @@ import ResubmitSession from "./components/ModifySessionComponent/ResubmitSession
 import AllNotes from "./components/AllNotesComponent/AllNotes";
 import CreatNote from "./components/CreatNoteComponent/CreatNote";
 import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
+import MySessions from "./components/MySessionsComponent/MySessions";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,14 @@ const router = createBrowserRouter([
         element: (
           <TutorRoute>
             <ResubmitSession />
+          </TutorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my_sessions",
+        element: (
+          <TutorRoute>
+            <MySessions />
           </TutorRoute>
         ),
       },

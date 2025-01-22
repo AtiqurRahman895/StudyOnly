@@ -5,13 +5,13 @@ import { useContext } from "react";
 import ImageDownloadButton from "./ImageDownloadButton";
 import DeleteMaterial from "./DeleteMaterial";
 
-const MaterialCard = ({material, index, refetch}) => {
+const MaterialCard = ({material, index, refetch , fixedWidh=false}) => {
 
     const {role}=useContext(TransferLists)
     const {user}=useContext(AuthContext)
 
     return (
-        <div className="rounded-md text-white max-w-96 h-fit space-y-4">
+        <div className={`${fixedWidh&&"max-w-96"} rounded-md text-white h-fit space-y-4`}>
             <img src={material.image} alt={material.title} className="w-full aspect-[3/2] object-cover object-center rounded-md bg-custom-primary" />
             <h5 className="text-custom-primary">{material.title}</h5>
 

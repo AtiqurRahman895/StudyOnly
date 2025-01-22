@@ -41,15 +41,15 @@ const MaterialsSection = ({session_id}) => {
                                 <div className="flex flex-wrap justify-center !gap-4 md:!gap-6 ">
                                     {materials.map((material, index) => (
                                         <div key={index} className="mb-5">
-                                            <MaterialCard index={index} material={material} refetch={refetch} />
+                                            <MaterialCard index={index} material={material} refetch={refetch} fixedWidh={true} />
                                         </div>
                                     ))}
                                 </div>
                             )
                             :(
-                                <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
+                                <Masonry columnsCount={columnsCount} gutter="20px">
                                     {materials.map((material, index) => (
-                                        <div key={index} className="mb-11">
+                                        <div key={index} className="mb-8">
                                             <MaterialCard index={index} material={material} refetch={refetch} />
                                         </div>
                                     ))}

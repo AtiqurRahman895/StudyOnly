@@ -59,9 +59,9 @@ const RejectionReasons = ({session_id}) => {
                         </div>
                     )
                     :(
-                        <Masonry columnsCount={columnsCount} className="!gap-4 md:!gap-6">
+                        <Masonry columnsCount={columnsCount} gutter="18px">
                             {rejections.map((rejection, index) => (
-                                <div key={index} className="rounded-md p-4 mb-5 bg-custom-primary text-white w-full">
+                                <div key={index} className="rounded-md p-4 bg-custom-primary text-white w-full">
                                     <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
                                     <p><b className="text-black">Reason:</b> {rejection.reason}</p>
                                     <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>

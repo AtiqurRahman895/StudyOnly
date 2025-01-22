@@ -27,13 +27,7 @@ const Session = () => {
     console.error(error);
     throw error;
   }
-  // if (isError) {
-  //   console.error(error);
-  //   if (error.status === 404) {
-  //       navigate("/404", { replace: true });
-  //       return null; 
-  //   }
-  // }
+
   if (loading) {
     return <Loading />;
   }
