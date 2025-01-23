@@ -11,7 +11,7 @@ const SessionCard = ({session}) => {
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
   const handleTimeOut=(statusToChange)=>{
-      normalAxios.put(`/ongingORcloseSession/${_id}`,{status:statusToChange})
+      normalAxios.put(`/ongoingORcloseSession/${_id}`,{status:statusToChange})
       .then(()=>{
         refetch()
       })
@@ -22,10 +22,10 @@ const SessionCard = ({session}) => {
 
   // let timer=(
   //   if(status !== "Closed" && status !== "Rejected"){
-  //     if(status == "Onging"){
+  //     if(status == "Ongoing"){
   //       <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={"Closed"}/>
   //     }else{
-  //       <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={"Onging"}/>
+  //       <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={"Ongoing"}/>
   //     }
   //   })
   
@@ -64,11 +64,11 @@ const SessionCard = ({session}) => {
           {status == "Closed" || status == "Rejected"?"":
             <>
             {
-              (status == "Onging")?(
+              (status == "Ongoing")?(
                 <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Closed"} text={"Registration ends in"}/>
               )
               :(
-                <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Onging"} text={"Registration starts in"}/>
+                <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={status} statusToChange={"Ongoing"} text={"Registration starts in"}/>
               )
             }
             </>

@@ -4,7 +4,7 @@ import { TransferLists } from "../../Contexts/TransferLists";
 
 const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
   const { searchQuery, setSearchQuery } = useContext(TransferLists);
-  // allStatus=[ "All", "Onging", "Closed", "Pending", "Rejected"]
+  // allStatus=[ "All", "Ongoing", "Closed", "Pending", "Rejected"]
   const [statusList, setStatusList] = useState([]);
   const [status, setStatus] = useState([]);
 
@@ -15,10 +15,12 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
 
   useEffect(() => {
     let allStatusList
-    if(showAllStatusName){
-      allStatusList=[ "All", "Upcoming", "Onging", "Closed", "Pending", "Rejected"]
+    if(showAllStatusName==='all'){
+      allStatusList=[ "All", "Upcoming", "Ongoing", "Closed", "Pending", "Rejected"]
+    }else if(showAllStatusName==='student'){
+      allStatusList=[ "All", "Ongoing", "Closed" ]
     }else{
-      allStatusList=[ "All", "Upcoming", "Onging", "Closed"]
+      allStatusList=[ "All", "Upcoming", "Ongoing", "Closed"]
     }
 
     const remainingStatus = allStatusList.filter(

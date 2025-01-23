@@ -30,7 +30,7 @@ const SessionStudentButtonsSection = ({ session }) => {
     }
   };
 
-  if (status === "Upcoming" || status === "Onging") {
+  if (status === "Upcoming" || status === "Ongoing") {
     return (
       <section className="container flex justify-center gap-x-8">
         <button

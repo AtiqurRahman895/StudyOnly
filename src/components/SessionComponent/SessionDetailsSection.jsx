@@ -24,7 +24,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
 
   const handleTimeOut = (statusToChange) => {
     normalAxios
-      .put("/ongingORcloseSession", { _id, status: statusToChange })
+      .put(`/ongoingORcloseSession/${_id}`, { status: statusToChange })
       .then(() => {
         refetch();
       })
@@ -121,7 +121,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
                 ""
               ) : (
                 <>
-                  {status == "Onging" ? (
+                  {status == "Ongoing" ? (
                     <div className="flex items-center gap-1">
                       <b className="text-custom-primary">
                         Registration ends in
@@ -142,7 +142,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
                         date={registration_start_date}
                         handleTimeOut={handleTimeOut}
                         status={status}
-                        statusToChange={"Onging"}
+                        statusToChange={"Ongoing"}
                       />
                     </div>
                   )}

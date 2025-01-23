@@ -28,6 +28,7 @@ import AllNotes from "./components/AllNotesComponent/AllNotes";
 import CreatNote from "./components/CreatNoteComponent/CreatNote";
 import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
 import MySessions from "./components/MySessionsComponent/MySessions";
+import BookedSessions from "./components/BookedSessionsComponent/BookedSessions";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,14 @@ const router = createBrowserRouter([
           <TutorRoute>
             <ResubmitSession />
           </TutorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/booked_session",
+        element: (
+          <PrivateRoute>
+            <BookedSessions />
+          </PrivateRoute>
         ),
       },
       {

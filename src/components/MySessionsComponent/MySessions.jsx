@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import TitleSection from "../CommonComponent/TitleSection";
@@ -32,7 +31,7 @@ const MySessions = () => {
 
     if (isError ) {
         console.error(error);
-        throw error;
+        // throw error;
     }
     
     return (
@@ -41,7 +40,7 @@ const MySessions = () => {
 
             <section className="container space-y-12">
                 <div className="container space-y-10">
-                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="tutor"} />
+                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"all"} />
                 </div>
                 {
                 (loading) ? (<Loading/>):(
@@ -50,7 +49,7 @@ const MySessions = () => {
                         <NotFound  NotFoundText={searchQuery==="All"?"You have not created any sessions yet!":"No session found!"}/>
                     )
                     :
-                    (   <Masonry columnsCount={columnsCount}gutter="18px">
+                    (   <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
                                 <SessionCard key={index} session={session}/>
                             ))}

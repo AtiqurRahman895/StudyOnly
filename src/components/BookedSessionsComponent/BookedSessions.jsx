@@ -1,26 +1,29 @@
 import { useContext, useEffect, useState } from "react";
-import UseGetAllSession from "../../Hooks/UseGetAllSession";
+import { TransferLists } from "../../Contexts/TransferLists";
+import useGetBookedSessionsIds from "../../Hooks/useGetBookedSessionsIds";
+import useScreenWidth from "../../Hooks/useScreenWidth";
+import TitleSection from "../CommonComponent/TitleSection";
+import UseGetBookedSessions from "../../Hooks/UseGetBookedSessions";
+import TopScrollBar from "../CommonComponent/TopScrollBar";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
-import TitleSection from "../CommonComponent/TitleSection";
-import TopScrollBar from "../CommonComponent/TopScrollBar";
-import { TransferLists } from "../../Contexts/TransferLists";
-import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
 
-const AllSessions = () => {
-    const {loading,sessions,isError,error}=UseGetAllSession()
+const BookedSessions = () => {
+    const {ids}=useGetBookedSessionsIds()
     const { searchQuery } = useContext(TransferLists);
-    const role=localStorage.getItem("role")
+    const {loading,sessions,isError,error}=UseGetBookedSessions(ids,searchQuery)
+    // const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 
-
     useEffect(() => {
-        if (screenWidth >= 1024) {
-          setColumnsCount(3);
-        } else if (screenWidth >= 640) {
+        if (screenWidth >= 1280) {
+            setColumnsCount(2);
+        }else if (screenWidth >= 1024) {
+          setColumnsCount(1);
+        } else if (screenWidth >= 768) {
           setColumnsCount(2);
         } else {
           setColumnsCount(1);
@@ -29,7 +32,7 @@ const AllSessions = () => {
 
     if (isError ) {
         console.error(error);
-        throw error;
+        // throw error;
     }
     
     return (
@@ -38,18 +41,17 @@ const AllSessions = () => {
 
             <section className="container space-y-12">
                 <div className="container space-y-10">
-                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="admin"&&"all"} />
+                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"student"} />
                 </div>
                 {
                 (loading) ? (<Loading/>):(
 
                     (sessions?.length === 0)? (
-                        <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
+                        <NotFound NotFoundText={searchQuery==="All"?"You have not booked any sessions yet!":"No session found!"}/>
                     )
                     :
-                    (   <Masonry columnsCount={columnsCount} gutter="18px">
+                    (   <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
-                                // <h1 >{session.title}</h1>
                                 <SessionCard key={index} session={session}/>
                             ))}
                         </Masonry>
@@ -61,6 +63,6 @@ const AllSessions = () => {
         </main>
 
     )
-}
+};
 
-export default AllSessions;
+export default BookedSessions;
