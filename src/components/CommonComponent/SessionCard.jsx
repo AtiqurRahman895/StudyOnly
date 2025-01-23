@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import { normalAxios } from "../../Hooks/useNormalAxios";
 import Timer from "./Timer";
@@ -5,8 +6,14 @@ import { BiSolidBadgeDollar } from "react-icons/bi";
 import { FaArrowsSpin } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { TransferLists } from "../../Contexts/TransferLists";
+import SessionAdminButtonsSection from "../SessionComponent/SessionAdminButtonsSection";
+import { AuthContext } from "../../Provider/AuthProvider";
+import SessionTutorButtonsSection from "../SessionComponent/SessionTutorButtonsSection";
 
 const SessionCard = ({session}) => {
+  const {role}=useContext(TransferLists)
+  const {user}=useContext(AuthContext)
   const {refetch}=UseGetAllSession()
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
@@ -30,7 +37,7 @@ const SessionCard = ({session}) => {
   //   })
   
   return (
-    <div className="space-y-5 mb-10">
+    <div className="space-y-5 mb-6">
       <img
         src={image}
         alt={title}
@@ -75,7 +82,22 @@ const SessionCard = ({session}) => {
           }
         </div>
 
-        <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block">View Details</Link>
+        <div className="space-y-4 pt-1">
+          {
+            (role==="admin") &&(
+              <SessionAdminButtonsSection session={session} refetch={refetch} incard={true} />
+            )
+          }
+
+          {
+            (role==="tutor" && tutor_email===user?.email) &&(
+              <SessionTutorButtonsSection session={session} incard={true} />
+            ) 
+          }
+
+          <Link to={`/dashboard/session/${_id}`} className="primaryButton activePrimaryButton block !py-2.5 ">View Details</Link>
+        </div>
+
       </div>
     </div>
 );

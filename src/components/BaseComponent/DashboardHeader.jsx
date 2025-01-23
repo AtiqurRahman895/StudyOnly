@@ -8,14 +8,8 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 // import { GoUnverified } from "react-icons/go";
 
 const DashboardHeader = () => {
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  }, [location.pathname]); // Trigger when the route changes
-
   const { user, logoutUser, verifyAccount } = useContext(AuthContext);
 
-  // console.log(location.pathname)
 
   return (
     <header className={`text-white top-0 z-50 w-full py-2`}>

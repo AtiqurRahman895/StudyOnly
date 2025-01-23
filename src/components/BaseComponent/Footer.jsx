@@ -1,8 +1,12 @@
 // import PropTypes from 'prop-types';
 
+import { useContext } from "react";
 import NavMenus from "./NavMenus";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Footer = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <footer className="bg-black  pt-20 pb-10">
       <div className="container">
@@ -11,9 +15,15 @@ const Footer = () => {
           <h1 className="text-custom-primary font-fugaz uppercase">
             Study Only
           </h1>
-          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 !list-none !space-y-0 m-0">
-            <NavMenus />
-          </ul>
+
+          {
+            (user?.email)&&(
+                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 !list-none !space-y-0 m-0">
+                <NavMenus />
+              </ul>
+            )
+          }
+
           <nav>
             <div className="grid grid-flow-col gap-4">
               <a>

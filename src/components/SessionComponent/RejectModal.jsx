@@ -4,7 +4,7 @@ import { secureAxios } from "../../Hooks/useSecureAxios";
 import useGetTodayTomorrowNextWeek from "../../Hooks/useGetTodayTomorrowNextweek";
 import { useNavigate } from "react-router-dom";
 
-const RejectModal = ({_id,status,refetch}) => {
+const RejectModal = ({_id,status,refetch,incard=false}) => {
       const navigate = useNavigate();
       const [reason,setReason]=useState("")
       const [feedback,setFeedback]=useState("")
@@ -46,7 +46,9 @@ const RejectModal = ({_id,status,refetch}) => {
             refetch()
             setOpenModal(false)
             e.target.reset();
-            navigate(0)
+            if(!incard){
+                navigate(0)
+            }
 
         } catch (error) {
             console.error("Failed to Approve this session!", error);
@@ -58,8 +60,8 @@ const RejectModal = ({_id,status,refetch}) => {
 
     return (
         <>
-            <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>setOpenModal(true)}>Reject</button>
-            <dialog id="reject_modal" className="modal bg-[rgba(0,0,0,.4)]" open={openModal}>
+            <button className={`primaryButton activePrimaryButton !py-2.5  min-w-32 ${incard&&"flex-grow"}`} onClick={()=>setOpenModal(true)}>Reject</button>
+            <dialog id="reject_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal}>
                 <div className="modal-box bg-black">
                     <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmit} className="space-y-3">

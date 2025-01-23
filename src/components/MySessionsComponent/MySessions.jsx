@@ -33,13 +33,13 @@ const MySessions = () => {
         console.error(error);
         // throw error;
     }
-    
+
     return (
         <main className="mt-8">
             <TitleSection title={"All Sessions"} />
 
-            <section className="container space-y-12">
-                <div className="container space-y-10">
+            <section className="space-y-12">
+                <div className="space-y-10">
                     <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"all"} />
                 </div>
                 {

@@ -51,7 +51,7 @@ const UpdateMaterialModal = ({material, index, refetch}) => {
         </button>
         <Tooltip anchorSelect=".updateMaterial" className="!bg-custom-primary"> Update this material </Tooltip>
 
-        <dialog id="material_modal" className="modal bg-[rgba(0,0,0,.4)]" open={openModal}>
+        <dialog id="material_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal}>
           <div className="modal-box bg-black">
             <button onClick={() => setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕

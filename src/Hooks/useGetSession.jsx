@@ -1,23 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-import useSecureNormalAxios from "./useSecureNormalAxios";
+import useSecureAxios from "./useSecureAxios";
 
 const useGetSession = (_id) => {
-    const {user}=useContext(AuthContext)
-    const secureNormalAxios= useSecureNormalAxios()
-    const role=localStorage.getItem("role")
-    const token=localStorage.getItem("token")
+    const secureAxios= useSecureAxios()
 
     const fetchSession= async() => {
-        let headers={role}
-        const email=user?.email
-        if(email){
-            if(role==="tutor" || role==="admin"){
-                headers={...headers,token:`Bearer ${token}`,email}
-            }
-        }
-        const res=await secureNormalAxios.get(`/session/${_id}`, {headers})
+        const res=await secureAxios.get(`/session/${_id}`)
         const data=res.data
         if (!data) {
             const error = new Error("Session not found");
@@ -25,10 +13,9 @@ const useGetSession = (_id) => {
             throw error;
         }
         return data
-
     };
     const { isLoading:loading, data:session={},refetch,isError,error } = useQuery(
-        ['session',role,token,user,_id],
+        ['session',_id],
         fetchSession,
     )
 

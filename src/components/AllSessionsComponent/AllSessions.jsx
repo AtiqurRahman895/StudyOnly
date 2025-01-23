@@ -18,9 +18,7 @@ const AllSessions = () => {
 
 
     useEffect(() => {
-        if (screenWidth >= 1024) {
-          setColumnsCount(3);
-        } else if (screenWidth >= 640) {
+         if (screenWidth >= 640) {
           setColumnsCount(2);
         } else {
           setColumnsCount(1);
@@ -36,26 +34,28 @@ const AllSessions = () => {
         <main className="mt-8">
             <TitleSection title={"All Sessions"} />
 
-            <section className="container space-y-12">
-                <div className="container space-y-10">
-                    <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="admin"&&"all"} />
-                </div>
-                {
-                (loading) ? (<Loading/>):(
+            <section className="">
+                <div className="space-y-12">
+                    <div className="space-y-10">
+                        <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="admin"&&"all"} />
+                    </div>
+                    {
+                        (loading) ? (<Loading/>):(
 
-                    (sessions?.length === 0)? (
-                        <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
-                    )
-                    :
-                    (   <Masonry columnsCount={columnsCount} gutter="18px">
-                            {sessions.map((session, index) => (
-                                // <h1 >{session.title}</h1>
-                                <SessionCard key={index} session={session}/>
-                            ))}
-                        </Masonry>
-                    )
-                )  
-                }
+                            (sessions?.length === 0)? (
+                                <NotFound  NotFoundText={searchQuery==="All"?"Unable to load sessions for some reasion!":"No session found!"}/>
+                            )
+                            :
+                            (   <Masonry columnsCount={columnsCount} gutter="24px">
+                                    {sessions.map((session, index) => (
+                                        // <h1 >{session.title}</h1>
+                                        <SessionCard key={index} session={session}/>
+                                    ))}
+                                </Masonry>
+                            )
+                        )  
+                    }
+                </div>
             </section>
 
         </main>

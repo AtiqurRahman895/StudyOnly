@@ -20,7 +20,7 @@ const RejectionReasons = ({session_id}) => {
     )
 
     useEffect(() => {
-        if (screenWidth >= 1024) {
+        if (screenWidth >= 1280) {
           setColumnsCount(3);
         } else if (screenWidth >= 640) {
           setColumnsCount(2);
@@ -42,34 +42,20 @@ const RejectionReasons = ({session_id}) => {
     if(rejections.length!==0){
         return (
             <section className="">
-                <div className="container space-y-10">
-                <h3 className="text-custom-primary sectionHeaderWidth text-center">
+                <div className="space-y-10">
+                <h3 className="text-custom-primary">
                     Rejection Reasons and Feedbacks
                 </h3>
-                {
-                    (rejections.length<=3)?(
-                        <div className="flex flex-wrap justify-center !gap-4 md:!gap-6 ">
-                            {rejections.map((rejection, index) => (
-                                <div key={index} className="rounded-md p-4 bg-custom-primary text-white max-w-96 h-fit">
-                                    <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
-                                    <p><b className="text-black">Reason:</b> {rejection.reason}</p>
-                                    <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
-                                </div>
-                            ))}
+
+                <Masonry columnsCount={columnsCount} gutter="18px">
+                    {rejections.map((rejection, index) => (
+                        <div key={index} className="rounded-md p-4 bg-custom-primary text-white w-full">
+                            <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
+                            <p><b className="text-black">Reason:</b> {rejection.reason}</p>
+                            <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
                         </div>
-                    )
-                    :(
-                        <Masonry columnsCount={columnsCount} gutter="18px">
-                            {rejections.map((rejection, index) => (
-                                <div key={index} className="rounded-md p-4 bg-custom-primary text-white w-full">
-                                    <p><b className="text-black">Rejetion Date:</b> {rejection.rejection_date}</p>
-                                    <p><b className="text-black">Reason:</b> {rejection.reason}</p>
-                                    <p><b className="text-black">Feedback:</b> {rejection.feedback}</p>
-                                </div>
-                            ))}
-                        </Masonry>
-                    )
-                }
+                    ))}
+                </Masonry>
             </div>
         </section>
         );

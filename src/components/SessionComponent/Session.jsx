@@ -20,7 +20,6 @@ const Session = () => {
   const {role}=useContext(TransferLists)
   const {user}=useContext(AuthContext)
   const {booked}=useSessionBookedOrNot(_id)
-  // console.log(session)
 
 
   if (isError ) {
@@ -34,7 +33,7 @@ const Session = () => {
 
 
   return (
-    <main className="space-y-8">
+    <main className="space-y-10">
       <TitleSection title={`Session: ${_id}`}/>
       <SessionDetailsSection session={session} refetch={refetch}/>
       {
@@ -64,7 +63,7 @@ const Session = () => {
       }
       {
         (role==="tutor" && session.tutor_email===user?.email) &&(
-          <SessionTutorButtonsSection session={session} refetch={refetch}/>
+          <SessionTutorButtonsSection session={session}/>
         ) 
       }
       {

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useGetStudentReview from "../../Hooks/useGetStudentReview";
 import { normalAxios } from "../../Hooks/useNormalAxios";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
@@ -25,15 +24,15 @@ const SessionReviewRatingSection = ({booked=false,session_id}) => {
 
     return (
         <section className="">
-            <div className="container space-y-16">
+            <div className="space-y-10">
                 <div className="space-y-5">
                     <h3 className="text-custom-primary sectionHeaderWidth text-center">
                         Student Reviews & Ratings
                     </h3>
                     {
-                            (booked)?(
-                                <StudentsReviewButtons refetch={refetch} session_id={session_id} />
-                            ):""
+                        (booked)?(
+                            <StudentsReviewButtons refetch={refetch} session_id={session_id} />
+                        ):""
                     }
                 </div>
 
@@ -43,7 +42,7 @@ const SessionReviewRatingSection = ({booked=false,session_id}) => {
                             <NotFound  NotFoundText={"Anyone has not added any review yet!"}/>
                         ):
                         (
-                            <div className="container space-y-4">
+                            <div className="space-y-4">
 
                                 <h5 className="text-custom-primary">Total: {reviews.length}</h5>
 

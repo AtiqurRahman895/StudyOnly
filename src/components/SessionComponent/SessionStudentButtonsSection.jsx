@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useBookSession from "../../Hooks/useBookSession";
 
-const SessionStudentButtonsSection = ({ session }) => {
+const SessionStudentButtonsSection = ({ session}) => {
   const bookSession = useBookSession();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -32,10 +32,10 @@ const SessionStudentButtonsSection = ({ session }) => {
 
   if (status === "Upcoming" || status === "Ongoing") {
     return (
-      <section className="container flex justify-center gap-x-8">
+      <section>
         <button
           onClick={handleBookButton}
-          className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40"
+          className="primaryButton activePrimaryButton !py-2.5 min-w-32"
         >
           Book Now
         </button>

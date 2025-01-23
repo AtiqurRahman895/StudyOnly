@@ -16,7 +16,7 @@ const UseGetTutorSessions = () => {
     };
 
     const { isLoading:loading, data:sessions=[],refetch,isError,error } = useQuery(
-        ['sessions', searchQuery],
+        ['tutorSessions', searchQuery],
         fetchSessions,
     )
     return {loading,sessions,refetch,isError,error}

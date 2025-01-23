@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import useSecureAxios from "../../Hooks/useSecureAxios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-const ApproveModal = ({_id,registration_fee,status,refetch}) => {
+const ApproveModal = ({_id,registration_fee,status,refetch,incard=false}) => {
     const secureAxios=useSecureAxios()
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [session_fee,setSession_fee]=useState(registration_fee)
     const [paidInputChecked,setPaidInputChecked]=useState(registration_fee>0)
     const [openModal,setOpenModal]=useState(false)
@@ -24,7 +24,7 @@ const ApproveModal = ({_id,registration_fee,status,refetch}) => {
             setOpenModal(false)
             e.target.reset();
             refetch()
-            navigate(0)
+            // navigate(0)
 
         } catch (error) {
             console.error(status==="Pending"?"Failed to Approve this session!":"Failed to change registration fee!", error);
@@ -46,8 +46,8 @@ const ApproveModal = ({_id,registration_fee,status,refetch}) => {
 
     return (
         <>
-            <button className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40" onClick={()=>setOpenModal(true)} >{status==="Pending"?"Approve":"Change fee"}</button>
-            <dialog id="approve_modal" className="modal bg-[rgba(0,0,0,.4)]" open={openModal}>
+            <button className={`primaryButton activePrimaryButton !py-2.5 min-w-32 ${incard&&"flex-grow"}`}  onClick={()=>setOpenModal(true)} >{status==="Pending"?"Approve":"Change fee"}</button>
+            <dialog id="approve_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal}>
                 <div className="modal-box bg-black">
                     <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmit} className="space-y-3">

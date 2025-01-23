@@ -47,7 +47,7 @@ const UpdateReviewSection = ({studentReview,refetch}) => {
 
     return(
         <div className="flex flex-col items-center w-full relative">
-            <button className={`${showForm&&"scale-y-0 absolute"} origin-top duration-500 primaryButton activePrimaryButton !py-2.5 !w-full max-w-40`} onClick={()=>setShowForm(true)} >Update your Review</button>
+            <button className={`${showForm&&"scale-y-0 absolute"} origin-top duration-500 primaryButton activePrimaryButton !py-2.5  min-w-32`} onClick={()=>setShowForm(true)} >Update your Review</button>
             <div className={`${showForm?"scale-y-100":"scale-y-0 absolute"} origin-top w-full duration-500`}>
                 <form onSubmit={handleSubmit} className="space-y-3">
                     <div className="form-control">

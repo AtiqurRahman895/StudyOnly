@@ -11,7 +11,7 @@ const NavSideBar = ({ children }) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="bg-white min-h-full w-[70svw] xs:w-80 grid items-center p-4">
+        <div className="bg-custom-primary text-white min-h-full w-[70svw] xs:w-80 grid items-center p-4">
           <ul className="menu h-fit">
             <NavMenus />
           </ul>

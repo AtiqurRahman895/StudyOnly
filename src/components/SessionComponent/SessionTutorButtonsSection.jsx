@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import UploadMaterialModal from "./UploadMaterialModal";
 
-const SessionTutorButtonsSection = ({ session }) => {
+const SessionTutorButtonsSection = ({ session,incard=false }) => {
   const {
     _id,
     image,
@@ -18,22 +18,16 @@ const SessionTutorButtonsSection = ({ session }) => {
     registration_fee,
   } = session;
   return (
-    <section className="container flex justify-center gap-x-8">
+    <section className={`flex flex-wrap gap-4`}>
       {status === "Rejected" && (
         <Link
           to={`/dashboard/modify_session/${_id}`}
-          className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40"
+          className={`primaryButton activePrimaryButton !py-2.5  min-w-32 ${incard&&"flex-grow"}`} 
         >
           Resubmit
         </Link>
       )}
-      {/* {
-                status==="Closed" &&
-                <Link to={`/dashboard/modify_session/:_id${_id}`} className="primaryButton activePrimaryButton !py-2.5 !w-full max-w-40">
-                    Relaunch
-                </Link>
-            } */}
-      <UploadMaterialModal session_id={_id} tutor_email={tutor_email} />
+      <UploadMaterialModal session_id={_id} tutor_email={tutor_email} incard={incard} />
     </section>
   );
 };

@@ -29,6 +29,7 @@ import CreatNote from "./components/CreatNoteComponent/CreatNote";
 import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
 import MySessions from "./components/MySessionsComponent/MySessions";
 import BookedSessions from "./components/BookedSessionsComponent/BookedSessions";
+import AllMaterials from "./components/AllMaterialsComponent.jsx/AllMaterials";
 
 const router = createBrowserRouter([
   {
@@ -48,14 +49,6 @@ const router = createBrowserRouter([
             <Payment />
           </PrivateRoute>
         ),
-      },
-      {
-        path: "/all_sessions",
-        element: <AllSessions />,
-      },
-      {
-        path: "/session/:_id",
-        element: <Session />,
       },
 
       // Authentication
@@ -112,6 +105,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/all_sessions",
+        element:(
+          <PrivateRoute>
+            <AllSessions />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/session/:_id",
+        element: (
+          <PrivateRoute>
+            <Session />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/dashboard/modify_session/:_id",
         element: (
           <TutorRoute>
@@ -159,6 +168,15 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/dashboard/all_materials",
+        element: (
+          <PrivateRoute>
+            <AllMaterials />
+          </PrivateRoute>
+        ),
+      },
+      
       
     ],
   },

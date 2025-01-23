@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useSecureAxios from "./useSecureAxios";
+import { useContext } from "react";
+import { TransferLists } from "../Contexts/TransferLists";
+import useGetBookedSessionsIds from "./useGetBookedSessionsIds";
 
 
-const UseGetBookedSessions = (ids,searchQuery) => {
-    // const { searchQuery } = useContext(TransferLists);
+const UseGetBookedSessions = () => {
+    const {ids}=useGetBookedSessionsIds()
+    const { searchQuery } = useContext(TransferLists);
     const secureAxios=useSecureAxios()
 
     const fetchBookedSessions=async()=>{

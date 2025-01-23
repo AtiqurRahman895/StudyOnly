@@ -121,7 +121,9 @@ const ResubmitSession = () => {
     secureAxios
       .put(`/resubmitSession/${_id}`, credentials)
       .then(() => {
-        navigate(`/session/${_id}`);
+        // navigate(`/dashboard/session/${_id}`);
+        navigate(-1);
+
         toast.success("You have successfully resubmitted this Session!");
       })
       .catch((error) => {

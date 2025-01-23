@@ -12,7 +12,7 @@ const MaterialsSection = ({session_id}) => {
     const [columnsCount, setColumnsCount] = useState();
     
     useEffect(() => {
-        if (screenWidth >= 1024) {
+        if (screenWidth >= 1280) {
             setColumnsCount(3);
         } else if (screenWidth >= 640) {
             setColumnsCount(2);
@@ -27,7 +27,7 @@ const MaterialsSection = ({session_id}) => {
     }
     return (
         <section className="">
-            <div className="container space-y-10">
+            <div className="space-y-10">
                 <h3 className="text-custom-primary sectionHeaderWidth text-center">
                     Session Study materials
                 </h3>
@@ -37,24 +37,13 @@ const MaterialsSection = ({session_id}) => {
                             <NotFound  NotFoundText={"Tutor has not added any materials yet!"}/>
                         ):
                         (
-                            (materials.length<=3)?(
-                                <div className="flex flex-wrap justify-center !gap-4 md:!gap-6 ">
-                                    {materials.map((material, index) => (
-                                        <div key={index} className="mb-5">
-                                            <MaterialCard index={index} material={material} refetch={refetch} fixedWidh={true} />
-                                        </div>
-                                    ))}
-                                </div>
-                            )
-                            :(
-                                <Masonry columnsCount={columnsCount} gutter="20px">
-                                    {materials.map((material, index) => (
-                                        <div key={index} className="mb-8">
-                                            <MaterialCard index={index} material={material} refetch={refetch} />
-                                        </div>
-                                    ))}
-                                </Masonry>
-                            )
+                            <Masonry columnsCount={columnsCount} gutter="20px">
+                                {materials.map((material, index) => (
+                                    <div key={index} className="mb-8">
+                                        <MaterialCard index={index} material={material} refetch={refetch} />
+                                    </div>
+                                ))}
+                            </Masonry>
                         )
                     )    
                 }

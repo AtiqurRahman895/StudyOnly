@@ -11,9 +11,9 @@ import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
 
 const BookedSessions = () => {
-    const {ids}=useGetBookedSessionsIds()
+    // const {ids}=useGetBookedSessionsIds()
     const { searchQuery } = useContext(TransferLists);
-    const {loading,sessions,isError,error}=UseGetBookedSessions(ids,searchQuery)
+    const {loading,sessions,isError,error}=UseGetBookedSessions()
     // const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
@@ -39,8 +39,8 @@ const BookedSessions = () => {
         <main className="mt-8">
             <TitleSection title={"All Sessions"} />
 
-            <section className="container space-y-12">
-                <div className="container space-y-10">
+            <section className="space-y-12">
+                <div className="space-y-10">
                     <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"student"} />
                 </div>
                 {

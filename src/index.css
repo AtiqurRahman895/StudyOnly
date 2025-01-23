@@ -193,6 +193,8 @@
     color: inherit;
     /* border-radius: 0px;
     border-bottom: 2px solid; */
+    color: #1e1e1e;
+    font-weight: 600;
 }
 
 .menu li > .themeController:active ,.themeController:focus, .menu li > .themeController.active {

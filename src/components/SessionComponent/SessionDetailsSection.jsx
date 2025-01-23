@@ -38,7 +38,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
 
   return (
     <section className="space-y-4">
-      <div className={`xs:container mx-auto relative aspect-auto rounded-md`}>
+      <div className={`mx-auto relative aspect-auto rounded-md`}>
         <img
           src={image}
           alt=""
@@ -46,21 +46,21 @@ const SessionDetailsSection = ({ session, refetch }) => {
         />
       </div>
 
-      <div className="container space-y-2">
+      <div className="space-y-2">
         <div className="grid">
-          <h3 className="text-custom-primary sectionHeaderWidth text-center">
+          <h3 className="text-custom-primary ">
             {title}
           </h3>
         </div>
 
-        <div className="text-center xs:px-4">
-          <p className="mt-2 font-bold first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">
+        <div className="">
+          <p className="font-semibold first-letter:text-custom-primary first-letter:text-2xl">
             {session_description}
           </p>
         </div>
 
-        <div className="flex justify-between lg:justify-center gap-x-16 lg:gap-x-20 gap-y-2.5 flex-wrap pt-2">
-          <div className="space-y-2.5">
+        <div className="flex gap-x-16 lg:gap-x-20 gap-y-2.5 flex-wrap pt-4">
+          <div className="space-y-2.5 flex-grow">
             <div className="space-y-1">
               <div className="flex items-center gap-1">
                 <b className="text-custom-primary">Registration start date:</b>
@@ -91,7 +91,7 @@ const SessionDetailsSection = ({ session, refetch }) => {
             </div>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="space-y-2.5 flex-grow">
             <div className="space-y-1">
               <div className="flex items-center gap-1">
                 <b className="text-custom-primary">Session status:</b>

@@ -4,15 +4,16 @@ import useSecureAxios from "../../Hooks/useSecureAxios";
 import ImageInputSection from "../CreatSessionComponent/ImageInputSection";
 import TitleInputSection from "../CreatSessionComponent/TitleInputSection";
 import MaterialLinkInputSection from "../CreatSessionComponent/MaterialLinkInputSection";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const UploadMaterialModal = ({ session_id, tutor_email }) => {
+const UploadMaterialModal = ({ session_id, tutor_email, incard=false}) => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const secureAxios = useSecureAxios();
   const [title, setTitle] = useState("");
   const [image, setImage] = useState();
   const [material_link, setMaterial_link] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,14 +45,14 @@ const UploadMaterialModal = ({ session_id, tutor_email }) => {
   return (
     <>
       <button
-        className="primaryButton activePrimaryButton !py-2.5 "
+        className={`primaryButton activePrimaryButton !py-2.5 min-w-32 ${incard&&"flex-grow"}` }
         onClick={() => setOpenModal(true)}
       >
         Upload material
       </button>
       <dialog
         id="material_modal"
-        className="modal bg-[rgba(0,0,0,.4)]"
+        className="!m-0 modal bg-[rgba(0,0,0,.4)]"
         open={openModal}
       >
         <div className="modal-box bg-black">
