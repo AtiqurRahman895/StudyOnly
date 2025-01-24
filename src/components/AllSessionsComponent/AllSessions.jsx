@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import TitleSection from "../CommonComponent/TitleSection";
 import TopScrollBar from "../CommonComponent/TopScrollBar";
-import { TransferLists } from "../../Contexts/TransferLists";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
+import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllSessions = () => {
     const {loading,sessions,isError,error}=UseGetAllSession()
-    const { searchQuery } = useContext(TransferLists);
+    const searchQuery = UseUrlQuery();
     const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
@@ -27,7 +27,7 @@ const AllSessions = () => {
 
     if (isError ) {
         console.error(error);
-        throw error;
+        // throw error;
     }
     
     return (

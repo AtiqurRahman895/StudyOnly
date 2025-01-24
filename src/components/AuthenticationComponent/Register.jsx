@@ -51,22 +51,27 @@ const Register = () => {
   const handleGoogleLoginBtn = async () => {
     try {
       let result = await loginWithGoogle();
-      setUser(result.user)
+      setUser(result.user);
 
       const res = await normalAxios.post("/addUser", {
+        image: result.user.photoURL,
+        name: result.user.displayName,
         email: result.user.email,
         role: "student",
       });
 
-      if (res?.data?.insertedId) {
-        logoutUser();
-        toast.success(
-          `You have successfully registered. Now, please login again!`
-        );
-      } else {
-        navigate("/");
-        toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
-      }
+      // if (res?.data?.insertedId) {
+      //   logoutUser();
+      //   toast.success(
+      //     `You have successfully registered. Now, please login again!`
+      //   );
+      // } else {
+      //   navigate("/");
+      //   toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
+      // }
+
+      navigate("/");
+      toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
     } catch (error) {
       toast.error(error.message ? error.message : error.code);
     }
@@ -90,9 +95,13 @@ const Register = () => {
   // }
 
   const CreatUserOnSubmit = async (e) => {
+    if(!image){
+      toast.warning("You must provide your profile image. Only JPG, PNG, GIF image files are allowed, and the maximum file size is 10MB. Please select an appropriate image file to proceed!")
+      return
+    }
     e.preventDefault();
     const name = e.target.name.value;
-    const photoURL = image;
+    const photoURL = image||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
     const email = e.target.email.value;
     const password = e.target.password.value;
     const role = e.target.role.value;
@@ -106,7 +115,7 @@ const Register = () => {
       await creatUser(email, password);
       toast.success("Your Registration successfull!");
       await updateUserProfile(name, photoURL);
-      await normalAxios.post("/addUser", { email, role });
+      await normalAxios.post("/addUser", { image, name, email, role });
       logoutUser();
       navigate("/login");
     } catch (error) {

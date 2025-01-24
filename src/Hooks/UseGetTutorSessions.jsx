@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { useContext } from 'react';
-import { TransferLists } from '../Contexts/TransferLists';
 import useSecureAxios from './useSecureAxios';
+import UseUrlQuery from './UseUrlQuery';
 
 const UseGetTutorSessions = () => {
-    const { searchQuery } = useContext(TransferLists);
+    const searchQuery = UseUrlQuery();
     const secureAxios= useSecureAxios()
 
     const fetchSessions= async() => {

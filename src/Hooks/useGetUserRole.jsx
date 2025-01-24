@@ -34,7 +34,7 @@ const useGetUserRole = () => {
           return role
         } else {
           logoutUser();
-          toast.error("User role was not found for some reason. Login again!");
+          // toast.error("User role was not found for some reason. Login again!");
           navigate("/login");
         }
       }

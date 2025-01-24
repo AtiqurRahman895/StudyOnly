@@ -3,31 +3,24 @@ import { TbAdjustmentsFilled } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
-const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
+const AllUsersTopScrollBar = ({ userCount=0 }) => {
   const searchQuery = UseUrlQuery();
   const navigate =useNavigate()
-  const [statusList, setStatusList] = useState([]);
-  const [status, setStatus] = useState([]);
+  const [roleList, setRoleList] = useState([]);
+  const [userRole, setUserRole] = useState([]);
 
   useEffect(() => {
-    let allStatusList
-    if(showAllStatusName==='all'){
-      allStatusList=[ "All", "Upcoming", "Ongoing", "Closed", "Pending", "Rejected"]
-    }else if(showAllStatusName==='student'){
-      allStatusList=[ "All", "Ongoing", "Closed" ]
-    }else{
-      allStatusList=[ "All", "Upcoming", "Ongoing", "Closed"]
-    }
-
-    const remainingStatus = allStatusList.filter(
-      (statusName) => statusName !== searchQuery
+    let allRoleList=[ "All", "Student", "Tutor", "Admin"]
+      
+    const remainingRole = allRoleList.filter(
+      (roleName) => roleName !== searchQuery
     );
-    const selectedStatus = allStatusList.filter(
-      (statusName) => statusName == searchQuery
+    const selectedRole = allRoleList.filter(
+      (roleName) => roleName == searchQuery
     );
 
-    setStatusList(remainingStatus);
-    setStatus(selectedStatus);
+    setRoleList(remainingRole);
+    setUserRole(selectedRole);
 
     return
 
@@ -76,29 +69,29 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
             className="flex items-center gap-1 primaryButton capitalize"
           >
             <TbAdjustmentsFilled className="text-[18px]" />
-            Filter: {searchQuery === "All" ? "All" : status}
+            Filter: {searchQuery === "All" ? "All" : userRole}
           </button>
           <div className="flex gap-2">
-            {statusList.map((statusName, index) => (
+            {roleList.map((roleName, index) => (
               <button
                 key={index}
-                onClick={() => navigate(`?searchQuery=${statusName}`)}
+                onClick={() => navigate(`?searchQuery=${roleName}`)}
                 className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
-                {statusName}
+                {roleName}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      <h6 className="text-custom-primary">
+      {/* <h6 className="text-custom-primary">
         {searchQuery === "All"
-          ? `All sessions(${sessionCount})`
-          : `Result for ${searchQuery}(${sessionCount})`}
-      </h6>
+          ? `All sessions(${userCount})`
+          : `Result for ${searchQuery}(${userCount})`}
+      </h6> */}
     </div>
   );
 };
 
-export default TopScrollBar;
+export default AllUsersTopScrollBar;

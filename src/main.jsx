@@ -29,7 +29,9 @@ import CreatNote from "./components/CreatNoteComponent/CreatNote";
 import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
 import MySessions from "./components/MySessionsComponent/MySessions";
 import BookedSessions from "./components/BookedSessionsComponent/BookedSessions";
-import AllMaterials from "./components/AllMaterialsComponent.jsx/AllMaterials";
+import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
+import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
+import AllUsers from "./components/AllUsersComponent/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +96,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all_users",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
         ),
       },
       {

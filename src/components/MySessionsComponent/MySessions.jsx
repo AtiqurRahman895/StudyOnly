@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import TitleSection from "../CommonComponent/TitleSection";
 import TopScrollBar from "../CommonComponent/TopScrollBar";
-import { TransferLists } from "../../Contexts/TransferLists";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
 import UseGetTutorSessions from "../../Hooks/UseGetTutorSessions";
+import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const MySessions = () => {
     const {loading,sessions,isError,error}=UseGetTutorSessions()
-    const { searchQuery } = useContext(TransferLists);
-    const role=localStorage.getItem("role")
+    const searchQuery = UseUrlQuery();
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 

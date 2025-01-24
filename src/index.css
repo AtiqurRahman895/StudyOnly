@@ -68,6 +68,20 @@
     /* margin-left: 1rem; */
   }
 
+  table{
+    @apply !text-white
+  }
+
+  td, th{
+    @apply text-nowrap
+  }
+  thead, thead>tr, tfoot>tr{
+    @apply !bg-custom-primary text-white
+  }
+  th{
+    @apply !bg-custom-primary
+  }
+
 
 
 

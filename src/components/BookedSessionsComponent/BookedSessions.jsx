@@ -1,6 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { TransferLists } from "../../Contexts/TransferLists";
-import useGetBookedSessionsIds from "../../Hooks/useGetBookedSessionsIds";
+import { useEffect, useState } from "react";
 import useScreenWidth from "../../Hooks/useScreenWidth";
 import TitleSection from "../CommonComponent/TitleSection";
 import UseGetBookedSessions from "../../Hooks/UseGetBookedSessions";
@@ -9,12 +7,11 @@ import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
+import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const BookedSessions = () => {
-    // const {ids}=useGetBookedSessionsIds()
-    const { searchQuery } = useContext(TransferLists);
+    const searchQuery = UseUrlQuery();
     const {loading,sessions,isError,error}=UseGetBookedSessions()
-    // const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 

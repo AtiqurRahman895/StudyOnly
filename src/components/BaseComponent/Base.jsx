@@ -4,7 +4,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
-import { useState } from "react";
 import { TransferLists } from "../../Contexts/TransferLists";
 import NavSideBar from "./NavSideBar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
@@ -12,12 +11,9 @@ import Loading from "../AuthenticationComponent/Loading";
 
 const Base = () => {
   const { loading,role } = useGetUserRole();
-  const [searchQuery, setSearchQuery] = useState("All");
 
   const value = {
     role,
-    searchQuery,
-    setSearchQuery,
   };
 
   return (

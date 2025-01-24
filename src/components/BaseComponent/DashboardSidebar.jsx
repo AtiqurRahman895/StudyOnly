@@ -16,7 +16,7 @@ const DashboardSideBar = () => {
   return (
     <section>
       <DashboardHeader />
-      <div ref={drawerRef} className="container drawer lg:drawer-open lg:gap-x-6 lg:max-h-[90svh] lg:hide-scrollbar overflow-y-scroll">
+      <div ref={drawerRef} className="container drawer lg:drawer-open lg:gap-x-6 min-h-[90svh] lg:max-h-[90svh] lg:hide-scrollbar overflow-y-scroll">
         <input
           id="DashboardNavSideBar"
           type="checkbox"

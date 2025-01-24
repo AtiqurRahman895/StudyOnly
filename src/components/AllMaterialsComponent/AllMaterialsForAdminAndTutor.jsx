@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import UseGetTutorSessions from "../../Hooks/UseGetTutorSessions";
-import { TransferLists } from "../../Contexts/TransferLists";
 import TopScrollBar from "../CommonComponent/TopScrollBar";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import SessionMaterials from "./SessionMaterials";
+import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllMaterialsForAdminAndTutor = () => {
     const {loading,sessions,isError,error}=UseGetTutorSessions()
-    const { searchQuery } = useContext(TransferLists);
+    const searchQuery = UseUrlQuery();
     const role=localStorage.getItem("role")
     const [NotFoundText, setNotFoundText] = useState("");
 

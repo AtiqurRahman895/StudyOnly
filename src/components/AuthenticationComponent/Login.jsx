@@ -25,18 +25,22 @@ const Login = () => {
       let result = await loginWithGoogle();
       setUser(result.user)
       const res = await normalAxios.post("/addUser", {
+        image:result.user.photoURL,
+        name:result.user.displayName,
         email: result.user.email,
         role: "student",
       });
-      if (res?.data?.insertedId) {
-        logoutUser();
-        toast.success(
-          `You have successfully registered. Now, please login again!`
-        );
-      } else {
-        navigate("/");
-        toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
-      }
+      // if (res?.data?.insertedId) {
+      //   logoutUser();
+      //   toast.success(
+      //     `You have successfully registered. Now, please login again!`
+      //   );
+      // } else {
+      //   navigate("/");
+      //   toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
+      // }
+      navigate("/");
+      toast.success(`Login successful! Welcome, ${result.user.displayName}!`);
     } catch (error) {
       toast.error(error.message ? error.message : error.code);
     }
