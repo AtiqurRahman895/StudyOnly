@@ -49,7 +49,7 @@ const SessionReviewRatingSection = ({booked=false,session_id}) => {
                                 {reviews.map((review, index) => (
                                 <div
                                     key={index}
-                                    className="bg-[rgba(255,255,255,.5)] rounded-md p-4 space-y-1"
+                                    className="bg-[#c5c0cf] rounded-md p-4 space-y-1"
                                 >
                                     <div className="flex items-center gap-2">
                                         <img
@@ -71,8 +71,8 @@ const SessionReviewRatingSection = ({booked=false,session_id}) => {
                                             halfIcon={<IoStarHalf />} 
                                             emptyIcon={<IoStarOutline />} 
                                             fullIcon={<IoStar />} 
-                                            color1="#e8092e4c" 
-                                            color2="#e8092e" 
+                                            color1="#7b3ff24c" 
+                                            color2="#7c3ff2" 
                                         />
                                         <span className="text-custom-primary">({review.rating})</span>
                                     </div>

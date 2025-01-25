@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
@@ -19,6 +19,7 @@ const CreatSession = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const secureAxios = useSecureAxios();
   const { duration, calculateDuration } = useClassDuration();
+  const formRef= useRef(null)
 
   const [image, setImage] = useState();
   const tutor = user?.displayName;
@@ -80,28 +81,32 @@ const CreatSession = () => {
       registration_fee,
     };
 
-    console.log(credentials);
+    // console.log(credentials);
 
-    secureAxios
-      .post("/creatSession", credentials)
+    secureAxios.post("/creatSession", credentials)
       .then(() => {
-        e.target.reset();
+        formRef.current.reset()
+        setImage(null)
+        setTitle('')
+        setSession_description('')
+        setRegistration_start_date('')
+        setRegistration_end_date('')
+        setClass_start_time('')
+        setClass_end_time('')
+        setClassDuration(null)
         toast.success("You have successfully created a Session!");
-        // return secureAxios.put(
-        //   "/UpdateSessionRating",
-        //   { _id }
-        // );
       })
       .catch((error) => {
         console.error("Error creating Session:", error);
         toast.error(error.response?.data?.message || `Failed to creat Session`);
       });
   };
+
   return (
-    <section className="">
+    <section className="pb-8">
       <TitleSection title={"Creat Session"} />
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <ImageInputSection image={image} setImage={setImage} />
         <TitleInputSection title={title} setTitle={setTitle} />
 

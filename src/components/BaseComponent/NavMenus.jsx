@@ -48,7 +48,7 @@ const NavMenus = () => {
 
 
       <li className="w-fit sm:hidden">
-        <p onClick={logoutUser}>
+        <p onClick={logoutUser} className="flex items-center">
           <RiLogoutBoxRFill />
           Log Out
         </p>

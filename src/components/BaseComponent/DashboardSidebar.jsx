@@ -21,7 +21,7 @@ const DashboardSideBar = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content pb-8 relative">
+        <div className="drawer-content pb-8 relative min-h-svh">
           <DashboardHeader />
           <Outlet />
         </div>

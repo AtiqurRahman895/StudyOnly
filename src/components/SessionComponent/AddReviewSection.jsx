@@ -58,8 +58,8 @@ const AddReviewSection = ({session_id,refetch,refetch2}) => {
                             halfIcon={<IoStarHalf />} 
                             emptyIcon={<IoStarOutline />} 
                             fullIcon={<IoStar />} 
-                            color1="#e8092e4c" 
-                            color2="#e8092e" 
+                            color1="#7b3ff24c" 
+                            color2="#7c3ff2" 
                         />
                         {/* <span className="text-custom-primary">({rating||0})</span> */}
                     </div>
