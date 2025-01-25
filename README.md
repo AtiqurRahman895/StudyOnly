@@ -1,13 +1,11 @@
-# Good Game 
-**📍 Live Website Link**: [https://ph-12th-assignment.web.app/](https://ph-12th-assignment.web.app/)  
-
-
 # Study Only
+**📍 Live Website Link**: [https://ph-12th-assignment.web.app/](https://ph-12th-assignment.web.app/)  
 
 Welcome to **Study Only**, a collaborative study platform where students, tutors, and administrators can manage and engage in study sessions, share resources, and enhance their learning experience.
 
 ## Admin Credentials
-- **Username:** amin@studyonly.com
+- **Username:** Amin Miah
+- **email:** amin@studyonly.com
 - **Password:** Amin1aA@1a
 
 ## Features

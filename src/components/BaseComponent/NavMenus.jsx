@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import { AiFillHome } from "react-icons/ai";
-import { IoNewspaper } from "react-icons/io5";
+import { MdSpaceDashboard } from "react-icons/md";
+import { PiListNumbersFill } from "react-icons/pi";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 import { NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavMenus = () => {
   const location = useLocation();
+  const { logoutUser } = useContext(AuthContext);
   const path = location.pathname;
   const normalClass = `hover:bg-transparent flex items-center gap-1 pb-1 mb-1`;
   const ActiveClass = `border-b-2 rounded-none !text-white`;
@@ -24,7 +29,7 @@ const NavMenus = () => {
           to={"/dashboard"}
           className={`${path === "/dashboard" && ActiveClass} ${normalClass}`}
         >
-          <IoNewspaper />
+          <MdSpaceDashboard />
           Dashboard
         </NavLink>
       </li>
@@ -36,9 +41,17 @@ const NavMenus = () => {
             path === "/dashboard/all_sessions" && ActiveClass
           } ${normalClass}`}
         >
-          <IoNewspaper />
+          <PiListNumbersFill />
           All Sessions
         </NavLink>
+      </li>
+
+
+      <li className="w-fit sm:hidden">
+        <p onClick={logoutUser}>
+          <RiLogoutBoxRFill />
+          Log Out
+        </p>
       </li>
     </>
   );

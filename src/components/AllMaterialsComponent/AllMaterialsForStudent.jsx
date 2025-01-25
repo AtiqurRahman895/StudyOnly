@@ -16,7 +16,10 @@ const AllMaterialsForStudent = () => {
     }
     return (
         <section className="space-y-6">
-            <div className="space-y-10">
+            <div className="space-y-6">
+                <h3 className="text-custom-primary sectionHeaderWidth text-center">
+                    All Materials
+                </h3>
                 <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"student"} />
             </div>
             {

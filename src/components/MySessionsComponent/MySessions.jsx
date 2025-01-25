@@ -38,7 +38,10 @@ const MySessions = () => {
             <TitleSection title={"All Sessions"} />
 
             <section className="space-y-12">
-                <div className="space-y-10">
+                <div className="space-y-6">
+                    <h3 className="text-custom-primary sectionHeaderWidth text-center">
+                        My Sessions
+                    </h3>
                     <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"all"} />
                 </div>
                 {

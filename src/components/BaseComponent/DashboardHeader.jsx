@@ -9,10 +9,19 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const DashboardHeader = () => {
   const { user, logoutUser, verifyAccount } = useContext(AuthContext);
+  const location = useLocation();
+  const path = location.pathname;
+  const [scrollY, setScrollY] = useState(0);
+  const headerRef = useRef(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [path]);
 
   return (
-    <header className={`text-white top-0 z-50 w-full py-2`}>
+    <header ref={headerRef}
+    className={`text-white top-0 z-50 w-full py-2`}
+  >
       <div className={`navbar container`}>
         <div className="navbar-start">
           <label
@@ -37,7 +46,7 @@ const DashboardHeader = () => {
 
           <Link
             to={"/"}
-            className={`btn btn-ghost hover:bg-transparent font-fugaz text-3xl text-custom-primary hover:text-custom-primary uppercase`}
+            className={`btn btn-ghost hover:bg-transparent font-fugaz text-3xl text-custom-primary hover:text-custom-primary uppercase lg:hidden`}
           >
             {/* <img src={logo} alt="Discount Pro" className="w-[100px]"/> */}
             Study Only
@@ -88,7 +97,7 @@ const DashboardHeader = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm text-black-font !list-none !space-y-1 !m-0"
+                    className="menu menu-sm text-black !list-none !space-y-1 !m-0"
                   >
                     {user.emailVerified || (
                       <li className="hover:scale-105 duration-200">
@@ -102,11 +111,11 @@ const DashboardHeader = () => {
                       </li>
                     )}
 
-                    <li>
+                    {/* <li>
                       <Link to={"/update-profile"} className="">
                         Update Profile
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to={"/change-password"} className="">
                         Change Password

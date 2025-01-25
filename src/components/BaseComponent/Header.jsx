@@ -12,14 +12,6 @@ const Header = () => {
   const path = location.pathname;
 
   useEffect(() => {
-    // if(path == "/"){
-    //   headerRef.current?.classList.remove(`sticky`);
-    //   headerRef.current?.classList.add(`fixed text-white`);
-    // }
-    // else{
-    //   headerRef.current?.classList.remove(`fixed text-white`);
-    //   headerRef.current?.classList.add(`sticky`);
-    // }
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, [path]); // Trigger when the route changes
 
@@ -137,7 +129,7 @@ const Header = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm text-black-font !list-none !space-y-1 !m-0"
+                    className="menu menu-sm text-black !list-none !space-y-1 !m-0"
                   >
                     {user.emailVerified || (
                       <li className="hover:scale-105 duration-200">
@@ -151,11 +143,11 @@ const Header = () => {
                       </li>
                     )}
 
-                    <li>
+                    {/* <li>
                       <Link to={"/update-profile"} className="">
                         Update Profile
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to={"/change-password"} className="">
                         Change Password

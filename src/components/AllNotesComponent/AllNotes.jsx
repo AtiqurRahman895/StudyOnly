@@ -55,7 +55,7 @@ const AllNotes = () => {
     }
     return (
         <section className="">
-            <div className="container space-y-10">
+            <div className="space-y-10">
                 <h3 className="text-custom-primary sectionHeaderWidth text-center">
                     Your notes
                 </h3>

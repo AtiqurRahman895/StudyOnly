@@ -1,12 +1,18 @@
 import { AiFillHome } from "react-icons/ai";
-import { IoNewspaper } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { TransferLists } from "../../Contexts/TransferLists";
+import { MdSpaceDashboard } from "react-icons/md";
+import { FaChalkboardTeacher, FaUsers } from "react-icons/fa";
+import { FaFolderOpen } from "react-icons/fa6";
+import { PiListNumbersFill, PiNotebookFill } from "react-icons/pi";
+import { RiLogoutBoxRFill, RiStickyNoteAddFill } from "react-icons/ri";
+import { TiPlus } from "react-icons/ti";
 
 const DashboardMenus = () => {
   const { user } = useContext(AuthContext);
+  const { logoutUser } = useContext(AuthContext);
   const { role } = useContext(TransferLists);
   const location = useLocation();
   const path = location.pathname;
@@ -31,7 +37,7 @@ const DashboardMenus = () => {
           to={"/dashboard"}
           className={`${path.includes("/dashboard") && "!border-b-2 pb-2.5 !rounded-none"} ${normalClass}`}
         >
-          <IoNewspaper />
+          <MdSpaceDashboard />
           Dashboard
         </NavLink>
       </li>
@@ -45,7 +51,7 @@ const DashboardMenus = () => {
             path === "/dashboard/all_sessions" && ActiveClass
           } ${normalClass}`}
         >
-          <IoNewspaper />
+          <PiListNumbersFill />
           All Sessions
         </NavLink>
       </li>
@@ -63,7 +69,7 @@ const DashboardMenus = () => {
                   path === "/dashboard/booked_session" && ActiveClass
                 } ${normalClass}`}
               >
-                <AiFillHome />
+                <FaChalkboardTeacher />
                 Booked Sessions
               </NavLink>
             </li>
@@ -84,7 +90,7 @@ const DashboardMenus = () => {
                   path === "/dashboard/creat_session" && ActiveClass
                 } ${normalClass}`}
               >
-                <IoNewspaper />
+                <TiPlus />
                 Creat Session
               </NavLink>
             </li>
@@ -96,7 +102,7 @@ const DashboardMenus = () => {
                   path === "/dashboard/my_sessions" && ActiveClass
                 } ${normalClass}`}
               >
-                <AiFillHome />
+                <FaChalkboardTeacher />
                 My Sessions
               </NavLink>
             </li>
@@ -113,10 +119,11 @@ const DashboardMenus = () => {
             path === "/dashboard/all_materials" && ActiveClass
           } ${normalClass}`}
         >
-          <IoNewspaper />
+          <FaFolderOpen />
           All Materials
         </NavLink>
       </li>
+      
 
       {/* Admin */}
 
@@ -130,7 +137,7 @@ const DashboardMenus = () => {
                   path === "/dashboard/all_users" && ActiveClass
                 } ${normalClass}`}
               >
-                <AiFillHome />
+                <FaUsers />
                 All Users
               </NavLink>
             </li>
@@ -147,7 +154,7 @@ const DashboardMenus = () => {
             path === "/dashboard/creat_note" && ActiveClass
           } ${normalClass}`}
         >
-          <IoNewspaper />
+          <RiStickyNoteAddFill />
           Creat Note
         </NavLink>
       </li>
@@ -159,12 +166,19 @@ const DashboardMenus = () => {
             path === "/dashboard/all_notes" && ActiveClass
           } ${normalClass}`}
         >
-          <IoNewspaper />
+          <PiNotebookFill />
           All Notes
         </NavLink>
       </li>
 
+      <li className="w-fit sm:hidden">
+        <p onClick={logoutUser}>
+          <RiLogoutBoxRFill />
+          Log Out
+        </p>
+      </li>
 
+      
 
       {/* <li className="w-fit">
         <NavLink

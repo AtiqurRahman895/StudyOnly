@@ -43,8 +43,10 @@ const AllTutorsSection = () => {
                         >
                             {
                                 tutors.map((tutor, index) => (
-                                    <div key={index} className="text-center">
-                                        <img src={tutor.image||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt={`${tutor.name}'s image`} className="w-40 md:w-56 aspect-square rounded-full mx-8"/>
+                                    <div key={index} className="text-center mx-8">
+                                        <div className="bg-white max-w-40 md:max-w-56 aspect-square rounded-full overflow-hidden">
+                                            <img src={tutor.image||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt={`${tutor.name}'s image`} className="" />
+                                        </div>
                                         <h6 className="text-custom-primary mt-4">{tutor.name}</h6>
                                         <p>{tutor.email}</p>
                                     </div>

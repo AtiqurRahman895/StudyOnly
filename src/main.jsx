@@ -11,7 +11,7 @@ import Login from "./components/AuthenticationComponent/Login";
 import Register from "./components/AuthenticationComponent/Register";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivateRoute from "./components/AuthenticationComponent/PrivateRoute";
-import UpdateProfile from "./components/AuthenticationComponent/UpdateProfile";
+// import UpdateProfile from "./components/AuthenticationComponent/UpdateProfile";
 import ChangePassword from "./components/AuthenticationComponent/ChangePassword";
 import ForgotPassword from "./components/AuthenticationComponent/ForgotPassword";
 import Home from "./components/HomeComponent/Home";
@@ -64,14 +64,14 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/update-profile",
-        element: (
-          <PrivateRoute>
-            <UpdateProfile />
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "/update-profile",
+      //   element: (
+      //     <PrivateRoute>
+      //       <UpdateProfile />
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/change-password",
         element: (

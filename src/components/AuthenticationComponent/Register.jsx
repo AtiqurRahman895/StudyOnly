@@ -95,11 +95,12 @@ const Register = () => {
   // }
 
   const CreatUserOnSubmit = async (e) => {
+    e.preventDefault();
+
     if(!image){
       toast.warning("You must provide your profile image. Only JPG, PNG, GIF image files are allowed, and the maximum file size is 10MB. Please select an appropriate image file to proceed!")
       return
     }
-    e.preventDefault();
     const name = e.target.name.value;
     const photoURL = image||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
     const email = e.target.email.value;
