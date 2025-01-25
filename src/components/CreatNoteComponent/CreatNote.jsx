@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import TitleSection from "../CommonComponent/TitleSection";
 
 const CreatNote = () => {
     const {user}= useContext(AuthContext)
@@ -48,6 +49,7 @@ const CreatNote = () => {
     
     return (
         <section className="">
+            <TitleSection title={"Creat Note"} />
             <div className="container hero flex items-center justify-center">
                 <div className="fromWrapper !space-y-8 max-w-lg">
                     <h1 className="text-5xl font-bold">Write a note!</h1>

@@ -10,6 +10,7 @@ import { Tooltip } from "react-tooltip";
 import { Link } from "react-router-dom";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { toast } from "react-toastify";
+import TitleSection from "../CommonComponent/TitleSection";
 
 const AllNotes = () => {
     const secureAxios=useSecureAxios()
@@ -55,6 +56,7 @@ const AllNotes = () => {
     }
     return (
         <section className="">
+            <TitleSection title={"All Notes"} />
             <div className="space-y-10">
                 <h3 className="text-custom-primary sectionHeaderWidth text-center">
                     Your notes

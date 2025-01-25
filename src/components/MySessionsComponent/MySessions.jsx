@@ -35,7 +35,7 @@ const MySessions = () => {
 
     return (
         <main className="mt-8">
-            <TitleSection title={"All Sessions"} />
+            <TitleSection title={"My Sessions"} />
 
             <section className="space-y-12">
                 <div className="space-y-6">

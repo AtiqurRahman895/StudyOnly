@@ -14,6 +14,7 @@ import ClassEndTimeSection from "../CreatSessionComponent/ClassEndTimeSection";
 import useClassDuration from "../../Hooks/useClassDuration";
 import useGetSession from "../../Hooks/useGetSession";
 import Loading from "../AuthenticationComponent/Loading";
+import TitleSection from "../CommonComponent/TitleSection";
 
 const ResubmitSession = () => {
   const { _id } = useParams();
@@ -135,6 +136,7 @@ const ResubmitSession = () => {
   };
   return (
     <section className="">
+      <TitleSection title={"Resumbit Session"} />
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <ImageInputSection

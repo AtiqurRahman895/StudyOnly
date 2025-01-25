@@ -12,6 +12,7 @@ import SessionDescriptionSection from "./SessionDescriptionSection";
 import ClassStartTimeSection from "./ClassStartTimeSection";
 import ClassEndTimeSection from "./ClassEndTimeSection";
 import useClassDuration from "../../Hooks/useClassDuration";
+import TitleSection from "../CommonComponent/TitleSection";
 
 const CreatSession = () => {
   const navigate = useNavigate();
@@ -98,6 +99,7 @@ const CreatSession = () => {
   };
   return (
     <section className="">
+      <TitleSection title={"Creat Session"} />
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <ImageInputSection image={image} setImage={setImage} />
