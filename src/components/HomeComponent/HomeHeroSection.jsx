@@ -1,4 +1,5 @@
 import { GiMouse } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const HomeHeroSection = () => {
     return (
@@ -9,9 +10,9 @@ const HomeHeroSection = () => {
                     <div className="sectionHeaderWidth text-center h-[100%] flex flex-col justify-center items-center gap-2 text-white">
                     <h1 className="">Collaborative Study Sessions</h1>
                     <h6 className="sectionHeaderSubtextWidth md:w-[80%]">Book, review, and collaborate with expert tutors and fellow students to enhance your learning experience.</h6>
-                    <a href="#AppointmentSection" type="button" className="primaryButton mt-4">
+                    <Link to={"/dashboard/all_sessions"} type="button" className="primaryButton mt-4">
                         View All Sessions
-                    </a>
+                    </Link>
                     </div>
 
                 </div>

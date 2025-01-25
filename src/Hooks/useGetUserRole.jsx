@@ -15,9 +15,7 @@ const useGetUserRole = () => {
   
     const fetchUserRole= async () => {
       let role="guest"
-
       // console.log(email)
-
       if (!email || !token) {
         // setRole("guest")
         localStorage.setItem("role","guest")

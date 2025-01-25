@@ -20,7 +20,7 @@ const AllTutorsSection = () => {
         console.error(error);
         // throw error;
     }
-    console.log(tutors)
+    // console.log(tutors)
     return (
         <section className="pb-14">
             <div className=" space-y-12 text-center">

@@ -51,7 +51,7 @@ const Register = () => {
   const handleGoogleLoginBtn = async () => {
     try {
       let result = await loginWithGoogle();
-      setUser(result.user);
+      // setUser(result.user);
 
       const res = await normalAxios.post("/addUser", {
         image: result.user.photoURL,
