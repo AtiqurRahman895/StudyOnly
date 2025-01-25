@@ -1,5 +1,5 @@
 import TitleSection from "../CommonComponent/TitleSection";
-// import AllTutorsSection from "./AllTutorsSection";
+import AllTutorsSection from "./AllTutorsSection";
 import HomeHeroSection from "./HomeHeroSection";
 import HomeSessionsSection from "./HomeSessionsSection";
 
@@ -9,7 +9,7 @@ const Home = () => {
       <TitleSection title={"Home"} />
       <HomeHeroSection />
       <HomeSessionsSection />
-      {/* <AllTutorsSection /> */}
+      <AllTutorsSection />
     </main>
   );
 };
