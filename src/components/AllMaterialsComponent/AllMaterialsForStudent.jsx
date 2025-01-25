@@ -1,25 +1,14 @@
-import { useEffect, useState} from "react";
 import UseGetBookedSessions from "../../Hooks/UseGetBookedSessions";
 import TopScrollBar from "../CommonComponent/TopScrollBar";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
-import useGetBookedSessionsIds from "../../Hooks/useGetBookedSessionsIds";
 import SessionMaterials from "./SessionMaterials";
+import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllMaterialsForStudent = () => {
-    const {ids}=useGetBookedSessionsIds()
+    const searchQuery = UseUrlQuery();
     const {loading,sessions,isError,error}=UseGetBookedSessions()
-    const [NotFoundText, setNotFoundText] = useState("");
 
-
-    useEffect(() => {
-        const idsL=ids.length
-        if (idsL === 0 ) {
-            setNotFoundText("You have not booked any sessions yet!");
-        } else {
-          setNotFoundText("No session found!");
-        }
-    }, [ids.length]);
 
     if (isError ) {
         console.error(error);
@@ -34,7 +23,7 @@ const AllMaterialsForStudent = () => {
             (loading) ? (<Loading/>):(
 
                 (sessions?.length === 0)? (
-                    <NotFound NotFoundText={NotFoundText}/>
+                    <NotFound NotFoundText={searchQuery==="All"?"You have not booked any sessions yet!":"No session found!"}/>
                 )
                 :
                 (   <div className="">

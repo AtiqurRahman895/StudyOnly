@@ -9,7 +9,7 @@ const DashboardSideBar = () => {
   const drawerRef=useRef(null)
 
   useEffect(() => {
-    console.log("works")
+    // console.log("works")
     drawerRef.current.scrollTo(0, 0); // Scroll to the top of the page
   }, [location.pathname]); // Trigger when the route changes
 
