@@ -8,11 +8,11 @@ const Footer = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <footer className="bg-black  pt-20 pb-10">
+    <footer className="bg-custom-primary  pt-20 pb-10">
       <div className="container">
         <div className="footer footer-center text-white gap-14 rounded">
           {/* <img src={logo} alt="Discout PRO" className="w-[200px] md:w-[300px]"/> */}
-          <h1 className="text-custom-primary font-fugaz uppercase">
+          <h1 className="font-fugaz uppercase">
             Study Only
           </h1>
 

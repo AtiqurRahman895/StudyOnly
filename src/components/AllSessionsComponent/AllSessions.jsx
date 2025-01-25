@@ -10,7 +10,7 @@ import SessionCard from "../CommonComponent/sessionCard";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllSessions = () => {
-    const {loading,sessions,isError,error}=UseGetAllSession()
+    const {loading,sessions,refetch,isError,error}=UseGetAllSession()
     const searchQuery = UseUrlQuery();
     const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
@@ -49,7 +49,7 @@ const AllSessions = () => {
                             (   <Masonry columnsCount={columnsCount} gutter="24px">
                                     {sessions.map((session, index) => (
                                         // <h1 >{session.title}</h1>
-                                        <SessionCard key={index} session={session}/>
+                                        <SessionCard key={index} session={session} refetch={refetch} />
                                     ))}
                                 </Masonry>
                             )

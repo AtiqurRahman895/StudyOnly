@@ -64,7 +64,7 @@ const Header = () => {
                   className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="#e8092e"
+                  stroke="#7c3ff2"
                 >
                   <path
                     strokeLinecap="round"

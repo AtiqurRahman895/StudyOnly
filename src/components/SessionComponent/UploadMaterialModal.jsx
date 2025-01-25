@@ -6,14 +6,13 @@ import TitleInputSection from "../CreatSessionComponent/TitleInputSection";
 import MaterialLinkInputSection from "../CreatSessionComponent/MaterialLinkInputSection";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const UploadMaterialModal = ({ session_id, tutor_email, incard=false}) => {
+const UploadMaterialModal = ({ session_id, tutor_email, incard = false }) => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const secureAxios = useSecureAxios();
   const [title, setTitle] = useState("");
   const [image, setImage] = useState();
   const [material_link, setMaterial_link] = useState("");
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +44,9 @@ const UploadMaterialModal = ({ session_id, tutor_email, incard=false}) => {
   return (
     <>
       <button
-        className={`primaryButton activePrimaryButton !py-2.5 min-w-32 ${incard&&"flex-grow"}` }
+        className={`primaryButton activePrimaryButton !py-2.5 min-w-32 ${
+          incard && "flex-grow"
+        }`}
         onClick={() => setOpenModal(true)}
       >
         Upload material
@@ -62,7 +63,10 @@ const UploadMaterialModal = ({ session_id, tutor_email, incard=false}) => {
           >
             ✕
           </button>
-          <form onSubmit={handleSubmit} className="space-y-4 pt-6 overflow-hidden">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 pt-6 overflow-hidden"
+          >
             <ImageInputSection image={image} setImage={setImage} />
             <TitleInputSection
               title={title}

@@ -10,7 +10,7 @@ import UseGetTutorSessions from "../../Hooks/UseGetTutorSessions";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const MySessions = () => {
-    const {loading,sessions,isError,error}=UseGetTutorSessions()
+    const {loading,sessions,refetch,isError,error}=UseGetTutorSessions()
     const searchQuery = UseUrlQuery();
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
@@ -50,7 +50,7 @@ const MySessions = () => {
                     :
                     (   <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
-                                <SessionCard key={index} session={session}/>
+                                <SessionCard key={index} session={session} refetch={refetch} />
                             ))}
                         </Masonry>
                     )

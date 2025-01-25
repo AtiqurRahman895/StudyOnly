@@ -1,12 +1,15 @@
 import TitleSection from "../CommonComponent/TitleSection";
-import useGetUserRole from "../../Hooks/useGetUserRole";
+// import AllTutorsSection from "./AllTutorsSection";
+import HomeHeroSection from "./HomeHeroSection";
+// import HomeSessionsSection from "./HomeSessionsSection";
 
 const Home = () => {
-  const { role } = useGetUserRole();
   return (
-    <main className="">
+    <main className="space-y-14">
       <TitleSection title={"Home"} />
-      <h1>you are {role}</h1>
+      <HomeHeroSection />
+      {/* <HomeSessionsSection />
+      <AllTutorsSection /> */}
     </main>
   );
 };

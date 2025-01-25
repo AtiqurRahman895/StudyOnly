@@ -4,107 +4,137 @@ import { secureAxios } from "../../Hooks/useSecureAxios";
 import useGetTodayTomorrowNextWeek from "../../Hooks/useGetTodayTomorrowNextweek";
 import { useNavigate } from "react-router-dom";
 
-const RejectModal = ({_id,status,refetch,incard=false}) => {
-      const navigate = useNavigate();
-      const [reason,setReason]=useState("")
-      const [feedback,setFeedback]=useState("")
-      const [openModal,setOpenModal]=useState(false)
-      const {today}=useGetTodayTomorrowNextWeek()
+const RejectModal = ({ _id, status, refetch, incard = false }) => {
+  const navigate = useNavigate();
+  const [reason, setReason] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const { today } = useGetTodayTomorrowNextWeek();
 
-      const rejectionReasonList=[
-        `Misalignment with Curriculum`,
-        `External Restrictions`,
-        `Technical or Resource Allocation`,
-        `Inappropriate Content`,
-        `Session Duplication`,
-        `Insufficient Preparation Time`,
-        `Resource Constraints`,
-        `Policy Violations`,
-        `Technical Limitations`,
-        `Incomplete or Incorrect Information`,
-        `Somthing Else`,
-      ]
+  const rejectionReasonList = [
+    `Misalignment with Curriculum`,
+    `External Restrictions`,
+    `Technical or Resource Allocation`,
+    `Inappropriate Content`,
+    `Session Duplication`,
+    `Insufficient Preparation Time`,
+    `Resource Constraints`,
+    `Policy Violations`,
+    `Technical Limitations`,
+    `Incomplete or Incorrect Information`,
+    `Somthing Else`,
+  ];
 
-    const handleSubmit=async(e)=>{
-        e.preventDefault();
-        const feedback_word_count = feedback
-        .replace(/<[^>]*>/g, " ")
-        .trim()
-        .split(/\s+/).length;
-  
-  
-      if (feedback_word_count < 5) {
-        toast.warning(
-          `Please lenghten feedback to 5 or more word! (Currently has ${feedback_word_count} words)`
-        )
-        return;
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const feedback_word_count = feedback
+      .replace(/<[^>]*>/g, " ")
+      .trim()
+      .split(/\s+/).length;
 
-        try {
-            await secureAxios.put(`/RejectSession/${_id}`,{status,reason,feedback,rejection_date:today})
-            toast.success("Successfully rejected this session!")
-            refetch()
-            setOpenModal(false)
-            e.target.reset();
-            if(!incard){
-                navigate(0)
-            }
-
-        } catch (error) {
-            console.error("Failed to Approve this session!", error);
-            toast.error(
-              "Failed to Approve this session!"
-            );
-        }
+    if (feedback_word_count < 5) {
+      toast.warning(
+        `Please lenghten feedback to 5 or more word! (Currently has ${feedback_word_count} words)`
+      );
+      return;
     }
 
-    return (
-        <>
-            <button className={`primaryButton activePrimaryButton !py-2.5  min-w-32 ${incard&&"flex-grow"}`} onClick={()=>setOpenModal(true)}>Reject</button>
-            <dialog id="reject_modal" className="!m-0 modal bg-[rgba(0,0,0,.4)]" open={openModal}>
-                <div className="modal-box bg-black">
-                    <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    <form onSubmit={handleSubmit} className="space-y-3">
-                        <div className="form-control flex-1">
-                            <label htmlFor="reason" className="label w-fit text-white">
-                                <span className="">Why are you rejecting this session</span>
-                            </label>
-                            <select onChange={(e)=>setReason(e.target.value)} value={reason} name="reason" id="reason" className="select select-ghost select-bordered" required>
-                                <option value={''} disabled hidden>Pick Reason</option>
+    try {
+      await secureAxios.put(`/RejectSession/${_id}`, {
+        status,
+        reason,
+        feedback,
+        rejection_date: today,
+      });
+      toast.success("Successfully rejected this session!");
+      refetch();
+      setOpenModal(false);
+      e.target.reset();
+      if (!incard) {
+        navigate(0);
+      }
+    } catch (error) {
+      console.error("Failed to Approve this session!", error);
+      toast.error("Failed to Approve this session!");
+    }
+  };
 
-                                {rejectionReasonList.map((reason, index) => (
-                                    <option key={index} value={reason}>{reason}</option>
-                                ))}
+  return (
+    <>
+      <button
+        className={`primaryButton activePrimaryButton !py-2.5  min-w-32 ${
+          incard && "flex-grow"
+        }`}
+        onClick={() => setOpenModal(true)}
+      >
+        Reject
+      </button>
+      <dialog
+        id="reject_modal"
+        className="!m-0 modal bg-[rgba(0,0,0,.4)]"
+        open={openModal}
+      >
+        <div className="modal-box bg-black">
+          <button
+            onClick={() => setOpenModal(false)}
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </button>
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="form-control flex-1">
+              <label htmlFor="reason" className="label w-fit text-white">
+                <span className="">Why are you rejecting this session</span>
+              </label>
+              <select
+                onChange={(e) => setReason(e.target.value)}
+                value={reason}
+                name="reason"
+                id="reason"
+                className="select select-ghost select-bordered"
+                required
+              >
+                <option value={""} disabled hidden>
+                  Pick Reason
+                </option>
 
-                            </select>
-                        </div>
-                        <div className="form-control flex-1">
-                            <label htmlFor="feedback" className="label w-fit text-white">
-                                <span className="">Your feedback</span>
-                            </label>
-                            <textarea
-                                onChange={(e) => setFeedback(e.target.value)}
-                                value={feedback}
-                                placeholder="Write your feedback"
-                                name="feedback"
-                                id="feedback"
-                                className="textarea textarea-ghost textarea-bordered h-32"
-                                required
-                            />
-                        </div>
-                        <div className="flex pt-4">
-                        <button type="submit" className="primaryButton activePrimaryButton mx-auto">Confirm</button>
-                        </div>
-                        
-
-                    </form>
-                </div>
-                {/* <form method="dialog" className="modal-backdrop">
+                {rejectionReasonList.map((reason, index) => (
+                  <option key={index} value={reason}>
+                    {reason}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-control flex-1">
+              <label htmlFor="feedback" className="label w-fit text-white">
+                <span className="">Your feedback</span>
+              </label>
+              <textarea
+                onChange={(e) => setFeedback(e.target.value)}
+                value={feedback}
+                placeholder="Write your feedback"
+                name="feedback"
+                id="feedback"
+                className="textarea textarea-ghost textarea-bordered h-32"
+                required
+              />
+            </div>
+            <div className="flex pt-4">
+              <button
+                type="submit"
+                className="primaryButton activePrimaryButton mx-auto"
+              >
+                Confirm
+              </button>
+            </div>
+          </form>
+        </div>
+        {/* <form method="dialog" className="modal-backdrop">
                     <button>close</button>
                 </form> */}
-            </dialog>
-        </>
-    );
+      </dialog>
+    </>
+  );
 };
 
 export default RejectModal;

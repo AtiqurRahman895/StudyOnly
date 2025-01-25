@@ -1,26 +1,14 @@
 import TitleSection from "../CommonComponent/TitleSection";
-import useGetUserRole from "../../Hooks/useGetUserRole";
 import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 import Loading from "../AuthenticationComponent/Loading";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-    const navigate=useNavigate()
     const secureAxios=useSecureAxios()
-    const { role } = useGetUserRole();
-    const COLORS = ['#e8092e', '#ffffff', '#797979'];
+    const COLORS = ['#7c3ff2', '#4b57ff', '#675cff'];
     
     const fetchsessionAndMaterialCount=async()=>{
-      if(role==="student"){
-        navigate(`/dashboard/booked_session`)
-        return {}
-      }else if(role==="tutor"){
-        navigate(`/dashboard/my_sessions`)
-        return {}
-      }
         const res=await secureAxios.get("/sessionAndMaterial-counts")
         return res.data
     }
@@ -30,13 +18,6 @@ const Dashboard = () => {
     )
 
     const fetchUserRoleCount=async()=>{
-      if(role==="student"){
-        navigate(`/dashboard/booked_session`)
-        return {}
-      }else if(role==="tutor"){
-        navigate(`/dashboard/my_sessions`)
-        return {}
-      }
       const res=await secureAxios.get("/userRole-counts")
       return res.data
     }
@@ -44,15 +25,7 @@ const Dashboard = () => {
             ['userRole'],
             fetchUserRoleCount,
     )
-    let revarseRole
     
-    if(userRole.roleCounts){
-      revarseRole =userRole.roleCounts.map(data=>{
-        return {name:data.role, value:data.count}
-      })
-      console.log(revarseRole)
-
-    }
 
     if (isError ) {
         console.error(error);
@@ -94,18 +67,17 @@ const Dashboard = () => {
 
                   </div>
 
-                  <div className="flex flex-col md:flex-row gap-6 w-full">
+                  <div className="flex flex-col md:flex-row gap-6 w-full py-5">
 
                     <div className="w-full md:w-[35%] aspect-[2/1]">
-                      <ResponsiveContainer  width="100%" height="100%">
+                      <ResponsiveContainer width="100%" height="100%" >
                         <PieChart>
                           <Pie
-                           data={revarseRole}
+                           data={userRole.roleCounts}
                            cx="50%"
                            cy="50%"
                            labelLine={false}
-                           label={revarseRole}
-                          //  outerRadius={80}
+                           label={userRole.roleCounts}
                            fill="#000000"
                            dataKey="value"
                           >
@@ -120,10 +92,10 @@ const Dashboard = () => {
                     </div>
 
                     <div className="w-full md:w-[65%] aspect-[2/1]">
-                      <ResponsiveContainer  width="100%" height="100%">
+                      <ResponsiveContainer width="100%" height="100%" >
                         <LineChart data={sessionAndMaterial.statusCount} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                          <Line type="monotone" dataKey="count" stroke="#e8092e" />
-                          <CartesianGrid stroke="#e8092e" />
+                          <Line type="monotone" dataKey="count" stroke="#7c3ff2" />
+                          <CartesianGrid stroke="#7c3ff2" />
                           <XAxis dataKey="status" />
                           <YAxis />
                           <Tooltip />

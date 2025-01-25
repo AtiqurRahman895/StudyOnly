@@ -11,7 +11,7 @@ import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const BookedSessions = () => {
     const searchQuery = UseUrlQuery();
-    const {loading,sessions,isError,error}=UseGetBookedSessions()
+    const {loading,sessions,refetch,isError,error}=UseGetBookedSessions()
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 
@@ -49,7 +49,7 @@ const BookedSessions = () => {
                     :
                     (   <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
-                                <SessionCard key={index} session={session}/>
+                                <SessionCard key={index} session={session} refetch={refetch} />
                             ))}
                         </Masonry>
                     )

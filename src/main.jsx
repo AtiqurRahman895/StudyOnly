@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
@@ -32,6 +32,8 @@ import BookedSessions from "./components/BookedSessionsComponent/BookedSessions"
 import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
 import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
 import AllUsers from "./components/AllUsersComponent/AllUsers";
+import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
+const role  = localStorage.getItem("role")
 
 const router = createBrowserRouter([
   {
@@ -88,14 +90,15 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardBase />,
     errorElement: <ErrorPage />,
-
+    
     children: [
       {
         path: "/dashboard",
         element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
+          <DashboardRoute>
+              <Dashboard />
+          </DashboardRoute>
+          
         ),
       },
       {

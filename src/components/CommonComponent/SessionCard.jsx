@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UseGetAllSession from "../../Hooks/UseGetAllSession";
+// import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import { normalAxios } from "../../Hooks/useNormalAxios";
 import Timer from "./Timer";
 import { BiSolidBadgeDollar } from "react-icons/bi";
@@ -11,10 +11,10 @@ import SessionAdminButtonsSection from "../SessionComponent/SessionAdminButtonsS
 import { AuthContext } from "../../Provider/AuthProvider";
 import SessionTutorButtonsSection from "../SessionComponent/SessionTutorButtonsSection";
 
-const SessionCard = ({session}) => {
+const SessionCard = ({session,refetch}) => {
   const {role}=useContext(TransferLists)
   const {user}=useContext(AuthContext)
-  const {refetch}=UseGetAllSession()
+  // const {refetch}=UseGetAllSession()
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
   const handleTimeOut=(statusToChange)=>{
