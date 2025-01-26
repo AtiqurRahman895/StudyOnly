@@ -50,7 +50,7 @@ const Header = () => {
             (user?.email)&&(
               <label
                 htmlFor="navSideBar" aria-label="open sidebar"
-                className="p-1.5 border border-custom-half-primary rounded-md lg:hidden"
+                className="p-1.5 border border-custom-primary rounded-md lg:hidden"
               >
                 <svg
                   className="h-5 w-5"
@@ -61,7 +61,7 @@ const Header = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
+                    strokeWidth="4"
                     d="M4 6h16M4 12h8m-8 6h16"
                   />
                 </svg>
@@ -74,7 +74,7 @@ const Header = () => {
             to={"/"}
             className={`btn btn-ghost hover:bg-transparent font-fugaz text-3xl text-custom-primary hover:text-custom-primary uppercase`}
           >
-            {/* <img src={logo} alt="Discount Pro" className="w-[100px]"/> */}
+            <img src={"https://i.ibb.co.com/nQ396hD/study-only-logo.png"} alt="logo" className="w-[45px] hidden lg:block"/>
             Study Only
           </Link>
         </div>

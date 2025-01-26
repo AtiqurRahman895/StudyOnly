@@ -24,7 +24,10 @@ const AllTutorsSection = () => {
     return (
         <section className="pb-14">
             <div className=" space-y-12 text-center">
-            <h2>Our Expert Tutors</h2>
+                <div className="sectionHeaderWidth text-center">
+                    <h3 className="text-custom-primary">Meet Our Expert Tutors</h3>
+                    <b>Our tutors bring years of experience and passion to help you succeed. Find a tutor who can guide.</b>
+                </div>
             {loading ? (
                 <Loading />
             ) : (
@@ -43,7 +46,7 @@ const AllTutorsSection = () => {
                         >
                             {
                                 tutors.map((tutor, index) => (
-                                    <div key={index} className="text-center mx-8">
+                                    <div key={index} className="text-center mx-8 lg:mx-14 xl:mx-18">
                                         <div className="bg-white max-w-40 md:max-w-56 aspect-square rounded-full overflow-hidden">
                                             <img src={tutor.image||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt={`${tutor.name}'s image`} className="" />
                                         </div>

@@ -8,7 +8,7 @@ const TitleInputSection = ({ title, setTitle, id="title", forModal=false }) => {
     titleText="Session Title?"
   }
   return (
-    <div className={`${!forModal&&"sectionHeaderWidth"} text-center input-box flex justify-center relative`}>
+    <div className={`text-center input-box flex justify-center relative`}>
       <div className="input-field form-control min-w-[250px] absolute focus-within:static scale-0 focus-within:scale-100">
         <input
           onChange={(e) => setTitle(e.target.value)}

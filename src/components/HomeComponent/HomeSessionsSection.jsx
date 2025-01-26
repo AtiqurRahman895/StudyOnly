@@ -6,6 +6,9 @@ import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
+import { Link } from "react-router-dom";
+import { GoChevronRight } from "react-icons/go";
+import { MdDoubleArrow } from "react-icons/md";
 
 const HomeSessionsSection = () => {
     const normalAxios=useNormalAxios()
@@ -38,9 +41,10 @@ const HomeSessionsSection = () => {
     return (
         <section className="">
             <div className="container space-y-12">
-                <h3 className="text-center text-custom-primary">
-                    Latest Study sessions
-                </h3>
+                <div className="sectionHeaderWidth text-center">
+                    <h3 className="text-custom-primary">Explore the Latest Study Sessions</h3>
+                    <b>Discover fresh study sessions from expert tutors to stay on top of your learning.</b>
+                </div>
                 {
                 (loading) ? (<Loading/>):(
 
@@ -49,11 +53,19 @@ const HomeSessionsSection = () => {
                     )
                     :
                     (   
+                    <div className="space-y-12">
                         <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
                                 <SessionCard key={index} session={session} refetch={refetch} />
                             ))}
                         </Masonry>
+
+                        <div className="mt-2 flex justify-center">
+                            <Link to={"/dashboard/all_sessions"} type="button" className="primaryButton activePrimaryButton flex items-center gap-[2px] hover:gap-[4px]" >
+                                View More <MdDoubleArrow className="text-[18px]"/>
+                            </Link>
+                        </div>
+                    </div>
                     )
                 )  
                 }

@@ -19,6 +19,7 @@ export default {
       },
       screens: {
         'xs': '490px',
+        'xss': '355px',
       },
       fontFamily: {
         'manrope': ["Manrope", 'sans-serif'],

@@ -38,7 +38,7 @@ const DashboardHeader = () => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="4"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
