@@ -55,7 +55,7 @@ const AllNotes = () => {
         // throw error;
     }
     return (
-        <section className="">
+        <section className="lg:pb-10">
             <TitleSection title={"All Notes"} />
             <div className="space-y-10">
                 <h3 className="text-custom-primary sectionHeaderWidth text-center">

@@ -22,7 +22,7 @@ const DashboardHeader = () => {
     <header ref={headerRef}
     className={`text-white top-0 z-50 w-full py-2`}
   >
-      <div className={`navbar container`}>
+      <div className={`navbar`}>
         <div className="navbar-start">
           <label
             htmlFor="DashboardNavSideBar"

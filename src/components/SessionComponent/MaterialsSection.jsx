@@ -3,7 +3,7 @@ import useGetSessionMaterials from "../../Hooks/useGetSessionMaterials";
 import Loading from "../AuthenticationComponent/Loading";
 import { useEffect, useState } from "react";
 import useScreenWidth from "../../Hooks/useScreenWidth";
-import NotFound from "../CommonComponent/NotFound";
+import notFoundImg from "../../assets/noMaterial.svg"
 import MaterialCard from "./MaterialCard";
 
 const MaterialsSection = ({session_id}) => {
@@ -34,7 +34,12 @@ const MaterialsSection = ({session_id}) => {
                 {
                     (loading) ? (<Loading/>) :(
                         (materials?.length === 0)? (
-                            <NotFound  NotFoundText={"Tutor has not added any materials yet!"}/>
+                            <div className="my-20 grid justify-items-center gap-3">
+                                <img src={notFoundImg} alt={`not available`} className="w-[200px]" />
+                                <h6 className="font-extrabold text-center text-custom-primary">
+                                {"Tutor has not added any materials yet!"}
+                                </h6>
+                            </div>
                         ):
                         (
                             <Masonry columnsCount={columnsCount} gutter="20px">

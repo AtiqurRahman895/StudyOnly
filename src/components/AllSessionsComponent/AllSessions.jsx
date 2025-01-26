@@ -31,7 +31,7 @@ const AllSessions = () => {
     }
     
     return (
-        <main className="mt-8">
+        <main className="lg:pb-10 mt-8">
             <TitleSection title={"All Sessions"} />
 
             <section className="">

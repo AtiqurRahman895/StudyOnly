@@ -103,7 +103,7 @@ const CreatSession = () => {
   };
 
   return (
-    <section className="pb-8">
+    <section className="lg:pb-10">
       <TitleSection title={"Creat Session"} />
 
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">

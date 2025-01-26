@@ -10,7 +10,7 @@ export default {
       center: true,
       padding: {
         DEFAULT: '5%',
-        sm: '1rem',
+        xs: '1rem',
       },
     },
     extend: {

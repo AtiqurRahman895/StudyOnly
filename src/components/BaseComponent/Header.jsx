@@ -44,7 +44,7 @@ const Header = () => {
       } text-white top-0 z-50 w-full py-2`}
     >
       <div className={`navbar container`}>
-        <div className="navbar-start">
+        <div className="navbar-start space-x-4">
 
           {
             (user?.email)&&(
@@ -69,10 +69,9 @@ const Header = () => {
             )
           }
 
-
           <Link
             to={"/"}
-            className={`btn btn-ghost hover:bg-transparent font-fugaz text-3xl text-custom-primary hover:text-custom-primary uppercase`}
+            className={`btn btn-ghost hover:bg-transparent font-fugaz pl-0 text-3xl text-custom-primary hover:text-custom-primary uppercase`}
           >
             <img src={"https://i.ibb.co.com/nQ396hD/study-only-logo.png"} alt="logo" className="w-[45px] hidden lg:block"/>
             Study Only

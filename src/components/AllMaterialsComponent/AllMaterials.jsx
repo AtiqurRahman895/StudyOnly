@@ -6,7 +6,7 @@ const AllMaterials = () => {
     const role=localStorage.getItem("role")
 
     return (
-        <main className="mt-8">
+        <main className="lg:pb-10 mt-8">
             <TitleSection title={"All materials"} />
 
             {

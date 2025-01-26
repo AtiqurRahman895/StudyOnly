@@ -135,7 +135,7 @@ const ResubmitSession = () => {
       });
   };
   return (
-    <section className="">
+    <section className="lg:pb-10">
       <TitleSection title={"Resumbit Session"} />
 
       <form onSubmit={handleSubmit} className="space-y-6">

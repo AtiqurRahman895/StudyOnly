@@ -33,7 +33,7 @@ const BookedSessions = () => {
     }
     
     return (
-        <main className="mt-8">
+        <main className="lg:pb-10 mt-8">
             <TitleSection title={"Booked Sessions"} />
 
             <section className="space-y-12">

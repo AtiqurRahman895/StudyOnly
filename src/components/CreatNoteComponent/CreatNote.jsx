@@ -48,7 +48,7 @@ const CreatNote = () => {
     }
     
     return (
-        <section className="">
+        <section className="lg:pb-10">
             <TitleSection title={"Creat Note"} />
             <div className="container hero flex items-center justify-center">
                 <div className="fromWrapper !space-y-8 max-w-lg">

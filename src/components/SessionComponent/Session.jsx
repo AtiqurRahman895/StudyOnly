@@ -33,7 +33,7 @@ const Session = () => {
 
 
   return (
-    <main className="space-y-10">
+    <main className="lg:pb-10 space-y-10">
       <TitleSection title={`Session: ${_id}`}/>
       <SessionDetailsSection session={session} refetch={refetch}/>
       {
