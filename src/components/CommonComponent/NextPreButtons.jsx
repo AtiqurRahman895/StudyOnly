@@ -24,17 +24,17 @@ const NextPreButtons = ({limit,totalContents}) => {
     const timer = setTimeout(() => {
       pageRef.current.scrollTo(0, 0);
       window.scrollTo(0,0)
-    }, 100); 
+    }, 200); 
     return () => clearTimeout(timer); // Cleanup the timeout
   }, [searchQuery, pageNo]);
 
   if(totalContents){
     return (
       <div className="flex justify-center items-center gap-4">
-          <button type="button" onClick={handlePreButton} disabled={pageNo<=1} className={`${pageNo<=1?"opacity-50 cursor-not-allowed":"activePrimaryButton"} primaryButton`}>
-              Pre
+          <button type="button" onClick={handlePreButton} disabled={pageNo<=1} className={`${pageNo<=1?"opacity-50 cursor-not-allowed":""} primaryButton`}>
+              Previous
           </button>
-          <button type="button" onClick={handleNextButton} disabled={pageNo>=maxPage} className={`${pageNo>=maxPage?"opacity-50 cursor-not-allowed":"activePrimaryButton"} primaryButton`}>
+          <button type="button" onClick={handleNextButton} disabled={pageNo>=maxPage} className={`${pageNo>=maxPage?"opacity-50 cursor-not-allowed":""} primaryButton`}>
               Next
           </button>
       </div>

@@ -52,7 +52,7 @@ const AllMaterialsForAdminAndTutor = () => {
                 <h3 className="text-custom-primary sectionHeaderWidth text-center">
                     All Materials
                 </h3>
-                <TopScrollBar sessionCount={sessions?.length} showAllStatusName={"all"} />
+                <TopScrollBar sessionCount={adminTutorSessionsCount} showAllStatusName={"all"} />
             </div>
             {
             (loading) ? (<Loading/>):(
