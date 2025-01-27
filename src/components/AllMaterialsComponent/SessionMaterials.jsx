@@ -15,6 +15,7 @@ const SessionMaterials = ({session,lastSession=false}) => {
     const {user}=useContext(AuthContext)
     const [columnsCount, setColumnsCount] = useState();
     
+
     useEffect(() => {
         if (screenWidth >= 1280) {
             setColumnsCount(3);

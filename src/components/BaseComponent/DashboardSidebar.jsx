@@ -2,20 +2,20 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import NavMenus from "./NavMenus";
 import DashboardHeader from "./DashboardHeader";
 import DashboardMenus from "./DashboardMenus";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const DashboardSideBar = () => {
   const location = useLocation();
-  const drawerRef=useRef(null)
-
+  const {pageRef}=useContext(TransferLists)
   useEffect(() => {
     // console.log("works")
-    drawerRef.current.scrollTo(0, 0); // Scroll to the top of the page
+    pageRef.current.scrollTo(0, 0); // Scroll to the top of the page
   }, [location.pathname]); // Trigger when the route changes
 
   return (
     <section>
-      <div ref={drawerRef} className="container drawer lg:drawer-open lg:gap-x-6 lg:h-[100svh] lg:hide-scrollbar overflow-y-scroll">
+      <div ref={pageRef} className="container drawer lg:drawer-open lg:gap-x-6 lg:h-[100svh] lg:hide-scrollbar overflow-y-scroll">
         <input
           id="DashboardNavSideBar"
           type="checkbox"

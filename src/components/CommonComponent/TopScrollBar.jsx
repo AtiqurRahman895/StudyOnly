@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
-  const searchQuery = UseUrlQuery();
+  const {searchQuery} = UseUrlQuery();
   const navigate =useNavigate()
   const [statusList, setStatusList] = useState([]);
   const [status, setStatus] = useState([]);
@@ -35,7 +35,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
 
   const handleSearchInput = (e) => {
     e.preventDefault();
-    navigate(`?searchQuery=${e.target.searchInput.value}`);
+    navigate(`?searchQuery=${e.target.searchInput.value}&page=1`);
     e.target.reset();
   };
 
@@ -82,7 +82,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
             {statusList.map((statusName, index) => (
               <button
                 key={index}
-                onClick={() => navigate(`?searchQuery=${statusName}`)}
+                onClick={() => navigate(`?searchQuery=${statusName}&page=1`)}
                 className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
                 {statusName}

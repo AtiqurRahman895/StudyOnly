@@ -18,7 +18,7 @@ const useHostImage = () => {
         })
         .then((result)=>{
             // console.log(result.data.url)
-            setImage(result.data.url)
+            setImage(result.data.secure_url)
             // setGoodImage(result.data.url)
         })
         .catch((err)=>{

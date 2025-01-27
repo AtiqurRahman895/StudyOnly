@@ -5,13 +5,31 @@ import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import SessionMaterials from "./SessionMaterials";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
+import { useQuery } from "@tanstack/react-query";
+import useSecureAxios from "../../Hooks/useSecureAxios";
+import { useMemo } from "react";
+import NextPreButtons from "../CommonComponent/NextPreButtons";
 
 const AllMaterialsForAdminAndTutor = () => {
-    const {loading,sessions,isError,error}=UseGetTutorSessions()
-    const searchQuery = UseUrlQuery();
+    const secureAxios= useSecureAxios()
+    const limit=4
+    const {loading,sessions,isError,error}=UseGetTutorSessions(limit)
+    const {searchQuery} = UseUrlQuery();
     const role=localStorage.getItem("role")
     const [NotFoundText, setNotFoundText] = useState("");
 
+    const memorizedSearchQuery=useMemo(()=> searchQuery,[searchQuery])
+    const fetchAdminTutorSessionCount=async()=>{
+        const params = {
+            query:memorizedSearchQuery == "All"? {}: { $text: { $search: memorizedSearchQuery } },
+        };
+        const res=await secureAxios.get("/tutorSessions-count", {params})
+        return res.data
+    }
+    const {data:adminTutorSessionsCount=0}=useQuery(
+            ['adminTutorSessionsCount',memorizedSearchQuery],
+            fetchAdminTutorSessionCount,
+    )
 
     useEffect(() => {
         if (searchQuery==="All" && role === "admin") {
@@ -51,6 +69,8 @@ const AllMaterialsForAdminAndTutor = () => {
                 )
             )  
             }
+            <NextPreButtons limit={limit} totalContents={adminTutorSessionsCount} />
+
         </section>
 
 

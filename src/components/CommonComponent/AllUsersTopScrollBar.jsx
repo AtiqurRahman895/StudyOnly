@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllUsersTopScrollBar = ({ userCount=0 }) => {
-  const searchQuery = UseUrlQuery();
+  const {searchQuery} = UseUrlQuery();
   const navigate =useNavigate()
   const [roleList, setRoleList] = useState([]);
   const [userRole, setUserRole] = useState([]);

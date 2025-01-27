@@ -6,9 +6,8 @@ import SessionMaterials from "./SessionMaterials";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const AllMaterialsForStudent = () => {
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
     const {loading,sessions,isError,error}=UseGetBookedSessions()
-
 
     if (isError ) {
         console.error(error);

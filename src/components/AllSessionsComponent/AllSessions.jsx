@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
@@ -8,14 +8,32 @@ import useScreenWidth from "../../Hooks/useScreenWidth";
 import Masonry from "react-responsive-masonry";
 import SessionCard from "../CommonComponent/sessionCard";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
+import NextPreButtons from "../CommonComponent/NextPreButtons";
+import { useQuery } from "@tanstack/react-query";
+import useSecureAxios from "../../Hooks/useSecureAxios";
 
 const AllSessions = () => {
-    const {loading,sessions,refetch,isError,error}=UseGetAllSession()
-    const searchQuery = UseUrlQuery();
+    const secureAxios= useSecureAxios()
+    const limit=4
+    const {loading,sessions,refetch,isError,error}=UseGetAllSession(limit)
+    const {searchQuery} = UseUrlQuery();
     const role=localStorage.getItem("role")
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
+    
 
+    const memorizedSearchQuery=useMemo(()=> searchQuery,[searchQuery])
+    const fetchSessionCount=async()=>{
+        const params = {
+            query:memorizedSearchQuery == "All"? {}: { $text: { $search: memorizedSearchQuery } },
+        };
+        const res=await secureAxios.get("/sessions-count", {params})
+        return res.data
+    }
+    const {data:sessionsCount=0}=useQuery(
+            ['sessionsCount',memorizedSearchQuery],
+            fetchSessionCount,
+    )
 
     useEffect(() => {
          if (screenWidth >= 640) {
@@ -41,7 +59,7 @@ const AllSessions = () => {
                         <h3 className="text-custom-primary sectionHeaderWidth text-center">
                             All Sessions
                         </h3>
-                        <TopScrollBar sessionCount={sessions?.length} showAllStatusName={role==="admin"&&"all"} />
+                        <TopScrollBar sessionCount={sessionsCount} showAllStatusName={role==="admin"&&"all"} />
                     </div>
                     {
                         (loading) ? (<Loading/>):(
@@ -59,6 +77,7 @@ const AllSessions = () => {
                             )
                         )  
                     }
+                    <NextPreButtons limit={limit} totalContents={sessionsCount} />
                 </div>
             </section>
 

@@ -10,7 +10,7 @@ import SessionCard from "../CommonComponent/sessionCard";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const BookedSessions = () => {
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
     const {loading,sessions,refetch,isError,error}=UseGetBookedSessions()
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();

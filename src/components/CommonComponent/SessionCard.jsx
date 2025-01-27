@@ -1,5 +1,4 @@
 import { useContext } from "react";
-// import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import { normalAxios } from "../../Hooks/useNormalAxios";
 import Timer from "./Timer";
 import { BiSolidBadgeDollar } from "react-icons/bi";
@@ -14,7 +13,6 @@ import SessionTutorButtonsSection from "../SessionComponent/SessionTutorButtonsS
 const SessionCard = ({session,refetch}) => {
   const {role}=useContext(TransferLists)
   const {user}=useContext(AuthContext)
-  // const {refetch}=UseGetAllSession()
   const {_id,image,title,session_description,status,registration_fee,tutor,tutor_email,registration_start_date,registration_end_date}=session
 
   const handleTimeOut=(statusToChange)=>{
@@ -26,15 +24,6 @@ const SessionCard = ({session,refetch}) => {
           console.error("Failed to update session status:", error);
       })
   }
-
-  // let timer=(
-  //   if(status !== "Closed" && status !== "Rejected"){
-  //     if(status == "Ongoing"){
-  //       <Timer date={registration_end_date} handleTimeOut={handleTimeOut} status={"Closed"}/>
-  //     }else{
-  //       <Timer date={registration_start_date} handleTimeOut={handleTimeOut} status={"Ongoing"}/>
-  //     }
-  //   })
   
   return (
     <div className="space-y-5 mb-6">

@@ -9,7 +9,7 @@ import { MdEditSquare } from "react-icons/md";
 
 const AllUsers = () => {
     const {loading,users,refetch,isError,error}=UseGetAllUsers()
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
 
     if (isError ) {
         console.error(error);

@@ -11,7 +11,7 @@ import UseUrlQuery from "../../Hooks/UseUrlQuery";
 
 const MySessions = () => {
     const {loading,sessions,refetch,isError,error}=UseGetTutorSessions()
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
     const screenWidth = useScreenWidth();
     const [columnsCount, setColumnsCount] = useState();
 

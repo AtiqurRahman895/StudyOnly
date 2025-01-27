@@ -67,7 +67,7 @@ const UpdateMaterialModal = ({ material, index, refetch }) => {
           >
             ✕
           </button>
-          <form onSubmit={handleSubmit} className="space-y-4 pt-6">
+          <form onSubmit={handleSubmit} className="space-y-4 pt-6 overflow-hidden">
             <ImageInputSection
               image={image}
               setImage={setImage}

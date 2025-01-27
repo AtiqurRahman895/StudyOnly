@@ -6,7 +6,7 @@ import UseUrlQuery from "./UseUrlQuery";
 
 const UseGetBookedSessions = () => {
     // const {ids}=useGetBookedSessionsIds()
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
     const secureAxios=useSecureAxios()
 
     const fetchBookedSessions=async()=>{

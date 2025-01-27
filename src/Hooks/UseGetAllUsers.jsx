@@ -4,7 +4,7 @@ import UseUrlQuery from './UseUrlQuery';
 
 
 const UseGetAllUsers = () => {
-    const searchQuery = UseUrlQuery();
+    const {searchQuery} = UseUrlQuery();
     const secureAxios= useSecureAxios()
     // console.log(searchQuery)
 
