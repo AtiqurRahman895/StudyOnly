@@ -16,13 +16,12 @@ import SessionReviewRatingSection from "./SessionReviewRatingSection";
 
 const Session = () => {
   const { _id } = useParams();
-  const { session, loading, refetch,isError,error } = useGetSession(_id);
-  const {role}=useContext(TransferLists)
-  const {user}=useContext(AuthContext)
-  const {booked}=useSessionBookedOrNot(_id)
+  const { session, loading, refetch, isError, error } = useGetSession(_id);
+  const { role } = useContext(TransferLists);
+  const { user } = useContext(AuthContext);
+  const { booked } = useSessionBookedOrNot(_id);
 
-
-  if (isError ) {
+  if (isError) {
     console.error(error);
     throw error;
   }
@@ -31,50 +30,31 @@ const Session = () => {
     return <Loading />;
   }
 
-
   return (
-    <main className="lg:pb-10 space-y-10">
-      <TitleSection title={`Session: ${_id}`}/>
-      <SessionDetailsSection session={session} refetch={refetch}/>
-      {
-        (role==="admin") &&(
-          <SessionAdminButtonsSection session={session} refetch={refetch}/>
-        )
-      }
-      {
-        (session.status==="Rejected" || session.status==="Pending") &&(
-        
-          (role ==="tutor" && session.tutor_email===user?.email) &&(
-            <RejectionReasons session_id={session._id} />
-          )
-        )
-      }
-      {
-        (role==="admin") &&(
+    <main className=" space-y-10">
+      <TitleSection title={`Session: ${_id}`} />
+      <SessionDetailsSection session={session} refetch={refetch} />
+      {role === "admin" && (
+        <SessionAdminButtonsSection session={session} refetch={refetch} />
+      )}
+      {(session.status === "Rejected" || session.status === "Pending") &&
+        role === "tutor" &&
+        session.tutor_email === user?.email && (
           <RejectionReasons session_id={session._id} />
-        )
-        
-      }
-      {
-        (role!=="admin" && role!=="tutor" && !booked) &&(
-          <SessionStudentButtonsSection session={session} refetch={refetch}/>
-        )
-        
-      }
-      {
-        (role==="tutor" && session.tutor_email===user?.email) &&(
-          <SessionTutorButtonsSection session={session}/>
-        ) 
-      }
-      {
-        (role==="admin" || session.tutor_email===user?.email || booked) &&(
-          <MaterialsSection session_id={session._id}/>
-        )
-      }
+        )}
+      {role === "admin" && <RejectionReasons session_id={session._id} />}
+      {role !== "admin" && role !== "tutor" && !booked && (
+        <SessionStudentButtonsSection session={session} refetch={refetch} />
+      )}
+      {role === "tutor" && session.tutor_email === user?.email && (
+        <SessionTutorButtonsSection session={session} />
+      )}
+      {(role === "admin" || session.tutor_email === user?.email || booked) && (
+        <MaterialsSection session_id={session._id} />
+      )}
       <SessionReviewRatingSection booked={booked} session_id={session._id} />
-      
     </main>
-  )
-}
+  );
+};
 
 export default Session;

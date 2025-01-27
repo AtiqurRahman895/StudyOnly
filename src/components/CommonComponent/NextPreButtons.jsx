@@ -30,7 +30,7 @@ const NextPreButtons = ({limit,totalContents}) => {
 
   if(totalContents){
     return (
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex justify-center items-center gap-4 pt-8">
           <button type="button" onClick={handlePreButton} disabled={pageNo<=1} className={`${pageNo<=1?"opacity-50 cursor-not-allowed":""} primaryButton`}>
               Previous
           </button>

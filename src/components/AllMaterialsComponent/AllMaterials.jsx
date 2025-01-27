@@ -3,23 +3,19 @@ import AllMaterialsForAdminAndTutor from "./AllMaterialsForAdminAndTutor";
 import AllMaterialsForStudent from "./AllMaterialsForStudent";
 
 const AllMaterials = () => {
-    const role=localStorage.getItem("role")
+  const role = localStorage.getItem("role");
 
-    return (
-        <main className="lg:pb-10 mt-8">
-            <TitleSection title={"All materials"} />
+  return (
+    <main className=" mt-8">
+      <TitleSection title={"All materials"} />
 
-            {
-                (role==="student")?(
-                    <AllMaterialsForStudent />
-                ):(
-                    <AllMaterialsForAdminAndTutor />
-                )
-            }
-
-        </main>
-
-    )
+      {role === "student" ? (
+        <AllMaterialsForStudent />
+      ) : (
+        <AllMaterialsForAdminAndTutor />
+      )}
+    </main>
+  );
 };
 
 export default AllMaterials;

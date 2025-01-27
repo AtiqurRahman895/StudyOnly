@@ -19,7 +19,7 @@ const CreatSession = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const secureAxios = useSecureAxios();
   const { duration, calculateDuration } = useClassDuration();
-  const formRef= useRef(null)
+  const formRef = useRef(null);
 
   const [image, setImage] = useState();
   const tutor = user?.displayName;
@@ -50,7 +50,6 @@ const CreatSession = () => {
       .replace(/<[^>]*>/g, " ")
       .trim()
       .split(/\s+/).length;
-
 
     if (session_description_word_count < 10) {
       toast.warning(
@@ -83,17 +82,18 @@ const CreatSession = () => {
 
     // console.log(credentials);
 
-    secureAxios.post("/creatSession", credentials)
+    secureAxios
+      .post("/creatSession", credentials)
       .then(() => {
-        formRef.current.reset()
-        setImage(null)
-        setTitle('')
-        setSession_description('')
-        setRegistration_start_date('')
-        setRegistration_end_date('')
-        setClass_start_time('')
-        setClass_end_time('')
-        setClassDuration(null)
+        formRef.current.reset();
+        setImage(null);
+        setTitle("");
+        setSession_description("");
+        setRegistration_start_date("");
+        setRegistration_end_date("");
+        setClass_start_time("");
+        setClass_end_time("");
+        setClassDuration(null);
         toast.success("You have successfully created a Session!");
       })
       .catch((error) => {
@@ -103,7 +103,7 @@ const CreatSession = () => {
   };
 
   return (
-    <section className="lg:pb-10">
+    <section className="">
       <TitleSection title={"Creat Session"} />
 
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -113,7 +113,6 @@ const CreatSession = () => {
         <SessionDescriptionSection
           session_description={session_description}
           setSession_description={setSession_description}
-          
         />
 
         {/* tutor and Date */}
@@ -133,13 +132,11 @@ const CreatSession = () => {
             <RegistrationStartDateSection
               registration_start_date={registration_start_date}
               setRegistration_start_date={setRegistration_start_date}
-              
             />
             <RegistrationEndDateSection
               registration_start_date={registration_start_date}
               registration_end_date={registration_end_date}
               setRegistration_end_date={setRegistration_end_date}
-              
             />
           </div>
 
@@ -147,24 +144,21 @@ const CreatSession = () => {
             <ClassStartTimeSection
               class_start_time={class_start_time}
               setClass_start_time={setClass_start_time}
-              
             />
             <ClassEndTimeSection
               class_start_time={class_start_time}
               class_end_time={class_end_time}
               setClass_end_time={setClass_end_time}
-              
             />
           </div>
 
           <div className="grid justify-end gap-y-4">
-            {
-              classDuration&&
+            {classDuration && (
               <div className="flex gap-2">
-                  <b className="text-custom-primary">Class Duration:</b>
-                  <p className="">{classDuration}</p>
+                <b className="text-custom-primary">Class Duration:</b>
+                <p className="">{classDuration}</p>
               </div>
-            }
+            )}
 
             <div className="flex gap-2">
               <b className="text-custom-primary">Registration fee:</b>

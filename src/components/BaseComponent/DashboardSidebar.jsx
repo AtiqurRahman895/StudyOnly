@@ -15,16 +15,20 @@ const DashboardSideBar = () => {
 
   return (
     <section>
-      <div ref={pageRef} className="container drawer lg:drawer-open lg:gap-x-6 lg:h-[100svh] lg:hide-scrollbar overflow-y-scroll">
+      <div ref={pageRef} className="lg:container drawer lg:drawer-open lg:gap-x-6 lg:h-svh lg:hide-scrollbar lg:overflow-y-auto">
         <input
           id="DashboardNavSideBar"
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content pb-8 min-h-svh">
+
+        <div className="drawer-content ">
           <DashboardHeader />
-          <Outlet />
+          <div className="container lg:max-w-full lg:px-0 pb-10">
+            <Outlet />
+          </div>
         </div>
+
         <div className="drawer-side z-50 lg:bg-custom-primary rounded-md">
           <label
             htmlFor="DashboardNavSideBar"
@@ -32,7 +36,7 @@ const DashboardSideBar = () => {
             className="drawer-overlay"
           ></label>
 
-          <div className="bg-custom-primary text-white p-4 lg:bg-transparent min-h-svh w-[70svw] xs:w-80 sm:w-96 lg:w-80 flex flex-col justify-between gap-8">
+          <div className="bg-custom-primary text-white p-4 lg:bg-transparent min-h-screen w-[70svw] xs:w-80 sm:w-96 lg:w-80 flex flex-col justify-between gap-8">
             <div className="text-center">
               <Link
                 to={"/"}

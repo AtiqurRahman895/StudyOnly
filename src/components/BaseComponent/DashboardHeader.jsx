@@ -18,11 +18,26 @@ const DashboardHeader = () => {
     window.scrollTo(0, 0);
   }, [path]);
 
+  useEffect(() => {
+    const changeHeaderColor = () => {
+      setScrollY(window.scrollY);
+      if (window.scrollY >= 16) {
+        document;
+        headerRef.current?.classList.add(`headerSectionAnimation`);
+      } else {
+        document;
+        headerRef.current?.classList.remove(`headerSectionAnimation`);
+      }
+    };
+
+    window.addEventListener(`scroll`, changeHeaderColor);
+  }, []);
+
   return (
     <header ref={headerRef}
-    className={`text-white top-0 z-50 w-full py-2`}
+    className={`text-white top-0 w-full py-2 sticky lg:static z-40`}
   >
-      <div className={`navbar`}>
+      <div className={`navbar container`}>
         <div className="navbar-start">
           <label
             htmlFor="DashboardNavSideBar"
