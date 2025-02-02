@@ -24,7 +24,7 @@ const DashboardSideBar = () => {
 
         <div className="drawer-content ">
           <DashboardHeader />
-          <div className="container lg:max-w-full lg:px-0 pb-10">
+          <div className="container lg:max-w-full min-h-screen lg:px-0 pb-10">
             <Outlet />
           </div>
         </div>

@@ -1,11 +1,10 @@
 import { TransferLists } from "../../Contexts/TransferLists";
 import DashboardSideBar from "./DashboardSidebar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
-import Loading from "../AuthenticationComponent/Loading";
 import { useRef } from "react";
 
 const DashboardBase = () => {
-  const { loading,role } = useGetUserRole();
+  const { role } = useGetUserRole();
   const pageRef=useRef(null)
 
   const value = {
@@ -16,14 +15,8 @@ const DashboardBase = () => {
   return (
     <>
       <TransferLists.Provider value={value}>
-      {
-        (loading)?(<Loading />):(
-          <>
-            <DashboardSideBar />
-            {/* <Footer /> */}
-          </>
-        )
-      }
+        <DashboardSideBar />
+        {/* <Footer /> */}
       </TransferLists.Provider>
     </>
   );

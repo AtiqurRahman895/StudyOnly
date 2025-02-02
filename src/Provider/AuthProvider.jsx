@@ -18,7 +18,7 @@ import useNormalAxios from "../Hooks/useNormalAxios";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);  
   const [loading, setLoading] = useState(true);
   const normalAxios= useNormalAxios()
 
@@ -95,6 +95,8 @@ const AuthProvider = ({ children }) => {
       unsubscribeUser();
     };
   }, []);
+
+
 
   const value = {
     user,

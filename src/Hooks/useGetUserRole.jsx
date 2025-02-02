@@ -8,16 +8,13 @@ import { useQuery } from "@tanstack/react-query";
 const useGetUserRole = () => {
     const {logoutUser,user} = useContext(AuthContext);
     const navigate = useNavigate();
-    // const [role, setRole] = useState();
   
     const token=localStorage.getItem("token")
     const email=localStorage.getItem("email")
   
     const fetchUserRole= async () => {
       let role="guest"
-      // console.log(email)
       if (!email || !token) {
-        // setRole("guest")
         localStorage.setItem("role","guest")
         return role
       }else{
@@ -26,7 +23,6 @@ const useGetUserRole = () => {
           email,
         }})
         if (res.data?.role) {
-          // console.log(res.data.role)
           role= res.data.role
           localStorage.setItem("role",res.data.role)
           return role
