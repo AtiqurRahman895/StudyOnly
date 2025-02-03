@@ -5,7 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 export const secureNormalAxios = axios.create({
-    baseURL: 'https://ph-12-assignment-server.vercel.app',
+    baseURL: 'https://study-only-server.vercel.app',
     // baseURL: 'http://localhost:8080',
 });
 

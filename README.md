@@ -1,5 +1,5 @@
 # Study Only
-**📍 Live Website Link**: [https://ph-12th-assignment.web.app/](https://ph-12th-assignment.web.app/)  
+**📍 Live Website Link**: [https://study-only-atiq.web.app/](https://study-only-atiq.web.app/)  
 
 Welcome to **Study Only**, a collaborative study platform where students, tutors, and administrators can manage and engage in study sessions, share resources, and enhance their learning experience.
 

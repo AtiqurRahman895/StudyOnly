@@ -16,7 +16,7 @@ const useGetUserRole = () => {
       let role=localStorage.getItem("role") || "guest"
 
       if(userLoading){
-        return
+        return role
       }
 
       if (!user?.email || !token) {

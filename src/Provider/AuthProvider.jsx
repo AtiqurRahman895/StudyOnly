@@ -81,13 +81,15 @@ const AuthProvider = ({ children }) => {
         const res = await normalAxios.post("/jwt", user)
         setUser(currentUser);
         localStorage.setItem("token",res.data)
-        // localStorage.setItem("email",currentUser.email)
+        localStorage.setItem("email",currentUser.email)
 
       } else {
-        setUser(null);
+        setUser(currentUser);
         localStorage.removeItem("token")
-        // localStorage.removeItem("email")
+        localStorage.removeItem("email")
+
       }
+
       setLoading(false);
     });
 
@@ -95,7 +97,6 @@ const AuthProvider = ({ children }) => {
       unsubscribeUser();
     };
   }, []);
-
 
 
   const value = {
