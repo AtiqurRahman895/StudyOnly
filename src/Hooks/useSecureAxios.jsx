@@ -11,19 +11,19 @@ export const secureAxios = axios.create({
 
 const useSecureAxios = (safeEmail="") => {
     const navigate = useNavigate();
-    const {logoutUser } = useContext(AuthContext);
+    const {logoutUser,user } = useContext(AuthContext);
     // const {role}=useContext(TransferLists)
 
     secureAxios.interceptors.request.use(function (config) {
         const token=localStorage.getItem("token")
         const role=localStorage.getItem("role")
-        const email=localStorage.getItem("email")
+        // const email=localStorage.getItem("email")
         // console.log(email)
-        if(token&&email&&role){
+        if(token&&user?.email&&role){
             config.headers={
                 safeEmail,
                 token:`Bearer ${token}`,
-                email,
+                email:user.email,
                 role,
             }
         }
@@ -38,7 +38,7 @@ const useSecureAxios = (safeEmail="") => {
       }, function (error) {
             if (error.response.status === 401 || error.response.status === 403) {
               logoutUser();
-              toast.error(error.response.data.message);
+              toast.error(error.response.data?.message);
               navigate("/login");
             }
             return Promise.reject(error);

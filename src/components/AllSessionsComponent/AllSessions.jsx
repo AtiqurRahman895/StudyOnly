@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import UseGetAllSession from "../../Hooks/UseGetAllSession";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
@@ -11,6 +11,7 @@ import UseUrlQuery from "../../Hooks/UseUrlQuery";
 import NextPreButtons from "../CommonComponent/NextPreButtons";
 import { useQuery } from "@tanstack/react-query";
 import useSecureAxios from "../../Hooks/useSecureAxios";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const AllSessions = () => {
   const secureAxios = useSecureAxios();
@@ -18,7 +19,7 @@ const AllSessions = () => {
   const { loading, sessions, refetch, isError, error } =
     UseGetAllSession(limit);
   const { searchQuery } = UseUrlQuery();
-  const role = localStorage.getItem("role");
+  const { role } = useContext(TransferLists);
   const screenWidth = useScreenWidth();
   const [columnsCount, setColumnsCount] = useState();
 

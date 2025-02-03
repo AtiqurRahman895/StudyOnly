@@ -11,7 +11,7 @@ import { normalAxios } from "../../Hooks/useNormalAxios";
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { loginWithGoogle, logoutUser, creatUser, updateUserProfile, setUser } =
+  const { loginWithGoogle, logoutUser, creatUser, updateUserProfile } =
     useContext(AuthContext);
   const [password, setPassword] = useState();
   const [passwordError, setPasswordError] = useState(false);
@@ -37,21 +37,9 @@ const Register = () => {
     }
   };
 
-  // const handleGoogleLoginBtn=async()=>{
-  //     try {
-  //         const result=await loginWithGoogle()
-  //         await normalAxios.post("/addUser",{email:result.user.email,role:"student"})
-  //         navigate("/")
-  //         toast.success(`Login successful! Welcome, ${result.user.displayName}!`)
-  //     } catch (error) {
-  //         toast.error(error.message?error.message:error.code)
-  //     }
-  // }
-
   const handleGoogleLoginBtn = async () => {
     try {
       let result = await loginWithGoogle();
-      // setUser(result.user);
 
       const res = await normalAxios.post("/addUser", {
         image: result.user.photoURL,
@@ -77,22 +65,6 @@ const Register = () => {
     }
   };
 
-  // const handleGoogleLoginBtn=async()=>{
-  //     try {
-  //         let result=await loginWithGoogle()
-  //         const res=await normalAxios.post("/addUser",{email:result.user.email,role:"student"})
-  //         // console.log(res?.data?.insertedId)
-  //         if(res?.data?.insertedId){
-  //             toast.success("New user added. Welcome!");
-  //         }
-  //         navigate("/")
-  //         toast.success(`Login successful! Welcome!`)
-
-  //     } catch (error) {
-  //         toast.error(error.message?error.message:error.code)
-  //     }
-
-  // }
 
   const CreatUserOnSubmit = async (e) => {
     e.preventDefault();
@@ -123,6 +95,8 @@ const Register = () => {
       toast.error(error.message ? error.message : error.code);
     }
   };
+
+  
   return (
     <section className="mt-16">
       <div className="container hero flex items-center justify-center">

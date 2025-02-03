@@ -33,7 +33,6 @@ import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
 import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
 import AllUsers from "./components/AllUsersComponent/AllUsers";
 import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
-const role  = localStorage.getItem("role")
 
 const router = createBrowserRouter([
   {

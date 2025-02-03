@@ -7,11 +7,12 @@ import MaterialCard from "../SessionComponent/MaterialCard";
 import UploadMaterialModal from "../SessionComponent/UploadMaterialModal";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const SessionMaterials = ({session,lastSession=false}) => {
     const {loading,materials,refetch,isError,error}=useGetSessionMaterials(session._id)
     const screenWidth = useScreenWidth();
-    const role=localStorage.getItem("role")
+    const { role } = useContext(TransferLists);
     const {user}=useContext(AuthContext)
     const [columnsCount, setColumnsCount] = useState();
     

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UseGetTutorSessions from "../../Hooks/UseGetTutorSessions";
 import TopScrollBar from "../CommonComponent/TopScrollBar";
 import Loading from "../AuthenticationComponent/Loading";
@@ -9,13 +9,14 @@ import { useQuery } from "@tanstack/react-query";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 import { useMemo } from "react";
 import NextPreButtons from "../CommonComponent/NextPreButtons";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const AllMaterialsForAdminAndTutor = () => {
     const secureAxios= useSecureAxios()
     const limit=4
     const {loading,sessions,isError,error}=UseGetTutorSessions(limit)
     const {searchQuery} = UseUrlQuery();
-    const role=localStorage.getItem("role")
+    const { role } = useContext(TransferLists);
     const [NotFoundText, setNotFoundText] = useState("");
 
     const memorizedSearchQuery=useMemo(()=> searchQuery,[searchQuery])
