@@ -2,6 +2,7 @@
 
 StudyOnly is an advanced online learning platform that enables users to book tutoring sessions, access study materials, and manage educational resources effectively.
 
+![StudyOnly Screenshot](https://i.ibb.co.com/p6Sx0x5K/project-Image0.jpg) 
 
 ## 🚀 Live Project  
 🔗 [StudyOnly Live](https://study-only-atiq.web.app/)  
