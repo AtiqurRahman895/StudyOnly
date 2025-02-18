@@ -63,7 +63,7 @@ const SessionMaterials = ({session,lastSession=false}) => {
                             <UploadMaterialModal session_id={session._id} tutor_email={session.tutor_email} />
                         ) 
                     }
-                    <Link to={`/dashboard/session/${session._id}`} className="primaryButton activePrimaryButton min-w-32 !py-2.5 ">View Details</Link>
+                    <Link to={`/session/${session._id}`} className="primaryButton activePrimaryButton min-w-32 !py-2.5 ">View Details</Link>
                 </section>
 
             </div>

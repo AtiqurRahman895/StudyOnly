@@ -31,28 +31,30 @@ const Session = () => {
   }
 
   return (
-    <main className=" space-y-10">
-      <TitleSection title={`Session: ${_id}`} />
-      <SessionDetailsSection session={session} refetch={refetch} />
-      {role === "admin" && (
-        <SessionAdminButtonsSection session={session} refetch={refetch} />
-      )}
-      {(session.status === "Rejected" || session.status === "Pending") &&
-        role === "tutor" &&
-        session.tutor_email === user?.email && (
-          <RejectionReasons session_id={session._id} />
+    <main className="">
+      <section className="container space-y-10 mb-12">
+        <TitleSection title={`Session: ${_id}`} />
+        <SessionDetailsSection session={session} refetch={refetch} />
+        {role === "admin" && (
+          <SessionAdminButtonsSection session={session} refetch={refetch} />
         )}
-      {role === "admin" && <RejectionReasons session_id={session._id} />}
-      {role !== "admin" && role !== "tutor" && !booked && (
-        <SessionStudentButtonsSection session={session} refetch={refetch} />
-      )}
-      {role === "tutor" && session.tutor_email === user?.email && (
-        <SessionTutorButtonsSection session={session} />
-      )}
-      {(role === "admin" || session.tutor_email === user?.email || booked) && (
-        <MaterialsSection session_id={session._id} />
-      )}
-      <SessionReviewRatingSection booked={booked} session_id={session._id} />
+        {(session.status === "Rejected" || session.status === "Pending") &&
+          role === "tutor" &&
+          session.tutor_email === user?.email && (
+            <RejectionReasons session_id={session._id} />
+          )}
+        {role === "admin" && <RejectionReasons session_id={session._id} />}
+        {role !== "admin" && role !== "tutor" && !booked && (
+          <SessionStudentButtonsSection session={session} refetch={refetch} />
+        )}
+        {role === "tutor" && session.tutor_email === user?.email && (
+          <SessionTutorButtonsSection session={session} />
+        )}
+        {(role === "admin" || session.tutor_email === user?.email || booked) && (
+          <MaterialsSection session_id={session._id} />
+        )}
+        <SessionReviewRatingSection booked={booked} session_id={session._id} />
+      </section>
     </main>
   );
 };

@@ -84,7 +84,7 @@ const SessionCard = ({session,refetch}) => {
             ) 
           }
 
-          <Link to={`/dashboard/session/${_id}`} className="primaryButton activePrimaryButton block !py-2.5 ">View Details</Link>
+          <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block !py-2.5 ">View Details</Link>
         </div>
 
       </div>

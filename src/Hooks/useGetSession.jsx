@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useSecureAxios from "./useSecureAxios";
+import useSecureNormalAxios from "./useSecureNormalAxios";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const useGetSession = (_id) => {
-    const secureAxios= useSecureAxios()
+    const secureNormalAxios= useSecureNormalAxios()
+    const {loading:shouldFetch}=useContext(AuthContext)
 
     const fetchSession= async() => {
-        const res=await secureAxios.get(`/session/${_id}`)
+        const res=await secureNormalAxios.get(`/session/${_id}`)
         const data=res.data
         if (!data) {
             const error = new Error("Session not found");
@@ -17,6 +20,9 @@ const useGetSession = (_id) => {
     const { isLoading:loading, data:session={},refetch,isError,error } = useQuery(
         ['session',_id],
         fetchSession,
+        {
+            enabled: !shouldFetch, // Prevent fetching when user is still loading
+        }
     )
 
     return {loading,session,refetch,isError,error}

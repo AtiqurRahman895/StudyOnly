@@ -19,12 +19,14 @@ const useSecureNormalAxios = () => {
         const role=localStorage.getItem("role")
         const email=localStorage.getItem("email")
 
-        if(token&&email&&role&&role==="admin"){
+        if(token&&email&&role){
+          if(role==="admin" || role==="tutor"){
             config.headers={
-                token:`Bearer ${token}`,
-                email,
-                role,
+              token:`Bearer ${token}`,
+              email,
+              role,
             }
+          }
         }
 
         return config;

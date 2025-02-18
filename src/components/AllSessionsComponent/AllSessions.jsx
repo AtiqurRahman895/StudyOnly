@@ -23,12 +23,7 @@ const AllSessions = () => {
   
   const { role } = useContext(TransferLists);
   // console.log(role)
-  const {user}=useContext(AuthContext)
-  const memorizedUser = useMemo(() =>{
-    return user
-  }, [user]);
-
-
+  const {loading:shouldFetch}=useContext(AuthContext)
 
   const screenWidth = useScreenWidth();
   const [columnsCount, setColumnsCount] = useState();
@@ -46,8 +41,11 @@ const AllSessions = () => {
   };
   
   const { data: sessionsCount = 0 } = useQuery(
-    ["sessionsCount", memorizedSearchQuery,memorizedUser],
-    fetchSessionCount
+    ["sessionsCount", memorizedSearchQuery],
+    fetchSessionCount,
+    {
+        enabled: !shouldFetch, // Prevent fetching when user is still loading
+    }
   );
 
   useEffect(() => {

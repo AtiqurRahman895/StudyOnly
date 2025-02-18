@@ -10,8 +10,7 @@ const UseGetAllSession = (limit) => {
     const {searchQuery,pageNo=1} = UseUrlQuery();
     const secureNormalAxios= useSecureNormalAxios()
 
-    const {user}=useContext(AuthContext)
-    const memorizedUser = useMemo(() => user, [user]);
+    const {loading:shouldFetch}=useContext(AuthContext)
 
     const memorizedLimit = useMemo(() => limit, [limit]);
     const memorizedSearchQuery=useMemo(()=> searchQuery,[searchQuery])
@@ -29,8 +28,11 @@ const UseGetAllSession = (limit) => {
     };
 
     const { isLoading:loading, data:sessions=[],refetch,isError,error } = useQuery(
-        ['sessions',memorizedLimit, memorizedSearchQuery, memorizedPageNo, memorizedUser],
+        ['sessions',memorizedLimit, memorizedSearchQuery, memorizedPageNo],
         fetchSessions,
+        {
+            enabled: !shouldFetch, // Prevent fetching when user is still loading
+        }
     )
 
     return {loading,sessions,refetch,isError,error}

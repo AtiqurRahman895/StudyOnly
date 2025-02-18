@@ -35,14 +35,23 @@ const DashboardMenus = () => {
       <li className="w-fit">
         <NavLink
           to={"/dashboard"}
-          className={`${path.includes("/dashboard") && "!border-b-2 pb-2.5 !rounded-none"} ${normalClass}`}
+          className={`${path === "/dashboard" && ActiveClass} ${normalClass}`}
         >
           <MdSpaceDashboard />
           Dashboard
         </NavLink>
       </li>
 
+      {/* <div className="[&_div]:my-0 [&_div]:h-auto">
+        <div className="divider before:bg-black after:bg-black"></div>
+        <div className="divider before:bg-white after:bg-white"></div>
+        <div className="divider before:bg-black after:bg-black"></div>
+      </div>      */}
+
+        <div className="divider before:bg-black after:bg-white"></div>
+
       {/* Common */}
+
 
       <li className="w-fit">
         <NavLink
