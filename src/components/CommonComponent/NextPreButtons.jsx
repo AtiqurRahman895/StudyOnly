@@ -6,7 +6,7 @@ import { TransferLists } from "../../Contexts/TransferLists";
 const NextPreButtons = ({limit,totalContents}) => {
   const navigate =useNavigate()  
   const {pageRef}=useContext(TransferLists)
-  const {searchQuery,pageNo} = UseUrlQuery();
+  const {sort,searchQuery,pageNo} = UseUrlQuery();
   const [maxPage,setMaxtPage] = useState()
 
   useMemo(()=>{
@@ -14,12 +14,12 @@ const NextPreButtons = ({limit,totalContents}) => {
   },[totalContents,limit])
 
   const handlePreButton=()=>{
-    navigate(`?searchQuery=${searchQuery}&page=${pageNo-1}`);
+    navigate(`?sort=${sort}&searchQuery=${searchQuery}&page=${pageNo-1}`);
   }
   const handleNextButton=()=>{
-    navigate(`?searchQuery=${searchQuery}&page=${pageNo+1}`);
-
+    navigate(`?sort=${sort}&searchQuery=${searchQuery}&page=${pageNo+1}`);
   }
+  
   useEffect(() => {
     const timer = setTimeout(() => {
 

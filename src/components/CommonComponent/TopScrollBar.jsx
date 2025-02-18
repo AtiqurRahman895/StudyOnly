@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import { TbAdjustmentsFilled } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
+import { TbAdjustmentsFilled, TbArrowsSort } from "react-icons/tb";
+import { useLocation, useNavigate } from "react-router-dom";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
+import { FaSortAmountDownAlt, FaSortAmountUpAlt } from "react-icons/fa";
 
 const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
-  const {searchQuery} = UseUrlQuery();
+  const {sort, searchQuery} = UseUrlQuery();
   const navigate =useNavigate()
+  const location = useLocation();
+  const path = location.pathname;
   const [statusList, setStatusList] = useState([]);
   const [status, setStatus] = useState([]);
+  const [sortTypeList, setSortTypeList] = useState(["None", "High", "Low"]);
 
   useEffect(() => {
     let allStatusList
@@ -33,11 +37,15 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
 
   }, [searchQuery,showAllStatusName]);
 
-  const handleSearchInput = (e) => {
+  const handleSearchInput=(e)=>{
     e.preventDefault();
-    navigate(`?searchQuery=${e.target.searchInput.value}&page=1`);
+    navigate(`?sort=${sort}&searchQuery=${e.target.searchInput.value}&page=1`);
     e.target.reset();
-  };
+  }
+
+  const handleSortButton=(sort)=>{
+    navigate(`?sort=${sort}&searchQuery=${searchQuery}&page=1`);
+  }
 
   return (
     <div className="space-y-6">
@@ -68,7 +76,55 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
         </label>
       </form>
 
-      <div className="flex justify-center">
+      <div className="flex gap-4 w-full items-center justify-center">
+        {
+          (path==="/all_sessions") && (
+            <div className="space-y-3 dropdown dropdown-bottom">
+
+              <button
+                tabIndex={0}
+                type="button"
+                className="flex items-center gap-1 primaryButton !bg-custom-half-primary hover:!bg-custom-primary text-white"
+              >
+                {
+                  (sort==="None") && (<TbArrowsSort className="text-lg" />)
+                }
+                {
+                  (sort==="High") && (<FaSortAmountUpAlt />)
+                }
+                {
+                  (sort==="Low") && (<FaSortAmountDownAlt />)
+                }
+                {sort === "None"
+                  ? `Sort: ${sort}`
+                  : `Price: ${sort}`
+                }
+    
+              </button>
+              <div
+                tabIndex={0}
+                className={`join join-vertical w-40 dropdown-content z-20`}
+              >
+                {sortTypeList.map((sortTypeName, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSortButton(sortTypeName)}
+                    className={`${
+                      sort === sortTypeName
+                        ? "bg-custom-primary hover:bg-custom-primary"
+                        : "bg-white dark:bg-black hover:bg-gray-200 dark:hover:bg-gray-800"
+                    } duration-500 btn join-item border border-gray-300 hover:border-gray-300 dark:border-custom-ash dark:hover:border-custom-ash text-black`}
+                  >
+                    {sortTypeName}
+                  </button>
+                ))}
+              </div>
+              
+            </div>
+          )
+        }
+
+
         <div className="flex gap-2 items-center overflow-x-scroll hide-scrollbar rounded-md">
           <button
             tabIndex={0}
@@ -82,7 +138,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
             {statusList.map((statusName, index) => (
               <button
                 key={index}
-                onClick={() => navigate(`?searchQuery=${statusName}&page=1`)}
+                onClick={() => navigate(`?sort=${sort}&searchQuery=${statusName}&page=1`)}
                 className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
                 {statusName}
