@@ -84,7 +84,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
               <button
                 tabIndex={0}
                 type="button"
-                className="flex items-center gap-1 primaryButton !bg-custom-half-primary hover:!bg-custom-primary text-white"
+                className="flex items-center gap-1 primaryButton !bg-custom-half-primary hover:!bg-custom-primary !text-custom-primary hover:!text-white dark:!text-white"
               >
                 {
                   (sort==="None") && (<TbArrowsSort className="text-lg" />)
@@ -112,14 +112,14 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
                     className={`${
                       sort === sortTypeName
                         ? "bg-custom-primary hover:bg-custom-primary"
-                        : "bg-white dark:bg-black hover:bg-gray-200 dark:hover:bg-gray-800"
-                    } duration-500 btn join-item border border-gray-300 hover:border-gray-300 dark:border-custom-ash dark:hover:border-custom-ash text-black`}
+                        : "bg-white dark:bg-black hover:bg-[#e6e6e6] dark:hover:bg-gray-800"
+                    } duration-500 btn join-item border border-[#e6e6e6] hover:border-[#e6e6e6] dark:border-custom-ash dark:hover:border-custom-ash text-black`}
                   >
                     {sortTypeName}
                   </button>
                 ))}
               </div>
-              
+
             </div>
           )
         }
@@ -139,7 +139,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
               <button
                 key={index}
                 onClick={() => navigate(`?sort=${sort}&searchQuery=${statusName}&page=1`)}
-                className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
+                className={`bg-[#e6e6e6] hover:bg-[#e6e6e6] hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
                 {statusName}
               </button>

@@ -3,9 +3,12 @@ import useNormalAxios from "../../Hooks/useNormalAxios";
 import Loading from "../AuthenticationComponent/Loading";
 import NotFound from "../CommonComponent/NotFound";
 import Marquee from "react-fast-marquee";
+import { useContext } from "react";
+import { TransferLists } from "../../Contexts/TransferLists";
 
 const AllTutorsSection = () => {
     const normalAxios=useNormalAxios()
+    const {lightTheme} =useContext(TransferLists)
 
     const fetchAllTutors=async()=>{
         const res=await normalAxios.get("/allTutors")
@@ -39,7 +42,7 @@ const AllTutorsSection = () => {
                         <Marquee
                             pauseOnHover={true}
                             gradient={true}
-                            gradientColor={"#1C0F23"}
+                            gradientColor={lightTheme?"#ffffffb6":"#1C0F23"}
                             gradientWidth={`clamp(1.25rem, -2.2500000000000004rem + 8.75vw, 5.625rem)`}
                             className="bg-transparent"
                             speed={40}

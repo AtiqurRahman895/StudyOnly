@@ -37,7 +37,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply text-black-font bg-black overflow-x-hidden font-manrope font-medium;
+    @apply text-font-color bg-white dark:bg-black overflow-x-hidden font-manrope font-medium;
   }
   p,
   span,
@@ -100,7 +100,7 @@
 }
 @layer utilities {
   .headerSectionAnimation {
-    background-color: rgba(75, 75, 75, .35);
+    background-color: #1c0f2366;
     color: white;
     backdrop-filter: blur(20px);
   }
@@ -116,7 +116,7 @@
     @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-white bg-custom-primary border border-custom-primary hover:shadow-sm 
   }
   .activePrimaryButton{
-    @apply hover:bg-custom-half-primary 
+    @apply hover:bg-custom-half-primary hover:text-custom-primary dark:hover:text-white
   }
 
   .primaryButton2{

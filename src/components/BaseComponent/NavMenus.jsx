@@ -6,12 +6,11 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-const NavMenus = () => {
+const NavMenus = ({ActiveClass="!font-extrabold !text-black"}) => {
   const location = useLocation();
   const { logoutUser,user } = useContext(AuthContext);
   const path = location.pathname;
   const normalClass = `hover:bg-transparent flex items-center gap-1 pb-1 mb-1`;
-  const ActiveClass = `border-b-2 rounded-none !text-white`;
 
   return (
     <>

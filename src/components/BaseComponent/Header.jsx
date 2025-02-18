@@ -40,7 +40,7 @@ const Header = () => {
     <header
       ref={headerRef}
       className={`${
-        path === "/" ? "fixed" : "sticky"
+        path === "/" ? "fixed" : "sticky bg-[#1c0f2366]"
       } text-white top-0 z-50 w-full py-2`}
     >
       <div className={`navbar container`}>
@@ -76,7 +76,7 @@ const Header = () => {
 
         <div className="navbar-center hidden lg:inline-block">
           <ul className="menu menu-horizontal px-1 grid lg:flex items-center justify-items-center !list-none !space-y-0 !m-0">
-            <NavMenus />
+            <NavMenus ActiveClass="!font-extrabold !text-violet-500"/>
           </ul>
         </div>
 
@@ -153,7 +153,7 @@ const Header = () => {
 
               <div
                 onClick={logoutUser}
-                className="primaryButton activePrimaryButton hidden sm:inline-block"
+                className="primaryButton hover:scale-105 hidden sm:inline-block"
               >
                 Log Out
               </div>
@@ -162,13 +162,13 @@ const Header = () => {
             <div className="flex gap-2">
               <Link
                 to={"/login"}
-                className={`primaryButton activePrimaryButton`}
+                className={`primaryButton hover:scale-105`}
               >
                 Login
               </Link>
               <Link
                 to={"/register"}
-                className={`hidden sm:inline-block primaryButton activePrimaryButton`}
+                className={`hidden sm:inline-block primaryButton hover:scale-105`}
               >
                 Registration
               </Link>

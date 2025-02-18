@@ -49,7 +49,7 @@ const SessionReviewRatingSection = ({booked=false,session_id}) => {
                                 {reviews.map((review, index) => (
                                 <div
                                     key={index}
-                                    className="bg-[#c5c0cf] rounded-md p-4 space-y-1"
+                                    className="bg-[#e6e6e6] rounded-md p-4 space-y-1"
                                 >
                                     <div className="flex items-center gap-2">
                                         <img

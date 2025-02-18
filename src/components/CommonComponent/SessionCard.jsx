@@ -34,7 +34,7 @@ const SessionCard = ({session,refetch}) => {
       />
       <div className="space-y-2">
 
-        <h4 className={`text-white text-center px-4 font-Cinzel`}>
+        <h4 className={`text-black dark:text-white text-center px-4 font-Cinzel`}>
           {title}
         </h4>
         <p className="mt-2 first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">

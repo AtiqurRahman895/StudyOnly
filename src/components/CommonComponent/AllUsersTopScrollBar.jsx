@@ -76,7 +76,7 @@ const AllUsersTopScrollBar = ({ userCount=0 }) => {
               <button
                 key={index}
                 onClick={() => navigate(`?searchQuery=${roleName}`)}
-                className={`bg-gray-200 hover:bg-gray-200 hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
+                className={`bg-[#e6e6e6] hover:bg-[#e6e6e6] hover:scale-105 text-sm text-black cursor-pointer px-4 py-[.56rem] duration-500 rounded-md border-none flex-shrink-0`}
               >
                 {roleName}
               </button>

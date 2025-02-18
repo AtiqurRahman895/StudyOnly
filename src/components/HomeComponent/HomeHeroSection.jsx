@@ -16,7 +16,7 @@ const HomeHeroSection = () => {
                     </div>
 
                 </div>
-                <div className="grid justify-items-center absolute w-full bottom-14">
+                <div className="grid justify-items-center absolute w-full bottom-14 text-white">
                         <GiMouse className="text-4xl animate-pulse"/>
                         <p className="text-xs">Scroll Down</p>
                 </div>

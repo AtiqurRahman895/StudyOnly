@@ -14,7 +14,7 @@ const Footer = () => {
           </h1>
 
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 !list-none !space-y-0 m-0">
-            <NavMenus />
+            <NavMenus/>
           </ul>
 
           <nav>
