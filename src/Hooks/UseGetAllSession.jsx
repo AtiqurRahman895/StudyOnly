@@ -1,12 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import useSecureAxios from './useSecureAxios';
+// import useSecureAxios from './useSecureAxios';
 import UseUrlQuery from './UseUrlQuery';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
+import useSecureNormalAxios from './useSecureNormalAxios';
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 const UseGetAllSession = (limit) => {
     const {searchQuery,pageNo=1} = UseUrlQuery();
-    const secureAxios= useSecureAxios()
+    const secureNormalAxios= useSecureNormalAxios()
+
+    const {user}=useContext(AuthContext)
+    const memorizedUser = useMemo(() => user, [user]);
 
     const memorizedLimit = useMemo(() => limit, [limit]);
     const memorizedSearchQuery=useMemo(()=> searchQuery,[searchQuery])
@@ -19,15 +24,14 @@ const UseGetAllSession = (limit) => {
           limit:memorizedLimit, 
           sort:{_id:-1}
         };
-        const res=await secureAxios.get("/sessions", {params})
+        const res=await secureNormalAxios.get("/sessions", {params})
         return res.data
     };
 
     const { isLoading:loading, data:sessions=[],refetch,isError,error } = useQuery(
-        ['sessions',memorizedLimit, memorizedSearchQuery, memorizedPageNo],
+        ['sessions',memorizedLimit, memorizedSearchQuery, memorizedPageNo, memorizedUser],
         fetchSessions,
     )
-
 
     return {loading,sessions,refetch,isError,error}
 };

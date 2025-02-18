@@ -22,8 +22,13 @@ const NextPreButtons = ({limit,totalContents}) => {
   }
   useEffect(() => {
     const timer = setTimeout(() => {
-      pageRef.current.scrollTo(0, 0);
-      window.scrollTo(0,0)
+
+      if(pageRef?.current){
+        pageRef.current.scrollTo(0, 0);
+      }else{
+        window.scrollTo(0,0)
+      }
+      
     }, 200); 
     return () => clearTimeout(timer); // Cleanup the timeout
   }, [searchQuery, pageNo]);

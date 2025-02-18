@@ -46,9 +46,9 @@ const DashboardMenus = () => {
 
       <li className="w-fit">
         <NavLink
-          to={"/dashboard/all_sessions"}
+          to={"/all_sessions"}
           className={`${
-            path === "/dashboard/all_sessions" && ActiveClass
+            path === "/all_sessions" && ActiveClass
           } ${normalClass}`}
         >
           <PiListNumbersFill />

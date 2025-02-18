@@ -31,7 +31,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
 
     return
 
-  }, [searchQuery]);
+  }, [searchQuery,showAllStatusName]);
 
   const handleSearchInput = (e) => {
     e.preventDefault();

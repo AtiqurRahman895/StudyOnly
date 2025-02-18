@@ -30,7 +30,6 @@ export default {
         'custom-half-primary': 'rgba(123, 63, 242, 0.3)',
         'black': '#1C0F23',
         'black-font':'#D4D4D8',
-        'custom-ash': '#f0f0f0',
       },
     },
   },

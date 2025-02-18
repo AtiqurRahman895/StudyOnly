@@ -46,6 +46,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/all_sessions",
+        element: <AllSessions />,
+      },
+      {
         path: "/payment/:amount/:session_id/:email",
         element: (
           <PrivateRoute>
@@ -114,14 +118,6 @@ const router = createBrowserRouter([
           <TutorRoute>
             <CreatSession />
           </TutorRoute>
-        ),
-      },
-      {
-        path: "/dashboard/all_sessions",
-        element:(
-          <PrivateRoute>
-            <AllSessions />
-          </PrivateRoute>
         ),
       },
       {

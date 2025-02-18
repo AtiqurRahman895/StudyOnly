@@ -61,7 +61,7 @@ const HomeSessionsSection = () => {
                         </Masonry>
 
                         <div className="mt-2 flex justify-center">
-                            <Link to={"/dashboard/all_sessions"} type="button" className="primaryButton activePrimaryButton flex items-center gap-[2px] hover:gap-[4px]" >
+                            <Link to={"/all_sessions"} type="button" className="primaryButton activePrimaryButton flex items-center gap-[2px] hover:gap-[4px]" >
                                 View More <MdDoubleArrow className="text-[18px]"/>
                             </Link>
                         </div>

@@ -8,7 +8,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavMenus = () => {
   const location = useLocation();
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser,user } = useContext(AuthContext);
   const path = location.pathname;
   const normalClass = `hover:bg-transparent flex items-center gap-1 pb-1 mb-1`;
   const ActiveClass = `border-b-2 rounded-none !text-white`;
@@ -24,21 +24,27 @@ const NavMenus = () => {
         </NavLink>
       </li>
 
-      <li className="w-fit">
-        <NavLink
-          to={"/dashboard"}
-          className={`${path === "/dashboard" && ActiveClass} ${normalClass}`}
-        >
-          <MdSpaceDashboard />
-          Dashboard
-        </NavLink>
-      </li>
+      {
+        (user?.email)&&(
+          <li className="w-fit">
+            <NavLink
+              to={"/dashboard"}
+              className={`${path === "/dashboard" && ActiveClass} ${normalClass}`}
+            >
+              <MdSpaceDashboard />
+              Dashboard
+            </NavLink>
+          </li>
+        )
+      }
+
+
 
       <li className="w-fit">
         <NavLink
-          to={"/dashboard/all_sessions"}
+          to={"/all_sessions"}
           className={`${
-            path === "/dashboard/all_sessions" && ActiveClass
+            path === "/all_sessions" && ActiveClass
           } ${normalClass}`}
         >
           <PiListNumbersFill />

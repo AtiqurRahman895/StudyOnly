@@ -46,28 +46,24 @@ const Header = () => {
       <div className={`navbar container`}>
         <div className="navbar-start gap-x-4">
 
-          {
-            (user?.email)&&(
-              <label
-                htmlFor="navSideBar" aria-label="open sidebar"
-                className="p-1.5 border border-custom-primary rounded-md lg:hidden"
-              >
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#7c3ff2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="4"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-            )
-          }
+        <label
+            htmlFor="navSideBar" aria-label="open sidebar"
+            className="p-1.5 border border-custom-primary rounded-md lg:hidden"
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#7c3ff2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
 
           <Link
             to={"/"}
@@ -78,15 +74,11 @@ const Header = () => {
           </Link>
         </div>
 
-        {
-          (user?.email)&&(
-            <div className="navbar-center hidden lg:inline-block">
-              <ul className="menu menu-horizontal px-1 grid lg:flex items-center justify-items-center !list-none !space-y-0 !m-0">
-                <NavMenus />
-              </ul>
-            </div>
-          )
-        }
+        <div className="navbar-center hidden lg:inline-block">
+          <ul className="menu menu-horizontal px-1 grid lg:flex items-center justify-items-center !list-none !space-y-0 !m-0">
+            <NavMenus />
+          </ul>
+        </div>
 
         <div className="navbar-end">
           {user ? (

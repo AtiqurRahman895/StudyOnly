@@ -10,20 +10,30 @@ import SessionCard from "../CommonComponent/sessionCard";
 import UseUrlQuery from "../../Hooks/UseUrlQuery";
 import NextPreButtons from "../CommonComponent/NextPreButtons";
 import { useQuery } from "@tanstack/react-query";
-import useSecureAxios from "../../Hooks/useSecureAxios";
+import useSecureNormalAxios from "../../Hooks/useSecureNormalAxios";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { TransferLists } from "../../Contexts/TransferLists";
 
 const AllSessions = () => {
-  const secureAxios = useSecureAxios();
-  const limit = 4;
+  const secureNormalAxios = useSecureNormalAxios();
+  const limit = 6;
   const { loading, sessions, refetch, isError, error } =
     UseGetAllSession(limit);
   const { searchQuery } = UseUrlQuery();
+  
   const { role } = useContext(TransferLists);
+  // console.log(role)
+  const {user}=useContext(AuthContext)
+  const memorizedUser = useMemo(() =>{
+    return user
+  }, [user]);
+
+
+
   const screenWidth = useScreenWidth();
   const [columnsCount, setColumnsCount] = useState();
-
   const memorizedSearchQuery = useMemo(() => searchQuery, [searchQuery]);
+
   const fetchSessionCount = async () => {
     const params = {
       query:
@@ -31,20 +41,23 @@ const AllSessions = () => {
           ? {}
           : { $text: { $search: memorizedSearchQuery } },
     };
-    const res = await secureAxios.get("/sessions-count", { params });
+    const res = await secureNormalAxios.get("/sessions-count", { params });
     return res.data;
   };
+  
   const { data: sessionsCount = 0 } = useQuery(
-    ["sessionsCount", memorizedSearchQuery],
+    ["sessionsCount", memorizedSearchQuery,memorizedUser],
     fetchSessionCount
   );
 
   useEffect(() => {
-    if (screenWidth >= 640) {
-      setColumnsCount(2);
-    } else {
-      setColumnsCount(1);
-    }
+    if (screenWidth >= 1024) {
+      setColumnsCount(3);
+  } else if(screenWidth >= 640) {
+    setColumnsCount(2);
+  } else {
+    setColumnsCount(1);
+  }
   }, [screenWidth]);
 
   if (isError) {
@@ -53,11 +66,11 @@ const AllSessions = () => {
   }
 
   return (
-    <main className=" mt-8">
+    <main className="my-12">
       <TitleSection title={"All Sessions"} />
 
       <section className="">
-        <div className="space-y-12">
+        <div className="container space-y-12">
           <div className="space-y-6">
             <h3 className="text-custom-primary sectionHeaderWidth text-center">
               All Sessions

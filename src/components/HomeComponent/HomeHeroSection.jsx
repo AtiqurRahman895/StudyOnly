@@ -10,7 +10,7 @@ const HomeHeroSection = () => {
                     <div className="sectionHeaderWidth text-center h-[100%] flex flex-col justify-center items-center gap-2 text-white">
                     <h1 className="">Collaborative Study Sessions</h1>
                     <h6 className="sectionHeaderSubtextWidth md:w-[80%]">Book, review, and collaborate with expert tutors and fellow students to enhance your learning experience.</h6>
-                    <Link to={"/dashboard/all_sessions"} type="button" className="primaryButton mt-4">
+                    <Link to={"/all_sessions"} type="button" className="primaryButton mt-4">
                         View All Sessions
                     </Link>
                     </div>
