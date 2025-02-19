@@ -54,7 +54,7 @@ const HomeSessionsSection = () => {
                     :
                     (   
                     <div className="space-y-12">
-                        <Masonry columnsCount={columnsCount} gutter="28px">
+                        <Masonry columnsCount={columnsCount} gutter="24px">
                             {sessions.map((session, index) => (
                                 <SessionCard key={index} session={session} refetch={refetch} />
                             ))}

@@ -113,7 +113,7 @@
   }
 
   .primaryButton{
-    @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-white bg-custom-primary border border-custom-primary hover:shadow-sm 
+    @apply cursor-pointer px-4 py-2 text-center text-sm text-nowrap font-bold rounded-md duration-500 text-white bg-custom-primary border border-custom-primary dark:hover:border-white hover:shadow-sm 
   }
   .activePrimaryButton{
     @apply hover:bg-custom-half-primary hover:text-custom-primary dark:hover:text-white

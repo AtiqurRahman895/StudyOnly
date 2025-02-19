@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import useSecureNormalAxios from "../../Hooks/useSecureNormalAxios";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { TransferLists } from "../../Contexts/TransferLists";
+import CommonHeroSection from "../CommonComponent/CommonHeroSection";
 
 const AllSessions = () => {
   const secureNormalAxios = useSecureNormalAxios();
@@ -64,20 +65,15 @@ const AllSessions = () => {
   }
 
   return (
-    <main className="my-12">
+    <main className="space-y-12 mb-12">
       <TitleSection title={"All Sessions"} />
-
+      <CommonHeroSection title={"All Sessions"} subtext={"Find the right session for your learning needs, check schedules, and book sessions with expert tutors."}/>
       <section className="">
         <div className="container space-y-12">
-          <div className="space-y-6">
-            <h3 className="text-custom-primary sectionHeaderWidth text-center">
-              All Sessions
-            </h3>
             <TopScrollBar
               sessionCount={sessionsCount}
               showAllStatusName={role === "admin" && "all"}
             />
-          </div>
           {loading ? (
             <Loading />
           ) : sessions?.length === 0 ? (

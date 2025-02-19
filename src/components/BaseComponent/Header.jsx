@@ -39,9 +39,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`${
-        path === "/" ? "fixed" : "sticky bg-[#1c0f2366]"
-      } text-white top-0 z-50 w-full py-2`}
+      className={`fixed text-white top-0 z-50 w-full py-2`}
     >
       <div className={`navbar container`}>
         <div className="navbar-start gap-x-4">

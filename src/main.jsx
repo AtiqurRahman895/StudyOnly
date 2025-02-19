@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
@@ -20,7 +20,7 @@ import DashboardBase from "./components/BaseComponent/DashboardBase";
 import Dashboard from "./components/DashboardComponent/Dashboard";
 import CreatSession from "./components/CreatSessionComponent/CreatSession";
 import TutorRoute from "./components/AuthenticationComponent/tutorRoute";
-import AllSessions from "./components/AllSessionsComponent/Allsessions";
+import AllSessions from "./components/AllSessionsComponent/AllSessions";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Session from "./components/SessionComponent/Session";
 import ResubmitSession from "./components/ModifySessionComponent/ResubmitSession";
@@ -33,6 +33,8 @@ import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
 import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
 import AllUsers from "./components/AllUsersComponent/AllUsers";
 import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
+// import FAQ from "./components/FAQcomponent/FAQ";
+// import Tutors from "./components/TutorsComponent/Tutors";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // {
+      //   path: "/tutors",
+      //   element: <Tutors />,
+      // },
+      // {
+      //   path: "/faq",
+      //   element: <FAQ />,
+      // },
 
       // Authentication
       {

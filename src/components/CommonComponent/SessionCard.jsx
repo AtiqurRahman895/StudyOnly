@@ -26,18 +26,18 @@ const SessionCard = ({session,refetch}) => {
   }
   
   return (
-    <div className="space-y-5 mb-6">
+    <div className="border border-custom-primary rounded-md">
       <img
         src={image}
         alt={title}
-        className="w-full aspect-[3/2] object-cover object-center rounded-md"
+        className="w-full aspect-[3/2] object-cover object-center rounded-t-md"
       />
-      <div className="space-y-2">
+      <div className="space-y-2 p-4 bg-custom-gray dark:bg-custom-half-primary text-black dark:text-white">
 
-        <h4 className={`text-black dark:text-white text-center px-4 font-Cinzel`}>
+        <h5 className={`font-Cinzel`}>
           {title}
-        </h4>
-        <p className="mt-2 first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">
+        </h5>
+        <p className="mt-2 line-clamp-2 first-letter:text-custom-primary first-letter:text-3xl first-letter:font-Cinzel">
           {session_description}...
         </p>
 
@@ -72,7 +72,7 @@ const SessionCard = ({session,refetch}) => {
         </div>
 
         <div className="space-y-4 pt-1">
-          {
+          {/* {
             (role==="admin") &&(
               <SessionAdminButtonsSection session={session} refetch={refetch} incard={true} />
             )
@@ -82,9 +82,9 @@ const SessionCard = ({session,refetch}) => {
             (role==="tutor" && tutor_email===user?.email) &&(
               <SessionTutorButtonsSection session={session} incard={true} />
             ) 
-          }
+          } */}
 
-          <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block !py-2.5 ">View Details</Link>
+          <Link to={`/session/${_id}`} className="primaryButton activePrimaryButton block hover:!scale-100 !py-2.5 ">View Details</Link>
         </div>
 
       </div>

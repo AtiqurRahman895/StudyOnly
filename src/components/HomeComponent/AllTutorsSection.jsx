@@ -25,7 +25,7 @@ const AllTutorsSection = () => {
     }
     // console.log(tutors)
     return (
-        <section className="pb-14">
+        <section className="">
             <div className=" space-y-12 text-center">
                 <div className="sectionHeaderWidth text-center">
                     <h3 className="text-custom-primary">Meet Our Expert Tutors</h3>
