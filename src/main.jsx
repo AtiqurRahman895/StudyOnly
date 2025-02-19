@@ -33,7 +33,7 @@ import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
 import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
 import AllUsers from "./components/AllUsersComponent/AllUsers";
 import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
-// import FAQ from "./components/FAQcomponent/FAQ";
+import FAQ from "./components/FAQcomponent/FAQ";
 // import Tutors from "./components/TutorsComponent/Tutors";
 
 const router = createBrowserRouter([
@@ -67,10 +67,10 @@ const router = createBrowserRouter([
       //   path: "/tutors",
       //   element: <Tutors />,
       // },
-      // {
-      //   path: "/faq",
-      //   element: <FAQ />,
-      // },
+      {
+        path: "/faq",
+        element: <FAQ />,
+      },
 
       // Authentication
       {
