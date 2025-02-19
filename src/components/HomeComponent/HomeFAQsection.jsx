@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { TransferLists } from "../../Contexts/TransferLists";
+import { Link } from "react-router-dom";
+import { MdDoubleArrow } from "react-icons/md";
 
 const HomeFAQsection = () => {
     const {faqData}=useContext(TransferLists)
@@ -26,6 +28,12 @@ const HomeFAQsection = () => {
                         </div>
                     ))
                 }
+                </div>
+
+                <div className="mt-2 flex justify-center">
+                    <Link to={"/faq"} type="button" className="primaryButton activePrimaryButton flex items-center gap-[2px] hover:gap-[4px]" >
+                        View More <MdDoubleArrow className="text-[18px]"/>
+                    </Link>
                 </div>
 
             </div>

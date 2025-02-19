@@ -10,6 +10,7 @@ import ThemeToggler from "../CommonComponent/ThemeToggler";
 
 import useGetUserRole from "../../Hooks/useGetUserRole";
 import { useState } from "react";
+import ContactSection from "./ContactSection";
 
 const Base = () => {
   const {role } = useGetUserRole();
@@ -129,6 +130,7 @@ const Base = () => {
         <NavSideBar>
           <Header />
           <Outlet />
+          <ContactSection />
           <Footer />
           <section className="fixed bottom-[10%] right-4 z-50">
             <ThemeToggler/>
