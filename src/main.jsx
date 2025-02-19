@@ -34,7 +34,7 @@ import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
 import AllUsers from "./components/AllUsersComponent/AllUsers";
 import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
 import FAQ from "./components/FAQcomponent/FAQ";
-// import Tutors from "./components/TutorsComponent/Tutors";
+import Tutors from "./components/TutorsComponent/Tutors";
 
 const router = createBrowserRouter([
   {
@@ -63,10 +63,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: "/tutors",
-      //   element: <Tutors />,
-      // },
+      {
+        path: "/tutors",
+        element: <Tutors />,
+      },
       {
         path: "/faq",
         element: <FAQ />,

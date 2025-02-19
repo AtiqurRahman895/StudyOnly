@@ -81,7 +81,9 @@
   th{
     @apply !bg-custom-primary
   }
-
+  tbody td{
+    @apply text-black dark:text-white
+  }
 
 
 

@@ -9,6 +9,7 @@ import { FaFolderOpen } from "react-icons/fa6";
 import { PiListNumbersFill, PiNotebookFill } from "react-icons/pi";
 import { RiLogoutBoxRFill, RiStickyNoteAddFill } from "react-icons/ri";
 import { TiPlus } from "react-icons/ti";
+import NavMenus from "./NavMenus";
 
 const DashboardMenus = () => {
   const { user } = useContext(AuthContext);
@@ -23,24 +24,7 @@ const DashboardMenus = () => {
   return (
     <>
 
-      <li className="w-fit">
-        <NavLink
-          to={"/"}
-          className={`${path === "/" && ActiveClass} ${normalClass}`}
-        >
-          <AiFillHome /> Home
-        </NavLink>
-      </li>
-
-      <li className="w-fit">
-        <NavLink
-          to={"/dashboard"}
-          className={`${path === "/dashboard" && ActiveClass} ${normalClass}`}
-        >
-          <MdSpaceDashboard />
-          Dashboard
-        </NavLink>
-      </li>
+      <NavMenus />
 
       {/* <div className="[&_div]:my-0 [&_div]:h-auto">
         <div className="divider before:bg-black after:bg-black"></div>
@@ -48,12 +32,12 @@ const DashboardMenus = () => {
         <div className="divider before:bg-black after:bg-black"></div>
       </div>      */}
 
-        <div className="divider before:bg-black after:bg-white"></div>
+      <div className="divider before:bg-black after:bg-white"></div>
 
       {/* Common */}
 
 
-      <li className="w-fit">
+      {/* <li className="w-fit">
         <NavLink
           to={"/all_sessions"}
           className={`${
@@ -63,7 +47,7 @@ const DashboardMenus = () => {
           <PiListNumbersFill />
           All Sessions
         </NavLink>
-      </li>
+      </li> */}
 
       {/* Student */}
 
@@ -180,12 +164,12 @@ const DashboardMenus = () => {
         </NavLink>
       </li>
 
-      <li className="w-fit sm:hidden">
+      {/* <li className="w-fit sm:hidden">
         <p onClick={logoutUser} className="flex items-center">
           <RiLogoutBoxRFill />
           Log Out
         </p>
-      </li>
+      </li> */}
 
       
 

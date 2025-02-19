@@ -4,6 +4,7 @@ import DashboardHeader from "./DashboardHeader";
 import DashboardMenus from "./DashboardMenus";
 import { useContext, useEffect, useRef } from "react";
 import { TransferLists } from "../../Contexts/TransferLists";
+import ThemeToggler from "../CommonComponent/ThemeToggler";
 
 const DashboardSideBar = () => {
   const location = useLocation();
@@ -24,9 +25,12 @@ const DashboardSideBar = () => {
 
         <div className="drawer-content ">
           <DashboardHeader />
-          <div className="container lg:!px-[5%] min-h-screen pb-10">
+          <div className="xs:px-[5%] min-h-screen pb-10">
             <Outlet />
           </div>
+          <section className="fixed bottom-[10%] right-4 z-50">
+            <ThemeToggler/>
+          </section>
         </div>
 
         <div className="drawer-side z-50 lg:bg-custom-primary">

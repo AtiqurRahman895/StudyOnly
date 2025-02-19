@@ -1,15 +1,17 @@
 import { TransferLists } from "../../Contexts/TransferLists";
 import DashboardSideBar from "./DashboardSidebar";
 import useGetUserRole from "../../Hooks/useGetUserRole";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const DashboardBase = () => {
   const { role } = useGetUserRole();
   const pageRef=useRef(null)
+  const [lightTheme, setLightTheme]=useState(false)
 
   const value = {
     role,
-    pageRef
+    pageRef,
+    lightTheme, setLightTheme,
   };
 
   return (

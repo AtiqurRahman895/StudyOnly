@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { MdSpaceDashboard } from "react-icons/md";
-import { PiListNumbersFill } from "react-icons/pi";
+import { PiListNumbersFill, PiSealQuestionFill } from "react-icons/pi";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { BsFillQuestionOctagonFill } from "react-icons/bs";
+import { GiTeacher } from "react-icons/gi";
 
 const NavMenus = ({ActiveClass="!font-extrabold !text-black"}) => {
   const location = useLocation();
@@ -23,6 +25,42 @@ const NavMenus = ({ActiveClass="!font-extrabold !text-black"}) => {
         </NavLink>
       </li>
 
+      <li className="w-fit">
+        <NavLink
+          to={"/all_sessions"}
+          className={`${
+            path === "/all_sessions" && ActiveClass
+          } ${normalClass}`}
+        >
+          <PiListNumbersFill />
+          All Sessions
+        </NavLink>
+      </li>
+
+      <li className="w-fit">
+        <NavLink
+          to={"/faq"}
+          className={`${
+            path === "/faq" && ActiveClass
+          } ${normalClass}`}
+        >
+          <PiSealQuestionFill />
+          FAQ
+        </NavLink>
+      </li>
+
+      <li className="w-fit">
+        <NavLink
+          to={"/tutors"}
+          className={`${
+            path === "/tutors" && ActiveClass
+          } ${normalClass}`}
+        >
+          <GiTeacher />
+          Tutors
+        </NavLink>
+      </li>
+
       {
         (user?.email)&&(
           <li className="w-fit">
@@ -36,20 +74,6 @@ const NavMenus = ({ActiveClass="!font-extrabold !text-black"}) => {
           </li>
         )
       }
-
-
-
-      <li className="w-fit">
-        <NavLink
-          to={"/all_sessions"}
-          className={`${
-            path === "/all_sessions" && ActiveClass
-          } ${normalClass}`}
-        >
-          <PiListNumbersFill />
-          All Sessions
-        </NavLink>
-      </li>
 
 
       <li className="w-fit sm:hidden">
