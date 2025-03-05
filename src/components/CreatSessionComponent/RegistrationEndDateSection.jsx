@@ -25,7 +25,7 @@ const RegistrationEndDateSection = ({registration_start_date, registration_end_d
                     placeholder='Session Description' 
                     name="registration_end_date" 
                     id="registration_end_date" 
-                    className="input input-ghost input-bordered" 
+                    className="input input-ghost input-bordered inputIconChange" 
                     required
                 />
             </div>

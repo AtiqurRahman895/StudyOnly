@@ -27,10 +27,11 @@ export default {
       },
       colors: {
         'custom-primary': '#7c3ff2',
-        'custom-half-primary': 'rgba(123, 63, 242, .4)',
+        'custom-half-primary': 'rgba(123, 63, 242, .3)',
         'black': '#1C0F23',
         'font-color':'#756F7D',
         'custom-gray':'#e6e6e6',
+        'custom-metalic-gray':'#837c8526'
       },
     },
   },

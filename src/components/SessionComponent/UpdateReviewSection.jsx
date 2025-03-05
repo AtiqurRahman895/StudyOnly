@@ -3,6 +3,8 @@ import useSecureAxios from "../../Hooks/useSecureAxios";
 import { toast } from "react-toastify";
 import ReactStars from "react-stars";
 import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
+import RatingInput from "./RatingInput";
+import ReviewInput from "./ReviewInput";
 
 const UpdateReviewSection = ({studentReview,refetch}) => {
     const secureAxios =useSecureAxios()
@@ -50,53 +52,10 @@ const UpdateReviewSection = ({studentReview,refetch}) => {
             <button className={`${showForm&&"scale-y-0 absolute"} origin-top duration-500 primaryButton activePrimaryButton !py-2.5  min-w-32`} onClick={()=>setShowForm(true)} >Update your Review</button>
             <div className={`${showForm?"scale-y-100":"scale-y-0 absolute"} origin-top w-full duration-500`}>
                 <form onSubmit={handleSubmit} className="space-y-3">
-                    <div className="form-control">
-                        <label htmlFor="rating" className="label w-fit text-white space-x-2">
-                            <span className="">Your rating</span>
-                            <div className="flex gap-2 items-center">
-                                <ReactStars
-                                    count={5}
-                                    value={rating||0} 
-                                    size={18} 
-                                    edit={false} 
-                                    isHalf={true} 
-                                    halfIcon={<IoStarHalf />} 
-                                    emptyIcon={<IoStarOutline />} 
-                                    fullIcon={<IoStar />} 
-                                    color1="#7b3ff24c" 
-                                    color2="#7c3ff2" 
-                                />
-                                {/* <span className="text-custom-primary">({rating||0})</span> */}
-                            </div>
-                        </label>
-                        <input
-                            type="number"
-                            onChange={(e)=>setRating(e.target.value)}
-                            value={rating}
-                            name="rating"
-                            id="rating"
-                            min={0}
-                            max={5}
-                            step={0.01}
-                            className="input input-ghost input-bordered max-w-xs"
-                            required
-                        />
-                    </div>
 
-                    <div className="form-control flex-1">
-                        <label htmlFor="review" className="label w-fit text-white">
-                            <span className="">Your review</span>
-                        </label>
-                        <textarea
-                            onChange={(e) => setReview(e.target.value)}
-                            value={review}
-                            placeholder="Write your review"
-                            name="review"
-                            id="review"
-                            className="textarea textarea-ghost textarea-bordered h-32"
-                            required
-                        />
-                    </div>
+                    <RatingInput rating={rating} setRating={setRating}/>
+
+                    <ReviewInput review={review} setReview={setReview}/>
 
                     <div className="pt-4 flex flex-wrap justify-center xs:justify-start gap-4">
                         <button disabled={!showForm} type="submit" className="primaryButton activePrimaryButton">Update review</button>

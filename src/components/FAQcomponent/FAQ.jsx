@@ -24,7 +24,7 @@ const FAQ = () => {
                                 <div className="space-y-4">
                                     {
                                         eachFAQdata.questions.map((questionData,index)=>(
-                                            <div key={index} className="collapse collapse-plus bg-[rgba(131,124,133,.15)] text-black dark:text-white rounded-md p-2">
+                                            <div key={index} className="collapse collapse-plus bg-custom-metalic-gray text-black dark:text-white rounded-md p-2">
                                                 <input type="radio" name={eachFAQdata.category} defaultChecked={index===0} />
                                                 <div className="collapse-title text-lg">{questionData.question}</div>
                                                 <div className="collapse-content text-custom-primary font-bold">

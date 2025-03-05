@@ -24,22 +24,36 @@ const Header = () => {
       setScrollY(window.scrollY);
       if (window.scrollY >= 16) {
         document;
-        headerRef.current?.classList.add(`headerSectionAnimation`);
+        headerRef.current?.classList.add(`navbarAnimation`);
       } else {
         document;
-        headerRef.current?.classList.remove(`headerSectionAnimation`);
+        headerRef.current?.classList.remove(`navbarAnimation`);
       }
     };
 
     window.addEventListener(`scroll`, changeHeaderColor);
   }, []);
 
+  // useEffect(() => {
+  //   if(path==="/" || path==="/faq" || path==="/tutors" || path==="/all_sessions"){
+  //     headerRef.current?.classList.add(`fixed`);
+  //   }else {
+  //     headerRef.current?.classList.add(`sticky`);
+  //     if(path.includes("/session")){
+  //       headerRef.current?.classList.add(`bg-[#1c0f2366]`);
+  //     }
+  //   }
+  // }, [headerRef,path]); 
+
   // console.log(location.pathname)
 
   return (
     <header
       ref={headerRef}
-      className={`fixed text-white top-0 z-50 w-full py-2`}
+      className={`
+        ${path==="/login" || path==="/register" || path==="/forgot-password" || path==="/change-password" || path.includes("/payment") || path.includes("/session")?"sticky bg-[#1c0f2366]":"fixed"}
+        text-white top-0 z-50 w-full py-2
+      `}
     >
       <div className={`navbar container`}>
         <div className="navbar-start gap-x-4">

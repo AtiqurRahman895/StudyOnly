@@ -11,7 +11,7 @@ const MaterialCard = ({material, index, refetch }) => {
     const {user}=useContext(AuthContext)
 
     return (
-        <div className={`rounded-md text-white h-fit border border-custom-primary`}>
+        <div className={`rounded-md text-black dark:text-white h-fit border border-custom-primary`}>
             <img src={material.image} alt={material.title} className="w-full aspect-[3/2] object-cover object-center rounded-md bg-custom-primary" />
 
             <div className="p-4 space-y-2">

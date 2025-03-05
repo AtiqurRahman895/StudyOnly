@@ -13,6 +13,7 @@ const ChangeUserRoleModal = ({user,refetch}) => {
       ]
 
     const handleSubmit=async(e)=>{
+        e.preventDefault()
         try {
             await secureAxios.put(`/changeUserRole/${user._id}`,{role:userRole})
             toast.success(`Successfully changed ${user.name}'s role to ${userRole}!`)
@@ -31,12 +32,12 @@ const ChangeUserRoleModal = ({user,refetch}) => {
         <>
             <p onClick={()=>setOpenModal(true)}>{user.role}</p>
             <dialog id="reject_modal" className="!m-0 !p-0 modal bg-[rgba(0,0,0,.4)]" open={openModal}>
-                <div className="modal-box max-w-sm bg-black">
-                    <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <div className="modal-box max-w-sm bg-black text-white">
+                    <button onClick={()=>setOpenModal(false)} className="btn btn-sm btn-circle !bg-custom-metalic-gray absolute right-2 top-2">✕</button>
                     <form onSubmit={handleSubmit} className="space-y-3">
-                    <h1 className="text-5xl font-bold">Change role!</h1>
+                        <h1 className="text-5xl font-bold">Change role!</h1>
                         <div className="form-control flex-1">
-                            <label htmlFor="userRole" className="label w-fit text-white">
+                            <label htmlFor="userRole" className="label w-fit">
                                 User role
                             </label>
                             <select onChange={(e)=>setUserRole(e.target.value)} value={userRole} name="userRole" id="userRole" className="select select-ghost select-bordered" required>

@@ -17,7 +17,7 @@ const RegistrationStartDateSection = ({registration_start_date, setRegistration_
                     placeholder='Session Description' 
                     name="registration_start_date" 
                     id="registration_start_date" 
-                    className="input input-ghost input-bordered" 
+                    className="input input-ghost input-bordered inputIconChange" 
                     required
                 />
             </div>

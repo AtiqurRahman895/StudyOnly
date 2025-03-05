@@ -1,5 +1,4 @@
 import { Link, useRouteError } from "react-router-dom";
-import notFound from "../../assets/notFound.svg";
 import TitleSection from "../CommonComponent/TitleSection";
 
 const ErrorPage = () => {
@@ -13,7 +12,7 @@ const ErrorPage = () => {
       <div className="h-lvh place-items-center grid gap-3 content-center bg-white">
         {status === 404 ? (
           <img
-            src={notFound}
+            src="./notFound.svg"
             alt={`Error ${status}: ${statusText}`}
             className="w-[200px]"
           />

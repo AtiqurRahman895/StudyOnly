@@ -26,8 +26,8 @@ const Payment = () => {
       </section>
     )
   }else{
-    toast.warning("Only student can book a session!")
     navigate("/")
+    toast.warning("Only student can book a session!")
   }
 
 };

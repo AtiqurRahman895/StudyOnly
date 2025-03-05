@@ -52,8 +52,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
       <form onSubmit={handleSearchInput} className="flex justify-center">
 
         <label
-          className="input input-ghost !text-custom-primary border-custom-primary 
-           focus:border-custom-primary input-bordered flex items-center gap-2"
+          className="input customInput flex items-center gap-2"
         >
           <input
             type="search"
@@ -112,7 +111,7 @@ const TopScrollBar = ({ sessionCount, showAllStatusName=false }) => {
                     className={`${
                       sort === sortTypeName
                         ? "bg-custom-primary hover:bg-custom-primary"
-                        : "bg-white dark:bg-black hover:bg-custom-gray dark:hover:bg-gray-800"
+                        : "bg-white hover:bg-custom-gray"
                     } duration-500 btn join-item border border-custom-gray hover:border-custom-gray dark:border-custom-ash dark:hover:border-custom-ash text-black`}
                   >
                     {sortTypeName}

@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export const secureAxios = axios.create({
-    // baseURL: 'https://study-only-server.vercel.app',
-    baseURL: 'http://localhost:8080',
+    // baseURL: 'http://localhost:8080',
+    baseURL: 'https://study-only-server.vercel.app',
 });
 
 const useSecureAxios = (safeEmail="") => {

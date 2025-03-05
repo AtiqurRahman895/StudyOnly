@@ -25,7 +25,7 @@ const ClassEndTimeSection = ({class_start_time,class_end_time,setClass_end_time}
                     placeholder='Session Description' 
                     name="class_end_time" 
                     id="class_end_time" 
-                    className="input input-ghost input-bordered" 
+                    className="input input-ghost input-bordered inputIconChange" 
                     required
                 />
             </div>

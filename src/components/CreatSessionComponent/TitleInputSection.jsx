@@ -26,7 +26,7 @@ const TitleInputSection = ({ title, setTitle, id="title", forModal=false }) => {
         htmlFor={id}
         className="input-label label py-0 gap-2 items-center [&_svg]:hover:animate-none [&_svg]:animate-pulse"
       >
-        <h3 className={`text-white font-Cinze ${forModal&&"text-2xl"}`}>
+        <h3 className={`font-Cinze ${forModal?"text-2xl text-white":"text-black dark:text-white"}`}>
           {title ? title : titleText}
           <MdRateReview className="text-custom-primary text-xl ![animation-duration:1.5s] inline ml-2" />
         </h3>

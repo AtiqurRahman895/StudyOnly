@@ -17,10 +17,10 @@ const ChangePassword = () => {
     const regex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,20}$/;
     if (!regex.test(e.target.value)) {
-      e.target.classList.add("invalid");
+      e.target.classList.add("invalidInput");
       setPasswordError(true);
     } else {
-      e.target.classList.remove("invalid");
+      e.target.classList.remove("invalidInput");
       setPasswordError(false);
     }
   };
@@ -66,9 +66,10 @@ const ChangePassword = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="input input-ghost input-bordered disabled:border  disabled:border-gray-300"
+                className="input disabled:!border-[#ffffff4d] disabled:!text-[#ffffff4d]"
                 value={user.email}
                 disabled
+                
               />
             </div>
 
@@ -115,7 +116,7 @@ const ChangePassword = () => {
 
               {passwordError && (
                 <label htmlFor="password" className="label">
-                  <p className=" text-red-500">
+                  <p className=" text-red-400">
                     Password must Be 6 to 20 characters long, Include at least
                     one digit (0-9), one lowercase letter (a-z), one uppercase
                     letter (A-Z) and one special character (@#$%^&*!)

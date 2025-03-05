@@ -1,11 +1,11 @@
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import useReactQuill from "../../Hooks/useReactQuill";
 import { toast } from "react-toastify";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import TitleSection from "../CommonComponent/TitleSection";
+import NoteTitleInput from "./NoteTitleInput";
+import NoteInput from "./NoteInput";
 
 const CreatNote = () => {
   const { user } = useContext(AuthContext);
@@ -15,19 +15,13 @@ const CreatNote = () => {
   const [note, setNote] = useState(false);
   const [word_count, setWord_count] = useState(0);
 
-  const { modules, handleQuillChange } = useReactQuill(
-    setRowNoteText,
-    setNote,
-    setWord_count
-  );
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // console.log(e.target)
     if (word_count < 5) {
       toast.warning(
-        `Please lenghten note to 3 or more word! (Currently has ${word_count} words)`
+        `Please lenghten note to 5 or more word! (Currently has ${word_count} words)`
       );
       return;
     }
@@ -55,40 +49,19 @@ const CreatNote = () => {
         <div className="fromWrapper !space-y-8 max-w-lg">
           <h1 className="text-5xl font-bold">Write a note!</h1>
           <form onSubmit={handleSubmit} className="card-body p-0 space-y-4">
-            <div className="form-control">
-              <input
-                onChange={(e) => setTitle(e.target.value)}
-                type="text"
-                placeholder="Write note title"
-                name="title"
-                id="title"
-                className="input input-ghost !border-custom-primary focus:outline-none input-bordered placeholder:text-custom-primary placeholder:text-[13px] placeholder:font-medium placeholder:italic"
-                value={title}
-                required
-              />
-            </div>
 
-            <div className="pb-16 lg:!pb-0">
-              <ReactQuill
-                onChange={handleQuillChange}
-                value={rowNoteText}
-                placeholder="Write your notes"
-                id="note"
-                name="note"
-                modules={modules}
-                className="h-64 [&_.ql-toolbar.ql-snow]:!bg-custom-primary [&_.ql-toolbar.ql-snow]:!border-custom-primary [&_.ql-toolbar.ql-snow]:!rounded-t-lg [&_.ql-container.ql-snow]:!rounded-b-lg [&_.ql-container.ql-snow]:!border-custom-primary [&_.ql-editor.ql-blank::before]:!text-custom-primary"
-                theme="snow"
-              />
-            </div>
+            <NoteTitleInput title={title} setTitle={setTitle}/>
+            <NoteInput rowNoteText={rowNoteText} setRowNoteText={setRowNoteText} setNote={setNote} setWord_count={setWord_count} />
 
             <div className="lg:!pt-14">
               <button
                 type="submit"
-                className="primaryButton activePrimaryButton mx-auto"
+                className="primaryButton activePrimaryButton !bg-white hover:!bg-custom-primary !border-white !text-custom-primary hover:!text-white mx-auto"
               >
                 Creat note
               </button>
             </div>
+
           </form>
         </div>
       </div>

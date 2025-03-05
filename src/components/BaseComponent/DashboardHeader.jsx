@@ -23,10 +23,10 @@ const DashboardHeader = () => {
       setScrollY(window.scrollY);
       if (window.scrollY >= 16) {
         document;
-        headerRef.current?.classList.add(`headerSectionAnimation`);
+        headerRef.current?.classList.add(`navbarAnimation`);
       } else {
         document;
-        headerRef.current?.classList.remove(`headerSectionAnimation`);
+        headerRef.current?.classList.remove(`navbarAnimation`);
       }
     };
 
@@ -101,7 +101,7 @@ const DashboardHeader = () => {
                     {user.displayName && (
                       <div className="flex justify-center text-black">
                         <h5 className="font-bold">{user.displayName}</h5>
-                        {/* {user.emailVerified?<RiVerifiedBadgeFill className="text-sky-500" />:<RiVerifiedBadgeFill className="text-red-500" />} */}
+                        {/* {user.emailVerified?<RiVerifiedBadgeFill className="text-sky-500" />:<RiVerifiedBadgeFill className="text-red-400" />} */}
                         {/* {user.emailVerified && <RiVerifiedBadgeFill className="text-sky-400" />} */}
                       </div>
                     )}

@@ -30,11 +30,9 @@ import UpdateNote from "./components/UpdateNoteComponent/UpdateNote";
 import MySessions from "./components/MySessionsComponent/MySessions";
 import BookedSessions from "./components/BookedSessionsComponent/BookedSessions";
 import AllMaterials from "./components/AllMaterialsComponent/AllMaterials";
-import AdminRoute from "./components/AuthenticationComponent/AdminRoute";
-import AllUsers from "./components/AllUsersComponent/AllUsers";
 import DashboardRoute from "./components/AuthenticationComponent/DashboardRoute";
 import FAQ from "./components/FAQcomponent/FAQ";
-import Tutors from "./components/TutorsComponent/Tutors";
+import Tutors from "./components/TutorComponent/Tutors";
 
 const router = createBrowserRouter([
   {
@@ -118,14 +116,14 @@ const router = createBrowserRouter([
           
         ),
       },
-      {
-        path: "/dashboard/all_users",
-        element: (
-          <AdminRoute>
-            <AllUsers />
-          </AdminRoute>
-        ),
-      },
+      // {
+      //   path: "/dashboard/all_users",
+      //   element: (
+      //     <AdminRoute>
+      //       <AllUsers />
+      //     </AdminRoute>
+      //   ),
+      // },
       {
         path: "/dashboard/creat_session",
         element: (

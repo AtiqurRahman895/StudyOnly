@@ -110,7 +110,7 @@ const Login = () => {
               <Link
                 to={"/forgot-password"}
                 state={{ email }}
-                className="-alt link link-hover hover:scale-100 hover:font-semibold"
+                className="link link-hover text-black hover:scale-100 hover:font-semibold"
               >
                 Forgot password?
               </Link>
@@ -123,7 +123,7 @@ const Login = () => {
               Do not have an account?{" "}
               <Link
                 to={"/register"}
-                className="link link-hover text-custom-primary hover:font-bold "
+                className="link link-hover text-black hover:font-bold "
               >
                 {" "}
                 <b>Register now</b>{" "}
@@ -131,7 +131,7 @@ const Login = () => {
             </span>
           </form>
 
-          <h3 className="text-center text-custom-half-primary">or</h3>
+          <h3 className="text-center text-custom-gray">or</h3>
           <button
             onClick={handleGoogleLoginBtn}
             className="btn btn-ghost border text-white"

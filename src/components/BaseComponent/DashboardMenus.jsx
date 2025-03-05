@@ -1,19 +1,15 @@
-import { AiFillHome } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { TransferLists } from "../../Contexts/TransferLists";
-import { MdSpaceDashboard } from "react-icons/md";
-import { FaChalkboardTeacher, FaUsers } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaFolderOpen } from "react-icons/fa6";
-import { PiListNumbersFill, PiNotebookFill } from "react-icons/pi";
-import { RiLogoutBoxRFill, RiStickyNoteAddFill } from "react-icons/ri";
+import { PiNotebookFill } from "react-icons/pi";
+import { RiStickyNoteAddFill } from "react-icons/ri";
 import { TiPlus } from "react-icons/ti";
 import NavMenus from "./NavMenus";
 
 const DashboardMenus = () => {
-  const { user } = useContext(AuthContext);
-  const { logoutUser } = useContext(AuthContext);
+
   const { role } = useContext(TransferLists);
   const location = useLocation();
   const path = location.pathname;
@@ -120,7 +116,7 @@ const DashboardMenus = () => {
 
       {/* Admin */}
 
-      {
+      {/* {
         (role==="admin")&&(
           <>
             <li className="w-fit">
@@ -136,7 +132,7 @@ const DashboardMenus = () => {
             </li>
           </>
         )
-      }
+      } */}
 
       {/* Common */}
 

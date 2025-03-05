@@ -14,7 +14,7 @@ const ClassStartTimeSection = ({class_start_time,setClass_start_time}) => {
                     placeholder='Session Description' 
                     name="class_start_time" 
                     id="class_start_time" 
-                    className="input input-ghost input-bordered" 
+                    className="input input-ghost input-bordered inputIconChange" 
                     required
                 />
             </div>

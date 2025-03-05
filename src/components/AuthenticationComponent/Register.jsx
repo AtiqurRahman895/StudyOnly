@@ -29,10 +29,10 @@ const Register = () => {
     const regex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,20}$/;
     if (!regex.test(e.target.value)) {
-      e.target.classList.add("invalid");
+      e.target.classList.add("invalidInput");
       setPasswordError(true);
     } else {
-      e.target.classList.remove("invalid");
+      e.target.classList.remove("invalidInput");
       setPasswordError(false);
     }
   };
@@ -196,7 +196,7 @@ const Register = () => {
 
               {passwordError && (
                 <label htmlFor="password" className="label">
-                  <p className="-alt text-red-500">
+                  <p className="-alt text-red-400">
                     Password must Be 6 to 20 characters long, Include at least
                     one digit (0-9), one lowercase letter (a-z), one uppercase
                     letter (A-Z) and one special character (@#$%^&*!)
@@ -232,7 +232,7 @@ const Register = () => {
               Already have an account?{" "}
               <Link
                 to={"/login"}
-                className="link link-hover text-custom-primary hover:font-bold "
+                className="link link-hover text-black hover:font-bold "
               >
                 {" "}
                 <b>Login now</b>{" "}
@@ -240,7 +240,7 @@ const Register = () => {
             </span>
           </form>
 
-          <h3 className="text-center text-custom-half-primary">or</h3>
+          <h3 className="text-center text-custom-gray">or</h3>
           <button
             onClick={handleGoogleLoginBtn}
             className="btn btn-ghost border text-white"

@@ -29,7 +29,7 @@ const ContactSection = () => {
                 {
                     contactInfoList?.map((contactInfo,index)=>(
                         <Link key={index} to={contactInfo.link} target={index!==0?"_blank":""}
-                            className="relative bg-[rgba(131,124,133,.15)] text-black dark:text-white rounded-md px-4 py-10 flex items-center gap-4 overflow-hidden"
+                            className="relative bg-custom-metalic-gray text-black dark:text-white rounded-md px-4 py-10 flex items-center gap-4 overflow-hidden"
                         >
                            
                            <ReactSVG src={contactInfo.svg} className='w-16 text-custom-primary mb-2'/>

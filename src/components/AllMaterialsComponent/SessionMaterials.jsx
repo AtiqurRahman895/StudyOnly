@@ -47,11 +47,11 @@ const SessionMaterials = ({session,lastSession=false}) => {
                 <p>{session.session_description}</p>
 
                 <div className="flex flex-wrap gap-4">
-                    <p className="text-white">
+                    <p className="text-black dark:text-white">
                         <b className="text-custom-primary">Status: </b>
                         {session.status}
                     </p>
-                    <p className="text-white">
+                    <p className="text-black dark:text-white">
                         <b className="text-custom-primary">Total materials: </b>
                         {materials.length}
                     </p>
