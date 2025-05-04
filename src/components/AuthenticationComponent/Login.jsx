@@ -11,13 +11,13 @@ import { normalAxios } from "../../Hooks/useNormalAxios";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setemail] = useState();
-  const [emailValid, setEmailValid] = useState(false);
+  // const [emailValid, setEmailValid] = useState(false);
   const { loginWithGoogle, loginUser, logoutUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleEmailInputChanges = (e) => {
     setemail(e.target.value);
-    setEmailValid(e.target.checkValidity());
+    // setEmailValid(e.target.checkValidity());
   };
 
   const handleGoogleLoginBtn = async () => {
