@@ -9,6 +9,23 @@ StudyOnly is an advanced online learning platform that enables users to book tut
 
 ---
 
+## ⚡️ Quick Access for Recruiters   
+
+### Admin:
+**Admin email**: admin@studyonly.com
+**Admin password**: 1aA@1a
+
+### Tutor:
+**Tutor email**: tutor@gmail.com
+**Tutor password**: 1aA@1a
+
+### Student:
+**Student email**: student@gmail.com
+**Student password**: 1aA@1a
+
+
+---
+
 ## 📌 Technologies Used  
 - **Frontend**: React, React Router DOM, Tailwind CSS, DaisyUI, Firebase for Authentication 
 - **Backend**: Node.js, Express.js, MongoDB Atlas, Axios (for API calls) 
