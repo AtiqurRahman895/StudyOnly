@@ -12,16 +12,16 @@ StudyOnly is an advanced online learning platform that enables users to book tut
 ## ⚡️ Quick Access for Recruiters   
 
 ### Admin:
-**Admin email**: admin@studyonly.com
-**Admin password**: 1aA@1a
+- **Admin email**: admin@studyonly.com
+- **Admin password**: 1aA@1a
 
 ### Tutor:
-**Tutor email**: tutor@gmail.com
-**Tutor password**: 1aA@1a
+- **Tutor email**: tutor@gmail.com
+- **Tutor password**: 1aA@1a
 
 ### Student:
-**Student email**: student@gmail.com
-**Student password**: 1aA@1a
+- **Student email**: student@gmail.com
+- **Student password**: 1aA@1a
 
 
 ---
